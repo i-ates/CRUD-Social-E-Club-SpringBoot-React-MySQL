@@ -25,4 +25,4 @@ While setup the project please use these command npm install x (npm install axio
 "redux-thunk": "^2.3.0",
 "secure-ls": "^1.2.6",
 "timeago.js": "^4.0.2",
-"web-vitals": "^1.1.1"
+"web-vitals": "^1.1.1" 

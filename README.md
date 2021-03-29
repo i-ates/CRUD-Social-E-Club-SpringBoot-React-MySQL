@@ -1,12 +1,12 @@
 # demo1-highfive
 
 Spring Boot Dependency:
-*spring-boot-starter-data-jpa
-*spring-boot-starter-security
-*spring-boot-starter-web
-*spring-boot-devtools
-*mysql-connector-java
-*lombok
+spring-boot-starter-data-jpa
+spring-boot-starter-security
+spring-boot-starter-web
+spring-boot-devtools
+mysql-connector-java
+lombok
 
 React Dependency:
 While setup the project please use these command npm install x (npm install axios)

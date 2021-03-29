@@ -9,7 +9,8 @@ mysql-connector-java\
 lombok\
 
 ## React Dependency: \
-While setup the project please use these command npm install x (npm install axios)\
+While setup the project please Go in to src/main/frontend
+and use these command npm install x (npm install axios)\
 
 "axios": "^0.21.1",\
 "bootstrap": "^4.6.0",\

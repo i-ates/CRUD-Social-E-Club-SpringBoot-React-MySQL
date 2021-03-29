@@ -4,14 +4,11 @@ import SignupPage from './Components/SignUpPage'
 
 function App() {
   return (
-<<<<<<< HEAD
-
-=======
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Selamun aleyk.
+          Can
         </p>
         <a
           className="App-link"
@@ -23,7 +20,6 @@ function App() {
         </a>
       </header>
     </div>
->>>>>>> f60966e (first commit)
   );
 }
 

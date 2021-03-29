@@ -1,14 +1,14 @@
 # demo1-highfive
 
-## Spring Boot Dependency: \
+## Spring Boot Dependency: 
 spring-boot-starter-data-jpa\
 spring-boot-starter-security\
 spring-boot-starter-web\
 spring-boot-devtools\
 mysql-connector-java\
-lombok\
+lombok
 
-## React Dependency: \
+## React Dependency: 
 While setup the project please Go in to src/main/frontend
 and use these command npm install x (npm install axios)\
 
@@ -26,4 +26,4 @@ and use these command npm install x (npm install axios)\
 "redux-thunk": "^2.3.0",\
 "secure-ls": "^1.2.6",\
 "timeago.js": "^4.0.2",\
-"web-vitals": "^1.1.1" \
+"web-vitals": "^1.1.1" 

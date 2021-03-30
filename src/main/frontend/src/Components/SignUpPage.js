@@ -1,5 +1,4 @@
 import React  from "react";
-import axios from "axios";
 import {signup} from "../api/apiCall";
 
 class SignUpPage extends React.Component{

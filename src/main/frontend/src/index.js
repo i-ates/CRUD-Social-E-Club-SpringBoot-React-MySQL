@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './bootstrap-override.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import SignUpPage from "./Components/SignUpPage";

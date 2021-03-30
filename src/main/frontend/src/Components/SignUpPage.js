@@ -1,7 +1,7 @@
 import React  from "react";
 //
 class SignUpPage extends React.Component{
-//asdjhgbnjasmdakjdas
+//mustiye 2. commit
     state = {
         username: null,
         email:null,

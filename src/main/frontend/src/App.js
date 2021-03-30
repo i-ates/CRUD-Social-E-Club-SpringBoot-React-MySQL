@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import SignupPage from './Components/SignUpPage'
+import SignupPage from './page/SignUpPage'
 //mert + mustafa2
 function App() {
   return (

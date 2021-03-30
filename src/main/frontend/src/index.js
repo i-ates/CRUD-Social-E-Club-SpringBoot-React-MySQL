@@ -4,7 +4,7 @@ import './index.css';
 import './bootstrap-override.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import SignUpPage from "./Components/SignUpPage";
+import SignUpPage from "./page/SignUpPage";
 
 ReactDOM.render(
   <React.StrictMode>

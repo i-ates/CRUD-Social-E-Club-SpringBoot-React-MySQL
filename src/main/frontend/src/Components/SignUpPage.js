@@ -1,5 +1,5 @@
 import React  from "react";
-import axios from "axios";
+import {signup} from "../api/apiCall";
 
 class SignUpPage extends React.Component{
     state = {
@@ -14,24 +14,20 @@ class SignUpPage extends React.Component{
         const { name, value} = event.target;
         this.setState({
             [name]:value
-        })
-    }
+        });
+    };
 
-    onClickSignUp = event => {
+    onClickSignUp = async event => {
         event.preventDefault();
 
         const {username,email,password}=this.state;
         const body = {username,  email,  password};
         this.setState({pendingApiCall:true});
-
-        axios.post("/api/users",body)
-            .then((response)=>{
-                this.setState({pendingApiCall:false})
-            })
-            .catch(error => {
-                this.setState({pendingApiCall:false})
-            })
-    }
+        try{
+            const response= await signup(body);
+        }catch (error){}
+        this.setState({pendingApiCall:false});
+    };
 
     render() {
         return(

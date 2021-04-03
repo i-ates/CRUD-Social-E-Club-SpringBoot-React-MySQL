@@ -3,6 +3,7 @@ package com.hf.eclub.controller;
 
 import com.hf.eclub.error.ApiError;
 import com.hf.eclub.modal.User;
+import com.hf.eclub.repository.UserRepository;
 import com.hf.eclub.service.UserService;
 import com.hf.eclub.shared.GenericResponse;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -23,6 +25,7 @@ import java.util.Map;
 public class UserController {
     @Autowired
     UserService userService;
+    private UserRepository userRepository;
 
     private static final Logger log= LoggerFactory.getLogger(UserController.class);
 
@@ -49,6 +52,7 @@ public class UserController {
         userService.save(user);
         return ResponseEntity.ok(new GenericResponse("user created"));
     }
+
 
 
 }

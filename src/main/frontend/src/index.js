@@ -5,10 +5,11 @@ import './bootstrap-override.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import SignUpPage from "./page/SignUpPage";
+import ListClubs from "./Components/ListClubs";
 
 ReactDOM.render(
   <React.StrictMode>
-    <SignUpPage />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

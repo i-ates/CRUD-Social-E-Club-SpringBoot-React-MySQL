@@ -35,15 +35,15 @@ class SignUpPage extends React.Component{
         const body = {username,  email,  password};
         this.setState({pendingApiCall:true});
         try{
-            const response= await signup(body)
-            ;
+            const response= await signup(body);
+            this.props.history.push('/questions');
         }catch (error){
             if (error.response.data.validationErrors){
                 this.setState({ errors: error.response.data.validationErrors})
             }
         }
         this.setState({pendingApiCall:false});
-        this.props.history.push('/questions');
+
 
     };
 
@@ -56,14 +56,7 @@ class SignUpPage extends React.Component{
                     <h1 className={"text-center"}>Signup Page</h1>
                     <Input name="username" label="Username" error={username} onChange={this.onChange}/>
                     <Input name="email" label="Email" error={email} onChange={this.onChange}/>
-                    <div className={"form-group"}>
-                        <label>Password</label>
-                        <input name="password" className={"form-control"}onChange={this.onChange} type="password"/>
-                    </div>
-                    <div className={"form-group"}>
-                        <label>Re-Password</label>
-                        <input name="re_password" className={"form-control"}onChange={this.onChange} type="password"/>
-                    </div>
+                    <Input name="password" label="Password" error={password} type="password" onChange={this.onChange}/>
                     <div className={"text-center"}>
                         <button className={"btn btn-primary"} onClick={this.onClickSignUp} disabled={this.state.pendingApiCall}>
                             {this.state.pendingApiCall && <span className="spinner-border spinner-border-sm"></span>}

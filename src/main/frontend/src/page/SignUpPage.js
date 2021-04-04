@@ -2,6 +2,12 @@ import React  from "react";
 import {signup} from "../api/apiCall";
 import Input from "../Components/Input";
 class SignUpPage extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.onClickSignUp = this.onClickSignUp.bind(this);
+    }
+
     state = {
         username: null,
         email:null,
@@ -29,13 +35,16 @@ class SignUpPage extends React.Component{
         const body = {username,  email,  password};
         this.setState({pendingApiCall:true});
         try{
-            const response= await signup(body);
+            const response= await signup(body)
+            ;
         }catch (error){
             if (error.response.data.validationErrors){
                 this.setState({ errors: error.response.data.validationErrors})
             }
         }
         this.setState({pendingApiCall:false});
+        this.props.history.push('/questions');
+
     };
 
     render() {

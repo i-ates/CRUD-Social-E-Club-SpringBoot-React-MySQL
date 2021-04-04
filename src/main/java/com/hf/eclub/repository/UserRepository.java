@@ -1,11 +1,17 @@
 package com.hf.eclub.repository;
 
-import com.hf.eclub.modal.User;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository  extends JpaRepository<User, Long> {
+import com.hf.eclub.models.User;
 
-    User findByUsername(String username);
-    User findByEmail(String email);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+	Optional<User> findByUsername(String username);
+
+	Boolean existsByUsername(String username);
+
+	Boolean existsByEmail(String email);
 }

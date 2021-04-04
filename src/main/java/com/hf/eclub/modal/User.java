@@ -15,7 +15,7 @@ public class User {
     private  Long id;
 
 
-    @Column(name="username")
+    @Column(name="username",unique = true)
     @NotNull
     private String username;
 
@@ -30,7 +30,7 @@ public class User {
     private String bio;
 
 
-    @Column(name="email")
+    @Column(name="email",unique = true)
     @NotNull
     private String email;
 

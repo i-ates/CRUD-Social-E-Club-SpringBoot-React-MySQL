@@ -25,15 +25,17 @@ import java.util.Map;
 public class UserController {
     @Autowired
     UserService userService;
-    private UserRepository userRepository;
 
     private static final Logger log= LoggerFactory.getLogger(UserController.class);
 
     @CrossOrigin
     @PostMapping("/users")
-    public ResponseEntity<?> createUser(@Valid @RequestBody User user){
+    public ResponseEntity<?> createUser(@RequestBody User user){
         ApiError error = new ApiError(400,"Validation error","api/users");
+        ApiError error500= new ApiError(500,"Unique error","api/users");
+
         Map<String,String > validationErrors = new HashMap<>();
+        Map<String,String > uniqueErrors = new HashMap<>();
         if (user.getUsername()==null || user.getUsername().isEmpty()){
             validationErrors.put("username","Username cannot be null!");
 
@@ -44,10 +46,24 @@ public class UserController {
         if (user.getPassword() == null || user.getPassword().isEmpty()){
             validationErrors.put("password","Password cannot be null!");
         }
+
+        if (userService.getUserRepository().findByUsername(user.getUsername())!=null){
+                uniqueErrors.put("username","Username must be unique!");
+        }
+
+        if (userService.getUserRepository().findByEmail(user.getEmail())!=null){
+            uniqueErrors.put("email","Email must be unique!");
+        }
+
         if (!validationErrors.isEmpty()){
             error.setValidationErrors(validationErrors);
             return  ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
         }
+        if (!uniqueErrors.isEmpty()){
+            error500.setValidationErrors(uniqueErrors);
+            return ResponseEntity.status(HttpStatus.valueOf(500)).body(error500);
+        }
+
 
         userService.save(user);
         return ResponseEntity.ok(new GenericResponse("user created"));

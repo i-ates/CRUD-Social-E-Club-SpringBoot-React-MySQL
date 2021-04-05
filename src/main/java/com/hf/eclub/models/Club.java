@@ -1,4 +1,4 @@
-package com.hf.eclub.modal;
+package com.hf.eclub.models;
 
 import lombok.Data;
 

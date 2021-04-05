@@ -106,7 +106,7 @@ export default class Register extends Component {
           if (this.state.successful){
             AuthService.login(this.state.username, this.state.password).then(
                 () => {
-                  this.props.history.push("/profile");
+                  this.props.history.push("/questions");
                   window.location.reload();
                 },
                 error => {

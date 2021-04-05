@@ -2,7 +2,7 @@ package com.hf.eclub.models;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+
 
 @Data
 @Entity
@@ -12,6 +12,9 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
+
+    @Column(name = "survey_id")
+    private Long surveyId;
 
     @Column(name="question")
 

@@ -19,6 +19,12 @@ class UserService {
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
+  getQuestion(){
+    return axios.get("http://localhost:8080/api/questions",{headers:authHeader()});
+  }
+  getClubs(){
+    return axios.get("http://localhost:8080/api/test/clubs");
+  }
 }
 
 export default new UserService();

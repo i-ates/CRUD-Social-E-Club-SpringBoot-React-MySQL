@@ -6,9 +6,16 @@ class ListQuestions extends Component{
         super(props);
 
         this.state = {
-            questions: []
+            questions: [] //soruid-soru-cevap-clubid
+            //answerarray[]:soruid-verdiğimizcevap
         }
     }
+    //submitbuton fonksiyonu
+    // Loop
+    //question.cevap==answerarray.cevapp
+    //>%51
+    //backendde yollucaz. Userid- clubid
+    //
 
     componentDidMount() {
         UserService.getQuestion().then((res) =>{

@@ -1,8 +1,6 @@
 package com.hf.eclub.controller;
 
-import com.hf.eclub.models.Club;
 import com.hf.eclub.models.Question;
-import com.hf.eclub.repository.ClubRepository;
 import com.hf.eclub.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

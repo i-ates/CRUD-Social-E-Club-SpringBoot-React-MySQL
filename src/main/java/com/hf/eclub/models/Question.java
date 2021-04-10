@@ -24,4 +24,10 @@ public class Question {
 
     private String clubName;
 
+    @Column (name="answer")
+    private  String  answer;
+
+    @Column (name="clubId")
+    private  Long clubId;
+
 }

@@ -13,7 +13,7 @@ import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 import listQuestion from "./components/listQuestions"
-import  lq from "./components/lq"
+
 
 class App extends Component {
   constructor(props) {

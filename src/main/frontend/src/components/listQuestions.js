@@ -4,7 +4,7 @@ import tap from "lodash/fp/tap";
 import flow from "lodash/fp/flow";
 import groupBy from "lodash/fp/groupBy";
 import AuthService from "../services/auth.service";
-
+import userClubsService from "../services/userclub.service"
 class ListQuestions extends Component{
     constructor(props) {
         super(props);
@@ -65,7 +65,11 @@ class ListQuestions extends Component{
                 }
             }
             if (correctCount/3 >0.5){
-                console.log(value.clubId+" will added"+" userid="+currentUser.id);
+                userClubsService.saveClubs(value.clubId, currentUser.id).then(
+                    console.log(value.clubId+" will added"+" userid="+currentUser.id)
+                );
+
+
             }
         }
     }

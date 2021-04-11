@@ -30,4 +30,5 @@ public class Question {
     @Column (name="clubId")
     private  Long clubId;
 
+
 }

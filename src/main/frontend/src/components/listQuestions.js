@@ -5,7 +5,9 @@ import flow from "lodash/fp/flow";
 import groupBy from "lodash/fp/groupBy";
 import AuthService from "../services/auth.service";
 import userClubsService from "../services/userclub.service"
+import  $ from "jquery"
 class ListQuestions extends Component{
+
     constructor(props) {
         super(props);
 
@@ -26,6 +28,29 @@ class ListQuestions extends Component{
     componentDidMount() {
         UserService.getQuestion().then((res) =>{
             this.setState({questions: res.data});
+            let newQuestions= [];
+            for (let i=0; i<this.state.questions.length; i++){
+                let question={question:this.state.questions[i]};
+                newQuestions.push(question);
+            }
+            console.log(newQuestions);
+            this.setState({questions: newQuestions});
+            console.log(this.state.questions);
+
+        });
+
+    }
+    handleToggle= ()=>{
+        $( document ).ready(function() {
+            $('input[type="checkbox"]').on('change', function() {
+                var checkedValue = $(this).prop('checked');
+                // uncheck sibling checkboxes (checkboxes on the same row)
+                $(this).closest('tr').find('input[type="checkbox"]').each(function(){
+                    $(this).prop('checked',false);
+                });
+                $(this).prop("checked",checkedValue);
+
+            });
         });
     }
     getAnswer(id,ans,clubId,expected){
@@ -91,37 +116,13 @@ class ListQuestions extends Component{
                         {
                             this.state.questions.map(
                                 question =>
-                                    <tr key ={question.id}>
-                                        <td>{question.ques}</td>
+                                    <tr key ={question.question?.id}>
+                                        <td>{question.question?.ques}</td>
                                         <td>
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input" type="checkbox" id="inlineCheckbox1"
-                                                       value="option1" onClick={()=>this.getAnswer(question.id,"yes",question.clubId,question.answer)} />
-                                                <label className="form-check-label"
-                                                       htmlFor="inlineCheckbox1">Yes</label>
-                                            </div>
-                                            <div className="form-check form-check-inline">
-                                                <input className="form-check-input" type="checkbox" id="inlineCheckbox2"
-                                                       value="option2" onClick={()=>this.getAnswer(question.id,"no",question.clubId,question.answer)}/>
-                                                <label className="form-check-label"
-                                                       htmlFor="inlineCheckbox2">No</label>
-
-                                                {/*<div className="form-check form-check-inline">*/}
-                                                {/*    <input className="form-check-input" type="radio"*/}
-                                                {/*           name="inlineRadioOptions" id="inlineRadio1"  value="option1"*/}
-                                                {/*           onClick={()=>this.getAnswer(question.id,"yes",question.clubId,question.answer)}/>*/}
-                                                {/*        <label className="form-check-label"*/}
-                                                {/*               htmlFor="inlineRadio1">Yes</label>*/}
-                                                {/*</div>*/}
-                                                {/*<div className="form-check form-check-inline">*/}
-                                                {/*    <input className="form-check-input" type="radio"*/}
-                                                {/*           name="inlineRadioOptions" id="inlineRadio2" value="option2"*/}
-                                                {/*           onClick={()=>this.getAnswer(question.id,"no",question.clubId,question.answer)}/>*/}
-                                                {/*        <label className="form-check-label"*/}
-                                                {/*               htmlFor="inlineRadio2">No</label>*/}
-                                                {/*</div>*/}
-                                            </div>
-
+                                            <input type="checkbox" name="inStock[]"  onClick={o=>{this.handleToggle();
+                                            this.getAnswer(question.question.id,"yes",question.question.clubId,question.question.answer)}}/>Yes
+                                            <input type="checkbox" name="inStock[]"  onClick={o=>{this.handleToggle();
+                                                this.getAnswer(question.question.id,"no",question.question.clubId,question.question.answer)}}/>No
                                         </td>
                                     </tr>
                             )

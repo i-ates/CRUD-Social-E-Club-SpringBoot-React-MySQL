@@ -19,8 +19,13 @@ public class UserClubs {
     @Column(name="userId")
     private Long userId;
 
+
+
     public UserClubs(Long clubId, Long userId) {
         this.clubId = clubId;
         this.userId = userId;
+    }
+
+    public UserClubs() {
     }
 }

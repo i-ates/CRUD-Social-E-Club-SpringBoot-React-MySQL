@@ -25,6 +25,11 @@ class UserService {
   getClubs(){
     return axios.get("http://localhost:8080/api/test/clubs");
   }
+  getUserClubs(userid){
+    return axios.post("http://localhost:8080/api/test/getuserclubs", {
+      id:userid
+      });
+  }
 }
 
 export default new UserService();

@@ -89,7 +89,7 @@ class ListQuestions extends Component{
                     correctCount++;
                 }
             }
-            if (correctCount/3 >0.5){
+            if (correctCount/3>0.5){
                 userClubsService.saveClubs(value.clubId, currentUser.id).then(
                     console.log(value.clubId+" will added"+" userid="+currentUser.id)
                 );
@@ -97,6 +97,8 @@ class ListQuestions extends Component{
 
             }
         }
+        this.props.history.push("/getuserclubs");
+        window.location.reload();
     }
 
 

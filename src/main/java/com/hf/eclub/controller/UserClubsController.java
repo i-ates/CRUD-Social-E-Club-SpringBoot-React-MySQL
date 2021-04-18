@@ -2,6 +2,7 @@ package com.hf.eclub.controller;
 
 import com.hf.eclub.models.UserClubs;
 import com.hf.eclub.payload.request.UserClubsRequest;
+import com.hf.eclub.payload.request.UserIdRequest;
 import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.repository.UserClubsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -30,4 +32,10 @@ public class UserClubsController {
         userClubsRepository.save(userClubs);
         return ResponseEntity.ok(new MessageResponse("User Clubs added!"));
     }
+    @PostMapping("/getuserclubs")
+    public List<UserClubs> getUserClubs(@Valid @RequestBody UserIdRequest userIdRequest){
+
+        return userClubsRepository.findByUserId(userIdRequest.getId());
+    }
+
 }

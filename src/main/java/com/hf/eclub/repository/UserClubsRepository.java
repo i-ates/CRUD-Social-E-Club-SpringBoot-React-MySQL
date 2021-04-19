@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserClubsRepository extends JpaRepository<UserClubs,Long> {
 
 
-    boolean findByClubIdAndUserId(long clubId,long userId);
+    List<UserClubs> findByClubIdAndUserId(long clubId,long userId);
 
     List<UserClubs> findByUserId(long userId);
 }

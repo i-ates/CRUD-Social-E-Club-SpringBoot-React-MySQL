@@ -24,13 +24,14 @@ public class UserClubsController {
     @PostMapping("/userclubs")
     public ResponseEntity<?> saveSurvey(@Valid @RequestBody UserClubsRequest userClubsRequest) {
         UserClubs userClubs= new UserClubs(userClubsRequest.getClubId(),userClubsRequest.getUserId());
-//        if (userClubsRepository.findByClubIdAndUserId(userClubsRequest.getClubId(), userClubs.getUserId())){
-//            return ResponseEntity
-//                    .badRequest()
-//                    .body(new MessageResponse("Error: Username is already taken!"));
-//        }
-        userClubsRepository.save(userClubs);
-        return ResponseEntity.ok(new MessageResponse("User Clubs added!"));
+        if (userClubsRepository.findByClubIdAndUserId(userClubsRequest.getClubId(), userClubs.getUserId()).isEmpty()){
+
+            userClubsRepository.save(userClubs);
+            return ResponseEntity.ok(new MessageResponse("User Club added!"));
+        }else{
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+        }
+
     }
     @PostMapping("/getuserclubs")
     public List<UserClubs> getUserClubs(@Valid @RequestBody UserIdRequest userIdRequest){

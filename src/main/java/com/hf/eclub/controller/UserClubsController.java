@@ -25,7 +25,7 @@ public class UserClubsController {
     public ResponseEntity<?> saveSurvey(@Valid @RequestBody UserClubsRequest userClubsRequest) {
         UserClubs userClubs= new UserClubs(userClubsRequest.getClubId(),userClubsRequest.getUserId());
         if (userClubsRepository.findByClubIdAndUserId(userClubsRequest.getClubId(), userClubs.getUserId()).isEmpty()){
-            System.out.println("hmm");
+
             userClubsRepository.save(userClubs);
             return ResponseEntity.ok(new MessageResponse("User Club added!"));
         }else{

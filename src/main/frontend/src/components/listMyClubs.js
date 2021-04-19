@@ -32,7 +32,7 @@ class listMyClubs extends Component{
                     <table className="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th>Club Id</th>
+                            <th>Club Name</th>
                         </tr>
                         </thead>
 
@@ -40,8 +40,8 @@ class listMyClubs extends Component{
                         {
                             this.state.clubs.map(
                                 club =>
-                                    <tr key ={club.id}>
-                                        <td>{club.clubId}</td>
+                                    <tr key ={club}>
+                                        <td>{club}</td>
 
                                     </tr>
                             )

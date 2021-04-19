@@ -1,9 +1,11 @@
 package com.hf.eclub.controller;
 
+import com.hf.eclub.models.Club;
 import com.hf.eclub.models.UserClubs;
 import com.hf.eclub.payload.request.UserClubsRequest;
 import com.hf.eclub.payload.request.UserIdRequest;
 import com.hf.eclub.payload.response.MessageResponse;
+import com.hf.eclub.repository.ClubRepository;
 import com.hf.eclub.repository.UserClubsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -20,12 +23,14 @@ public class UserClubsController {
     @Autowired
     UserClubsRepository userClubsRepository;
 
+    @Autowired
+    ClubRepository clubRepository;
+
 
     @PostMapping("/userclubs")
     public ResponseEntity<?> saveSurvey(@Valid @RequestBody UserClubsRequest userClubsRequest) {
         UserClubs userClubs= new UserClubs(userClubsRequest.getClubId(),userClubsRequest.getUserId());
         if (userClubsRepository.findByClubIdAndUserId(userClubsRequest.getClubId(), userClubs.getUserId()).isEmpty()){
-
             userClubsRepository.save(userClubs);
             return ResponseEntity.ok(new MessageResponse("User Club added!"));
         }else{
@@ -34,7 +39,7 @@ public class UserClubsController {
 
     }
     @PostMapping("/getuserclubs")
-    public List<UserClubs> getUserClubs(@Valid @RequestBody UserIdRequest userIdRequest){
+    public List<String> getUserClubs(@Valid @RequestBody UserIdRequest userIdRequest){
 
         return userClubsRepository.findByUserId(userIdRequest.getId());
     }

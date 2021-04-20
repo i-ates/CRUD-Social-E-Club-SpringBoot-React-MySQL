@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import UserService from "../services/user.service";
-import tap from "lodash/fp/tap";
 import flow from "lodash/fp/flow";
 import groupBy from "lodash/fp/groupBy";
 import AuthService from "../services/auth.service";
 import userClubsService from "../services/userclub.service"
 import  $ from "jquery"
+import { Button, Modal } from "react-bootstrap";
 class ListQuestions extends Component{
 
     constructor(props) {
@@ -13,17 +13,11 @@ class ListQuestions extends Component{
 
         this.state = {
             questions: [], //soruid-soru-cevap-clubid
-            answers:[]
-            //answerarray[]:soruid-verdiğimizcevap
+            answers:[],
+            show: false,
+            close: false
         }
     }
-    //submitbuton fonksiyonu
-    // Loop
-    //question.cevap==answerarray.cevapp
-    //>%51
-    //backendde yollucaz. Userid- clubid
-    //
-
 
     componentDidMount() {
         UserService.getQuestion().then((res) =>{
@@ -33,12 +27,8 @@ class ListQuestions extends Component{
                 let question={question:this.state.questions[i]};
                 newQuestions.push(question);
             }
-            console.log(newQuestions);
             this.setState({questions: newQuestions});
-            console.log(this.state.questions);
-
         });
-
     }
     handleToggle= ()=>{
         $( document ).ready(function() {
@@ -65,12 +55,10 @@ class ListQuestions extends Component{
             this.setState({
                 answers: this.state.answers.concat([answer])
             })
-            console.log(id+" "+ans+" clicked");
         }else{
            this.setState({
                answers:this.state.answers.map(el=>(el.id===id ? Object.assign({},el,answer):el))
            })
-            console.log(id+" "+"answer updated");
         }
     }
     submit(){
@@ -81,7 +69,6 @@ class ListQuestions extends Component{
             map((answers, clubId) => ({clubId, answers}))
         )(this.state.answers)
         let correctCount=0;
-        // console.log(result);
         for (const [key,value] of result.entries()){
             correctCount=0;
             for (const [key1,value1] of value.answers.entries()){
@@ -91,17 +78,14 @@ class ListQuestions extends Component{
             }
             if (correctCount/3>0.5){
                 userClubsService.saveClubs(value.clubId, currentUser.id).then(
-                    console.log(value.clubId+" will added"+" userid="+currentUser.id)
                 );
-
-
             }
         }
+    }
+    navigate(){
         this.props.history.push("/getuserclubs");
         window.location.reload();
     }
-
-
     render() {
         return (
             <div>
@@ -132,11 +116,32 @@ class ListQuestions extends Component{
                         </tbody>
                     </table>
                 </div>
-                <button className="btn btn-primary" onClick={()=>this.submit()}>Submit</button>
+                    <Button
+                        className="btn btn-primary"
+                        variant="none"
+                        onClick={() => {this.setState({ show: true });this.submit()}}
+                    >Submit</Button>
+                    <Modal
+                        show={this.state.show}
+                        animation={true}
+                        size="md" className=" shadow-lg border">
+          <Modal.Header className="modal-header">
+            <Modal.Title className="text-center">
+              <h5>Answer Saved</h5>
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="py-0 border">
+            You are navigated to "MyClubs"
+          </Modal.Body>
+<Modal.Footer className="py-1 d-flex justify-content-center">
+              <div>
+                <Button  className="mx-2 px-3" onClick={()=>this.navigate()}>Okay</Button>
+              </div>
+            </Modal.Footer>
+        </Modal>
             </div>
         )
     }
-
 }
 
 export default ListQuestions

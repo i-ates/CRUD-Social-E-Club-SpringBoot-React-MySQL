@@ -17,12 +17,4 @@ public class Club {
     @Column(name="clubname")
 
     private String clubName;
-
-    @Column(name="activeuser")
-
-    private int activeUser;
-
-    @Column(name="registereduser")
-
-    private int registeredUser;
 }

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -22,6 +23,14 @@ public class UserController {
 
     @PostMapping("/getuserinfo")
     public List<User> getUserInfo(@Valid @RequestBody UserIdRequest userIdRequest){
-        return userRepository.findById(userIdRequest.getId());
+        User user=userRepository.findById(userIdRequest.getId()).get(0);
+        List<User> userList=new ArrayList<>();
+        userList.add(new User());
+        userList.get(0).setBio(user.getBio());
+        userList.get(0).setEmail(user.getEmail());
+        userList.get(0).setUsername(user.getUsername());
+        userList.get(0).setCity(user.getCity());
+        userList.get(0).setFullname(user.getFullname());
+        return userList;
     }
 }

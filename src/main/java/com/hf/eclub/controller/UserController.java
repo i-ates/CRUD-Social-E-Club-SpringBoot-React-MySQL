@@ -20,8 +20,8 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @PostMapping("/getuserclubs")
-    public List<User> getUserClubs(@Valid @RequestBody UserIdRequest userIdRequest){
+    @PostMapping("/getuserinfo")
+    public List<User> getUserInfo(@Valid @RequestBody UserIdRequest userIdRequest){
         return userRepository.findById(userIdRequest.getId());
     }
 }

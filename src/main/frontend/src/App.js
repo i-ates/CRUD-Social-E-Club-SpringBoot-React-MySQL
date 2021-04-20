@@ -50,15 +50,16 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
+
           <Link to={"/"} className="navbar-brand">
             HiClub
           </Link>
           <div className="navbar-nav mr-auto">
-            <li className="nav-item">
+            {/*<li className="nav-item">
               <Link to={"/home"} className="nav-link">
                 Home
               </Link>
-            </li>
+            </li>*/}
 
             {/*{showModeratorBoard && (*/}
             {/*  <li className="nav-item">*/}
@@ -68,7 +69,7 @@ class App extends Component {
             {/*  </li>*/}
             {/*)}*/}
 
-            {/*{showAdminBoard && (*/}
+            {/*{showAdminBoard && (
             {/*  <li className="nav-item">*/}
             {/*    <Link to={"/admin"} className="nav-link">*/}
             {/*      Admin Board*/}
@@ -89,7 +90,22 @@ class App extends Component {
                     MyClubs
                   </Link>
                 </li>
+
             )}
+            {currentUser && (<li className="nav-item">
+              <Link to={"/admin"} className="nav-link">
+                Admin Panel
+              </Link>
+            </li>
+            )}
+
+          </div>
+          <div>
+            <form className="form-inline my-2 my-lg-0">
+              <input className="form-control mr-sm-2" type="text" placeholder="Search"></input>
+              <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search User</button>
+              <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search Club</button>
+            </form>
           </div>
 
           {currentUser ? (
@@ -99,6 +115,7 @@ class App extends Component {
                   {currentUser.username}
                 </Link>
               </li>
+
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
                   LogOut
@@ -130,7 +147,7 @@ class App extends Component {
             <Route exact path="/profile" component={Profile} />
             {/*<Route path="/user" component={BoardUser} />*/}
             {/*<Route path="/mod" component={BoardModerator} />*/}
-            {/*<Route path="/admin" component={BoardAdmin} />*/}
+            <Route path="/admin" component={BoardAdmin} />
             <Route path="/questions" component={listQuestion} />
             <Route path="/getuserclubs" component={listMyClubs}/>
           </Switch>

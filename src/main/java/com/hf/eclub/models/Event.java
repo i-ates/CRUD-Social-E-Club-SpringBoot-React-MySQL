@@ -30,6 +30,9 @@ public class Event {
     @Column(name = "date")
     private Date date;
 
+    @Column(name = "parent_club_id")
+    private Long parentClubId;
+
     @NotBlank
     @Size(max = 1000)
     @Column(name = "content")

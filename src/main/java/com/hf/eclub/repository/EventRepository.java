@@ -13,8 +13,8 @@ import java.util.Set;
 
 
 @Repository
-public interface EventRepository extends JpaRepository <Event, Long> {
+public interface EventRepository extends JpaRepository<Event, Long> {
 
-    Set<Event> findByClub(Club parentClub);  // To get events assigned to a sub club, Date Descending
+//    Set<Event> findByClub(Club parentClub);  // To get events assigned to a sub club, Date Descending
 
 }

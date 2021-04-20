@@ -105,21 +105,21 @@ class App extends Component {
           </div>
 
           <div>
-            <Searchbar />
+            <Searchbar/>
           </div>
 
           {currentUser ? (
-
-              <Dropdown>
-                <Dropdown.Toggle variant="secondary">
-                  {currentUser.username}
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="/profile">Edit Profile</Dropdown.Item>
-                  <Dropdown.Item href="/home" onClick={this.logOut}>LOGOUT</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-
+              <div className="navbar-nav ml-auto">
+                <Dropdown>
+                  <Dropdown.Toggle variant="secondary">
+                    {currentUser.username}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/profile">Edit Profile</Dropdown.Item>
+                    <Dropdown.Item href="/home" onClick={this.logOut}>LOGOUT</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
           ) :  (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">

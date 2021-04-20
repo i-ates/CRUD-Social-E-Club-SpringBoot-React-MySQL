@@ -1,5 +1,6 @@
 package com.hf.eclub.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,6 +12,7 @@ import com.hf.eclub.models.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findByUsername(String username);
 
+	List<User> findById(long id);
 	Boolean existsByUsername(String username);
 
 	Boolean existsByEmail(String email);

@@ -31,6 +31,7 @@ public class UserController {
         userList.get(0).setUsername(user.getUsername());
         userList.get(0).setCity(user.getCity());
         userList.get(0).setFullname(user.getFullname());
+        userList.get(0).setRoles(user.getRoles());
         return userList;
     }
 }

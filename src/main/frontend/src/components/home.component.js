@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 
 import UserService from "../services/user.service";
-import ListClubs from "../components/ListClubs"
+import ListMyClubs from "../components/listMyClubs"
+import {Tab, Tabs} from "react-bootstrap";
+import AuthService from "../services/auth.service";
+import OtherClubs from "./listOtherClubs"
 
 export default class Home extends Component {
   constructor(props) {
@@ -13,6 +16,15 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
+    const user = AuthService.getCurrentUser();
+
+    if (user) {
+      this.setState({
+        currentUser: user,
+        showModeratorBoard: user.roles.includes("ROLE_MODERATOR"),
+        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+      });
+    }
     UserService.getPublicContent().then(
       response => {
         this.setState({
@@ -31,9 +43,23 @@ export default class Home extends Component {
   }
 
   render() {
+    const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
     return (
       <div className="container">
-        <ListClubs/>
+        <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
+          <Tab eventKey={1} title="Enrolled Club">
+            <div className="container mt-3">
+              <ListMyClubs/>
+            </div>
+          </Tab>
+          <Tab eventKey={2} title="Other Club">
+            <div className="container mt-3">
+              <div className="container mt-3">
+                <OtherClubs/>
+              </div>
+            </div>
+          </Tab>
+        </Tabs>
       </div>
     );
   }

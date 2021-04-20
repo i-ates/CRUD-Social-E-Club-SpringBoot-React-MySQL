@@ -15,7 +15,6 @@ import BoardAdmin from "./components/board-admin.component";
 import listQuestion from "./components/listQuestions"
 import listMyClubs from "./components/listMyClubs";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -84,14 +83,14 @@ class App extends Component {
             {/*    </Link>*/}
             {/*  </li>*/}
             {/*)}*/}
-            {currentUser && (
+            {/*currentUser && (
                 <li className="nav-item">
                   <Link to={"/getuserclubs"} className="nav-link">
                     MyClubs
                   </Link>
                 </li>
 
-            )}
+            )*/}
             {showAdminBoard && (<li className="nav-item">
               <Link to={"/admin"} className="nav-link">
                 Admin Panel
@@ -99,13 +98,6 @@ class App extends Component {
             </li>
             )}
 
-          </div>
-          <div>
-            <form className="form-inline my-2 my-lg-0">
-              <input className="form-control mr-sm-2" type="text" placeholder="Search"></input>
-              <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search User</button>
-              <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search Club</button>
-            </form>
           </div>
 
           {currentUser ? (

@@ -92,7 +92,7 @@ class App extends Component {
                 </li>
 
             )}
-            {currentUser && (<li className="nav-item">
+            {showAdminBoard && (<li className="nav-item">
               <Link to={"/admin"} className="nav-link">
                 Admin Panel
               </Link>

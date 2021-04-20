@@ -30,6 +30,11 @@ class UserService {
       id:userid
       });
   }
+  getOtherClubs(userid){
+    return axios.post("http://localhost:8080/api/test/getotheruserclubs", {
+      id:userid
+    });
+  }
 }
 
 export default new UserService();

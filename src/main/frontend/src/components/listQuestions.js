@@ -83,7 +83,7 @@ class ListQuestions extends Component{
         }
     }
     navigate(){
-        this.props.history.push("/getuserclubs");
+        this.props.history.push("/home");
         window.location.reload();
     }
     render() {

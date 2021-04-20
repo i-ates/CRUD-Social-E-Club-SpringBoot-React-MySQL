@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
 import UserService from "../services/user.service";
-import ListMyClubs from "../components/listMyClubs"
+import ListMyClubs from "../components/listMyClubs";
+import ListClubs from "./ListClubs";
 import {Tab, Tabs} from "react-bootstrap";
 import AuthService from "../services/auth.service";
 import OtherClubs from "./listOtherClubs"
+import {Link} from "react-router-dom";
 
 export default class Home extends Component {
   constructor(props) {
@@ -46,20 +48,27 @@ export default class Home extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
     return (
       <div className="container">
-        <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
-          <Tab eventKey={1} title="Enrolled Club">
-            <div className="container mt-3">
-              <ListMyClubs/>
+        {currentUser ? (
+            <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
+              <Tab eventKey={1} title="Enrolled Club">
+                <div className="container mt-3">
+                  <ListMyClubs/>
+                </div>
+              </Tab>
+              <Tab eventKey={2} title="Other Club">
+                <div className="container mt-3">
+                  <div className="container mt-3">
+                    <OtherClubs/>
+                  </div>
+                </div>
+              </Tab>
+            </Tabs>
+        ) :  (
+            <div>
+              <ListClubs/>
             </div>
-          </Tab>
-          <Tab eventKey={2} title="Other Club">
-            <div className="container mt-3">
-              <div className="container mt-3">
-                <OtherClubs/>
-              </div>
-            </div>
-          </Tab>
-        </Tabs>
+        )}
+
       </div>
     );
   }

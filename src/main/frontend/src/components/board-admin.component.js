@@ -47,9 +47,11 @@ export default class BoardAdmin extends Component {
                 </div>
             </Tab>
             <Tab eventKey={3} title="Delete Club">
-                <h3>
-                    Will serve as soon as possible.
-                </h3>
+                <div className="container mt-3">
+                    <h3>
+                        Will serve as soon as possible.
+                    </h3>
+                </div>
             </Tab>
             <Tab eventKey={4} title="Assign Sub Club">
                 <div className="container mt-3">

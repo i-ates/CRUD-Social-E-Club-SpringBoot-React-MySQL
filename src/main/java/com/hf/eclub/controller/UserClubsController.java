@@ -46,6 +46,6 @@ public class UserClubsController {
 
     @PostMapping("/getotheruserclubs")
     public List<String> getOtherClubs(@Valid @RequestBody UserIdRequest userIdRequest){
-        return userClubsRepository.findUserClubsByUserId(userIdRequest.getId());
+        return userClubsRepository.findUserOtherClubsByUserId(userIdRequest.getId());
     }
 }

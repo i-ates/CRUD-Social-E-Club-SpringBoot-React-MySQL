@@ -35,6 +35,11 @@ class UserService {
       id:userid
     });
   }
+  getUserInfo(userid){
+    return axios.post("http://localhost:8080/api/test/getuserinfo", {
+      id:userid
+    });
+  }
 }
 
 export default new UserService();

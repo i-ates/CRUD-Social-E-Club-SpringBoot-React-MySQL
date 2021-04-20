@@ -14,6 +14,9 @@ import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 import listQuestion from "./components/listQuestions"
 import listMyClubs from "./components/listMyClubs";
+import Searchbar from "./components/searchbar";
+import Dropdown from 'react-bootstrap/Dropdown';
+import { GiHighFive } from "react-icons/gi";
 
 class App extends Component {
   constructor(props) {
@@ -51,7 +54,8 @@ class App extends Component {
         <nav className="navbar navbar-expand navbar-dark bg-dark">
 
           <Link to={"/"} className="navbar-brand">
-            HiClub
+              <GiHighFive className="navbar-icon"></GiHighFive>
+              hiclub
           </Link>
           <div className="navbar-nav mr-auto">
             {/*<li className="nav-item">
@@ -100,31 +104,33 @@ class App extends Component {
 
           </div>
 
-          {currentUser ? (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Link>
-              </li>
+          <div>
+            <Searchbar />
+          </div>
 
-              <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
-                </a>
-              </li>
-            </div>
+          {currentUser ? (
+
+              <Dropdown>
+                <Dropdown.Toggle variant="secondary">
+                  {currentUser.username}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/profile">Edit Profile</Dropdown.Item>
+                  <Dropdown.Item href="/home" onClick={this.logOut}>LOGOUT</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
           ) :  (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
-                  Login
+                  LOGIN
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to={"/register"} className="nav-link">
-                  Sign Up
+                  SIGN UP
                 </Link>
               </li>
             </div>

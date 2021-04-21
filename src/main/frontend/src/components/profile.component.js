@@ -9,7 +9,6 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
-import ListGroup from 'react-bootstrap/ListGroup'
 import UserService from "../services/user.service";
 import Table from 'react-bootstrap/Table'
 
@@ -17,12 +16,14 @@ import Table from 'react-bootstrap/Table'
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-
+    // this.onchangeUsername = this.onchangeUsername.bind(this);
     this.state = {
       redirect: null,
       userReady: false,
       currentUser: { username: "" },
-      users : []
+      users : [],
+      area:"",
+      area2:""
 
     };
   }
@@ -37,6 +38,26 @@ export default class Profile extends Component {
     }).catch(err=>
         console.log(err.response.data)) ;
   }
+  onchangeArea(e){
+    this.setState({
+      area: e.target.value
+    });
+  }
+  onchangeArea2(e){
+    this.setState({
+      area2: e.target.value
+    });
+  }
+  updateName(area){
+    UserService.updateUserInfo(this.state.currentUser.id, area, "fullname");
+  }
+  updateCity(area){
+    UserService.updateUserInfo(this.state.currentUser.id, area, "city");
+  }
+  updateBio(area){
+    UserService.updateUserInfo(this.state.currentUser.id, area, "bio");
+  }
+
   render() {
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
@@ -163,34 +184,34 @@ export default class Profile extends Component {
                 <Col style={{marginTop:62}}>
                   <Container>
                     <Row>
-                      <InputGroup size="sm" className="mb-3">
-                        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                      <InputGroup size="sm" className="mb-3"  onChange={e=>this.onchangeArea(e)}>
+                        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
                       </InputGroup>
                     </Row>
                     <Row>
                       <Col></Col>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button style={{width:150}} variant="dark">Update Name</Button></Col>
+                          <Col xs={5}><Button style={{width:150}} variant="dark" onClick={o=>this.updateName(this.state.area)}>Update Name</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button style={{width:150}}variant="dark">Update City</Button></Col>
+                          <Col xs={5}><Button style={{width:150}}variant="dark" onClick={o=>this.updateCity(this.state.area)}>Update City</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col></Col>
                     </Row>
                     <Row style={{marginTop:62}}>
                       <InputGroup>
-                        <FormControl as="textarea" aria-label="With textarea" />
+                        <FormControl as="textarea" aria-label="With textarea" onChange={e=>this.onchangeArea2(e)} />
                       </InputGroup>
                     </Row>
                     <Row style={{marginTop:20}}>
                       <Col></Col>
                       <Col xs={6}>
                         <ButtonGroup vertical>
-                          <Col ><Button style={{width:200}} variant="dark">Update Biography</Button></Col>
+                          <Col ><Button style={{width:200}} variant="dark"  onClick={o=>this.updateBio(this.state.area2)}>Update Biography</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col></Col>

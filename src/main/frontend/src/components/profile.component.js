@@ -72,8 +72,6 @@ export default class Profile extends Component {
                                 )
                               }
                               </tbody>
-                            </Table>
-                            <Table striped bordered hover size="sm">
                               <thead>
                               <tr>
                                 <th>Full Name</th>
@@ -89,13 +87,11 @@ export default class Profile extends Component {
                                 )
                               }
                               </tbody>
-                            </Table>
-                            <Table striped bordered hover size="sm">
-                              <thead>
-                              <tr>
-                                <th>Biography</th>
-                              </tr>
-                              </thead>
+                                <thead>
+                                  <tr>
+                                    <th>Biography</th>
+                                  </tr>
+                                </thead>
                               <tbody>
                               {
                                 this.state.users.map(
@@ -106,8 +102,6 @@ export default class Profile extends Component {
                                 )
                               }
                               </tbody>
-                            </Table>
-                            <Table striped bordered hover size="sm">
                               <thead>
                               <tr>
                                 <th>City</th>
@@ -123,8 +117,6 @@ export default class Profile extends Component {
                                 )
                               }
                               </tbody>
-                            </Table>
-                            <Table striped bordered hover size="sm">
                               <thead>
                               <tr>
                                 <th>E-Mail</th>
@@ -140,28 +132,26 @@ export default class Profile extends Component {
                                 )
                               }
                               </tbody>
-                            </Table>
-                            <Table striped bordered hover size="sm">
                               <thead>
-                              <tr>
-                                <th>Roles</th>
-                              </tr>
+                                <tr>
+                                  <th>Roles</th>
+                               </tr>
                               </thead>
-                              <tbody>
-                              {
-                                this.state.users.map(
-                                    user =>
-                                        <tr key ={user.id}>
-                                          <td>{user.roles.map(
-                                              role =>
-                                                  <tr key ={role}>
-                                                    <td>{role.name}</td>
-                                                  </tr>
-                                          )}</td>
-                                        </tr>
-                                )
-                              }
-                              </tbody>
+                                  <tbody>
+                                  {
+                                    this.state.users.map(
+                                        user =>
+                                            <tr key ={user.id}>
+                                              <td>{user.roles.map(
+                                                  role =>
+                                                      <tr key ={role}>
+                                                        <td>{role.name}</td>
+                                                      </tr>
+                                              )}</td>
+                                            </tr>
+                                    )
+                                  }
+                                  </tbody>
                             </Table>
 
                           </div>
@@ -212,9 +202,37 @@ export default class Profile extends Component {
             </Tab>
             <Tab eventKey={2} title="Change Password">
               <div className="container mt-3">
-                <h3>
-                  Will serve as soon as possible.
-                </h3>
+                <Row>
+                  <Col></Col>
+                  <Col xs={6} style={{marginTop:50}}>
+                    <Row style={{marginTop:20}}>
+                      <InputGroup size="sm" className="mb-3" >
+                        <FormControl placeholder="Old Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                      </InputGroup>
+                    </Row>
+                    <Row style={{marginTop:20}}>
+                      <InputGroup size="sm" className="mb-3" >
+                        <FormControl placeholder="New Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                      </InputGroup>
+                    </Row>
+                    <Row style={{marginTop:20}}>
+                      <InputGroup size="sm" className="mb-3" >
+                        <FormControl placeholder="Confirm New Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                      </InputGroup>
+                    </Row>
+                    <Row>
+                      <Col></Col>
+                      <Col xs={6}>
+                        <ButtonGroup vertical>
+                          <Col ><Button style={{width:200,marginTop:20}} variant="dark">Submit</Button></Col>
+                        </ButtonGroup>
+                      </Col>
+                      <Col>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col></Col>
+                </Row>
               </div>
             </Tab>
           </Tabs>

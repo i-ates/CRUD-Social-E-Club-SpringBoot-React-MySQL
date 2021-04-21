@@ -9,6 +9,9 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import ListGroup from 'react-bootstrap/ListGroup'
+import UserService from "../services/user.service";
+import Table from 'react-bootstrap/Table'
 
 
 export default class Profile extends Component {
@@ -18,17 +21,22 @@ export default class Profile extends Component {
     this.state = {
       redirect: null,
       userReady: false,
-      currentUser: { username: "" }
+      currentUser: { username: "" },
+      users : []
+
     };
   }
 
   componentDidMount() {
     const currentUser = AuthService.getCurrentUser();
-
     if (!currentUser) this.setState({ redirect: "/home" });
     this.setState({ currentUser: currentUser, userReady: true })
+    console.log(currentUser.id)
+    UserService.getUserInfo(currentUser.id).then((res) =>{
+      this.setState({users: res.data});
+    }).catch(err=>
+        console.log(err.response.data)) ;
   }
-
   render() {
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
@@ -46,32 +54,122 @@ export default class Profile extends Component {
                   <div className="container mt-3">
                     {(this.state.userReady) ?
                         <div>
-                          <p>
-                            <h3>
-                              <strong>{currentUser.username}</strong> Profile
-                            </h3>
-                          </p>
-                          <p>
-                            <strong>Token:</strong>{" "}
-                            {currentUser.accessToken.substring(0, 20)} ...{" "}
-                            {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
-                          </p>
-                          <p>
-                            <strong>Id:</strong>{" "}
-                            {currentUser.id}
-                          </p>
-                          <p>
-                            <strong>Email:</strong>{" "}
-                            {currentUser.email}
-                          </p>
-                          <strong>Authorities:</strong>
-                          <ul>
-                            {currentUser.roles &&
-                            currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
-                          </ul>
+                          <h2 className='text-center'>User Info </h2>
+                          <div className='row'>
+                            <Table striped bordered hover size="sm">
+                              <thead>
+                                <tr>
+                                  <th>User Name</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                              {
+                                this.state.users.map(
+                                    user =>
+                                        <tr key ={user.id}>
+                                          <td>{user.username}</td>
+                                        </tr>
+                                )
+                              }
+                              </tbody>
+                            </Table>
+                            <Table striped bordered hover size="sm">
+                              <thead>
+                              <tr>
+                                <th>Full Name</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {
+                                this.state.users.map(
+                                    user =>
+                                        <tr key ={user.id}>
+                                          <td>{user.fullname}</td>
+                                        </tr>
+                                )
+                              }
+                              </tbody>
+                            </Table>
+                            <Table striped bordered hover size="sm">
+                              <thead>
+                              <tr>
+                                <th>Biography</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {
+                                this.state.users.map(
+                                    user =>
+                                        <tr key ={user.id}>
+                                          <td>{user.bio}</td>
+                                        </tr>
+                                )
+                              }
+                              </tbody>
+                            </Table>
+                            <Table striped bordered hover size="sm">
+                              <thead>
+                              <tr>
+                                <th>City</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {
+                                this.state.users.map(
+                                    user =>
+                                        <tr key ={user.id}>
+                                          <td>{user.city}</td>
+                                        </tr>
+                                )
+                              }
+                              </tbody>
+                            </Table>
+                            <Table striped bordered hover size="sm">
+                              <thead>
+                              <tr>
+                                <th>E-Mail</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {
+                                this.state.users.map(
+                                    user =>
+                                        <tr key ={user.id}>
+                                          <td>{user.email}</td>
+                                        </tr>
+                                )
+                              }
+                              </tbody>
+                            </Table>
+                            <Table striped bordered hover size="sm">
+                              <thead>
+                              <tr>
+                                <th>Roles</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {
+                                this.state.users.map(
+                                    user =>
+                                        <tr key ={user.id}>
+                                          <td>{user.roles.map(
+                                              role =>
+                                                  <tr key ={role}>
+                                                    <td>{role.name}</td>
+                                                  </tr>
+                                          )}</td>
+                                        </tr>
+                                )
+                              }
+                              </tbody>
+                            </Table>
+
+                          </div>
                         </div>: null}
                   </div>
+
                 </Col>
+
                 <Col>
                   <Container>
                     <Row>

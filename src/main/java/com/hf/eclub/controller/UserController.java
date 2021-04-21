@@ -1,13 +1,10 @@
 package com.hf.eclub.controller;
 
 import com.hf.eclub.models.User;
-import com.hf.eclub.models.UserClubs;
-import com.hf.eclub.payload.request.UserClubsRequest;
+import com.hf.eclub.payload.request.SetUserInfoRequest;
 import com.hf.eclub.payload.request.UserIdRequest;
-import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,5 +30,18 @@ public class UserController {
         userList.get(0).setFullname(user.getFullname());
         userList.get(0).setRoles(user.getRoles());
         return userList;
+    }
+
+    @PostMapping("/updateuserinfo")
+    public void setUserName(@Valid @RequestBody SetUserInfoRequest setUserInfoRequest){
+        User user=userRepository.findById(setUserInfoRequest.getId()).get(0);
+        if (setUserInfoRequest.getType().equals("fullname")){
+            user.setFullname(setUserInfoRequest.getArea());
+        }else if(setUserInfoRequest.equals("bio")){
+            user.setBio(setUserInfoRequest.getArea());
+        }else{
+            user.setCity(setUserInfoRequest.getArea());
+        }
+        userRepository.save(user);
     }
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import UserService from "../services/user.service";
+import {Link} from "react-router-dom";
 
 class ListClubs extends Component{
 
@@ -37,7 +38,10 @@ class ListClubs extends Component{
                             this.state.clubs.map(
                                 club =>
                                     <tr key ={club.id}>
-                                        <td>{club.clubName}</td>
+                                        <td>
+                                            <Link to={"/"+club.clubName} >
+                                                {club.clubName}
+                                            </Link></td>
                                         <td>{club.activeUser}</td>
                                         <td>{club.registeredUser}</td>
                                     </tr>

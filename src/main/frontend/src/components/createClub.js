@@ -1,5 +1,11 @@
 import React, {Component} from 'react'
 import ClubService from "../services/club.service";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import FormControl from "react-bootstrap/FormControl";
+import InputGroup from "react-bootstrap/InputGroup";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
 
 class createClub extends Component {
 
@@ -74,54 +80,74 @@ class createClub extends Component {
         return (
             <div>
                 <div className="container">
-                    <div className="row">
-                        <div className="card col-md-10 offset-md-5 offset-md-5">
-                            <div className="card-body">
-                                <form>
-                                    <div className="form-group">
-                                        <label>Club Name</label>
-                                        <input placeholder="Club Name" name="clubName" className="form-control"
-                                            value={this.state.clubName} onChange={this.changeClubName}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Question1</label>
-                                        <input placeholder="Question1" name="question" className="form-control"
-                                               value={this.state.question1} onChange={this.changeQuestion1}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Answer1</label>
-                                        <input placeholder="Answer1" name="answer" className="form-control"
-                                               value={this.state.answer1} onChange={this.changeAnswer1}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Question2</label>
-                                        <input placeholder="Question2" name="question" className="form-control"
-                                               value={this.state.question2} onChange={this.changeQuestion2}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Answer2</label>
-                                        <input placeholder="Answer2" name="answer" className="form-control"
-                                               value={this.state.answer2} onChange={this.changeAnswer2}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Question3</label>
-                                        <input placeholder="Question2" name="question" className="form-control"
-                                               value={this.state.question3} onChange={this.changeQuestion3}/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label>Answer3</label>
-                                        <input placeholder="Answer3" name="answer" className="form-control"
-                                               value={this.state.answer3} onChange={this.changeAnswer3}/>
-                                    </div>
+                    <Row>
+                        <Col xs lg="3">
+                            <Row style={{marginTop:20,marginLeft:10}}>
+                                Requested Club
+                            </Row>
+                            <Row style={{marginTop:50,marginLeft:10}}>
+                                Request 1
+                            </Row>
+                            <Row style={{marginTop:10,marginLeft:10}}>
+                                Request 2
+                            </Row>
+                            <Row style={{marginTop:10,marginLeft:10}}>
+                                Request 3
+                            </Row>
+                        </Col>
+                        <Col >
+                            <Row>
 
-                                    <button className="btn-outline-success" onClick={this.saveClub}>Add Club</button>
-                                </form>
-                            </div>
+                                <Col>
+                                    <input placeholder="Club Name" name="clubName" className="form-control"
+                                           value={this.state.clubName} onChange={this.changeClubName}/>
+                                </Col>
 
-                        </div>
+                            </Row>
 
-                    </div>
+                            <Row style={{marginTop:50}}>
+                                <Col>
+                                    <input placeholder="Question1" name="question" className="form-control"
+                                           value={this.state.question1} onChange={this.changeQuestion1}/>
+                                </Col>
+                                <Col xs lg="3">
+                                    <input placeholder="Answer1" name="answer" className="form-control"
+                                           value={this.state.answer1} onChange={this.changeAnswer1}/>
+                                </Col>
+                            </Row>
 
+                            <Row style={{marginTop:10}}>
+                                <Col>
+                                    <input placeholder="Question2" name="question" className="form-control"
+                                           value={this.state.question2} onChange={this.changeQuestion2}/>
+                                </Col>
+                                <Col xs lg="3">
+                                    <input placeholder="Answer2" name="answer" className="form-control"
+                                           value={this.state.answer2} onChange={this.changeAnswer2}/>
+                                </Col>
+                            </Row>
+
+                            <Row style={{marginTop:10}}>
+                                <Col>
+                                    <input placeholder="Question3" name="question" className="form-control"
+                                           value={this.state.question3} onChange={this.changeQuestion3}/>
+                                </Col>
+                                <Col xs lg="3">
+                                    <input placeholder="Answer3" name="answer" className="form-control"
+                                           value={this.state.answer3} onChange={this.changeAnswer3}/>
+                                </Col>
+                            </Row>
+                            <Row style={{marginTop:20}}>
+                                <Col></Col>
+                                <Col xs={6}>
+                                    <ButtonGroup vertical>
+                                        <Col ><Button style={{width:200}} variant="dark"  onClick={this.saveClub}>Add Club</Button></Col>
+                                    </ButtonGroup>
+                                </Col>
+                                <Col></Col>
+                            </Row>
+                        </Col>
+                    </Row>
                 </div>
             </div>
 

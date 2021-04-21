@@ -40,6 +40,13 @@ class UserService {
       id:userid
     });
   }
+  updateUserInfo(UserId,UserArea,UserType){
+    return axios.post("http://localhost:8080/api/test/updateuserinfo",{
+      id:UserId,
+      area:UserArea,
+      type:UserType
+    })
+  }
 }
 
 export default new UserService();

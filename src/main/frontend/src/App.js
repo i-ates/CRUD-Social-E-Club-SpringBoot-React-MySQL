@@ -111,7 +111,7 @@ class App extends Component {
           {currentUser ? (
               <div className="navbar-nav ml-auto">
                 <Dropdown>
-                  <Dropdown.Toggle variant="secondary">
+                  <Dropdown.Toggle variant="dark" >
                     {currentUser.username}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>

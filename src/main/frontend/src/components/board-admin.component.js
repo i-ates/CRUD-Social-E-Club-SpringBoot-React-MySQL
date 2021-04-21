@@ -3,6 +3,7 @@ import UserService from "../services/user.service";
 import { Tab, Tabs } from 'react-bootstrap';
 import ListClubs from "./ListClubs";
 import DeleteClub from "./deleteclub.component";
+import CreateClub from "./createClub";
 
 export default class BoardAdmin extends Component {
   constructor(props) {
@@ -42,9 +43,7 @@ export default class BoardAdmin extends Component {
             </Tab>
             <Tab eventKey={2} title="Create Club">
                 <div className="container mt-3">
-                    <h3>
-                        Will serve as soon as possible.
-                    </h3>
+                    <CreateClub/>
                 </div>
             </Tab>
             <Tab eventKey={3} title="Delete Club">

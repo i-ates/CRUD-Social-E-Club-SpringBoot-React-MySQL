@@ -217,7 +217,7 @@ export default class Profile extends Component {
                     </Row>
                     <Row style={{marginTop:20}}>
                       <InputGroup size="sm" className="mb-3" >
-                        <FormControl placeholder="Current New Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                        <FormControl placeholder="Confirm New Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                       </InputGroup>
                     </Row>
                     <Row>

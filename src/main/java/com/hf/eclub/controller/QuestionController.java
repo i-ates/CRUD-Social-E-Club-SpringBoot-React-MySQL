@@ -36,10 +36,9 @@ public class QuestionController {
     public ResponseEntity<?> createQuestions(@Valid @RequestBody CreateQuestionRequest createQuestionRequest){
             Question q = new Question(createQuestionRequest.getQues(),createQuestionRequest.getAnswer(),
                     createQuestionRequest.getClubName());
-            CreateQuestionRequest c = createQuestionRequest;
             //Club c = clubRepository.findByClubName(createQuestionRequest.getClubName());
             //Question q = questions;
-            Club cl = clubRepository.findByClubName(createQuestionRequest.getClubName()).get(0);
+            Club cl = clubRepository.findByclubName(createQuestionRequest.getClubName());
             q.setClubId(cl.getId());
 
             //q.setClubId(c.getId());

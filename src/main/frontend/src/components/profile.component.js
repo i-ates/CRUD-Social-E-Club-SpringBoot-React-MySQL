@@ -170,7 +170,7 @@ export default class Profile extends Component {
 
                 </Col>
 
-                <Col>
+                <Col style={{marginTop:62}}>
                   <Container>
                     <Row>
                       <InputGroup size="sm" className="mb-3">
@@ -181,36 +181,26 @@ export default class Profile extends Component {
                       <Col></Col>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button>Update Name</Button></Col>
+                          <Col xs={5}><Button style={{width:150}} variant="dark">Update Name</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button>Update City</Button></Col>
+                          <Col xs={5}><Button style={{width:150}}variant="dark">Update City</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col></Col>
                     </Row>
-                    <Row>
-                      <p>
-
-                      </p>
-                    </Row>
-                    <Row>
+                    <Row style={{marginTop:62}}>
                       <InputGroup>
                         <FormControl as="textarea" aria-label="With textarea" />
                       </InputGroup>
                     </Row>
-                    <Row>
-                      <p>
-
-                      </p>
-                    </Row>
-                    <Row>
+                    <Row style={{marginTop:20}}>
                       <Col></Col>
                       <Col xs={6}>
                         <ButtonGroup vertical>
-                          <Col ><Button>Update Biography</Button></Col>
+                          <Col ><Button style={{width:200}} variant="dark">Update Biography</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col></Col>

@@ -227,7 +227,8 @@ export default class Profile extends Component {
                           <Col ><Button style={{width:200,marginTop:20}} variant="dark">Submit</Button></Col>
                         </ButtonGroup>
                       </Col>
-                      <Col></Col>
+                      <Col>
+                      </Col>
                     </Row>
                   </Col>
                   <Col></Col>

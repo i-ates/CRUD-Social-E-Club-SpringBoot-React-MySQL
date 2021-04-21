@@ -6,6 +6,7 @@ import DeleteClub from "./deleteclub.component";
 import CreateClub from "./createClub";
 import AssignAdmin from "./assignadmin.component";
 import BanUser from "./banuser.component";
+import ManageUser from "./manageuser.component";
 
 export default class BoardAdmin extends Component {
   constructor(props) {
@@ -65,9 +66,7 @@ export default class BoardAdmin extends Component {
             </Tab>
             <Tab eventKey={6} title="Manage User">
                 <div className="container mt-3">
-                    <h3>
-                        Will serve as soon as possible.
-                    </h3>
+                    <ManageUser />
                 </div>
             </Tab>
         </Tabs>

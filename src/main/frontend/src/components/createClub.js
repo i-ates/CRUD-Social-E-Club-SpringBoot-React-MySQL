@@ -55,21 +55,20 @@ class createClub extends Component {
         this.setState({answer3: event.target.value});
     }
 
-    saveClub () {
+    saveClub = async (e) => {
+        e.preventDefault();
 
-        //let club = {clubName: this.state.clubName};
-        //let question = {ques: this.state.question1, answer: this.state.answer1, clubName: this.state.clubName}
-        //let questionTwo = {ques: this.state.question2, answer: this.state.answer2, clubName: this.state.clubName}
-        //let questionThree = {ques: this.state.question3, answer: this.state.answer3, clubName: this.state.clubName}
-
-        ClubService.createClub(this.state.clubName);
-        console.log(this.state.question1);
-        console.log(this.state.answer1);
-        console.log(this.state.clubName);
-        ClubService.createQuestion(this.state.question1, this.state.answer1, this.state.clubName);
-        //ClubService.createQuestion(this.state.question2, this.state.answer2, this.state.clubName).then();
-        //ClubService.createQuestion(this.state.question3, this.state.answer3, this.state.clubName).then();
+        await ClubService.createClub(this.state.clubName);
+        await this.timeout(1000);
+        ClubService.createQuestion(this.state.question1, this.state.answer1, this.state.clubName).then();
+        ClubService.createQuestion(this.state.question2, this.state.answer2, this.state.clubName).then();
+        ClubService.createQuestion(this.state.question3, this.state.answer3, this.state.clubName).then();
     }
+
+    timeout(delay) {
+        return new Promise( res => setTimeout(res, delay) );
+    }
+
 
     render() {
         return (

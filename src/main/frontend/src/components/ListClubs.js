@@ -28,8 +28,6 @@ class ListClubs extends Component{
                         <thead>
                         <tr>
                             <th>Club Name</th>
-                            <th>Active User</th>
-                            <th>Registered User</th>
                         </tr>
                         </thead>
 
@@ -42,8 +40,6 @@ class ListClubs extends Component{
                                             <Link to={"/"+club.clubName} >
                                                 {club.clubName}
                                             </Link></td>
-                                        <td>{club.activeUser}</td>
-                                        <td>{club.registeredUser}</td>
                                     </tr>
                             )
 

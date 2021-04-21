@@ -30,5 +30,12 @@ public class Question {
     @Column (name="clubId")
     private  Long clubId;
 
+    public Question() {
+    }
 
+    public Question(String ques, String answer, String clubName) {
+        this.ques = ques;
+        this.clubName = clubName;
+        this.answer = answer;
+    }
 }

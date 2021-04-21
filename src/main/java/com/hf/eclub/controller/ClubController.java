@@ -1,8 +1,10 @@
 package com.hf.eclub.controller;
 
 import com.hf.eclub.models.Club;
+import com.hf.eclub.payload.request.CreateClubRequest;
 import com.hf.eclub.repository.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +22,10 @@ public class ClubController {
         return clubRepository.findAll();
     }
 
-    @PostMapping("/createClub")
-    public Club createClub(@Valid @RequestBody Club club){
-        return clubRepository.save(club);
+    @PostMapping("/createclub")
+    public void createClub(@Valid @RequestBody CreateClubRequest createClubRequest){
+        System.out.println(createClubRequest.getClubName());
+        Club c = new Club(createClubRequest.getClubName());
+        clubRepository.save(c);
     }
 }

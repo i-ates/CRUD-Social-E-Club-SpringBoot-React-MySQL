@@ -17,4 +17,11 @@ public class Club {
     @Column(name="clubname")
 
     private String clubName;
+
+    public Club() {
+    }
+
+    public Club(String clubName) {
+        this.clubName = clubName;
+    }
 }

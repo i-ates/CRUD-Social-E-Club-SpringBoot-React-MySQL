@@ -39,6 +39,8 @@ public class ClubController {
         clubRepository.delete(club);
         Map<String,Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
+
+
         return ResponseEntity.ok(response);
     }
 }

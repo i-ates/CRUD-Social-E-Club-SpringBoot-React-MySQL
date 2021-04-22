@@ -50,12 +50,20 @@ export default class Profile extends Component {
   }
   updateName(area){
     UserService.updateUserInfo(this.state.currentUser.id, area, "fullname");
+    this.navigate();
   }
   updateCity(area){
     UserService.updateUserInfo(this.state.currentUser.id, area, "city");
+    this.navigate();
   }
   updateBio(area){
     UserService.updateUserInfo(this.state.currentUser.id, area, "bio");
+    this.navigate();
+  }
+
+  async navigate() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    window.location.reload();
   }
 
   render() {

@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import ClubService from "../services/club.service";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import FormControl from "react-bootstrap/FormControl";
-import InputGroup from "react-bootstrap/InputGroup";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 
@@ -69,6 +67,8 @@ class createClub extends Component {
         ClubService.createQuestion(this.state.question1, this.state.answer1, this.state.clubName).then();
         ClubService.createQuestion(this.state.question2, this.state.answer2, this.state.clubName).then();
         ClubService.createQuestion(this.state.question3, this.state.answer3, this.state.clubName).then();
+        await this.timeout(1000);
+        window.location.reload();
     }
 
     timeout(delay) {

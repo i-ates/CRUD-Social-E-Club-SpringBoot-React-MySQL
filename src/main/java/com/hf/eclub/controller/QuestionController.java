@@ -8,13 +8,15 @@ import com.hf.eclub.repository.ClubRepository;
 import com.hf.eclub.repository.QuestionRepository;
 import org.apache.logging.log4j.message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.access.prepost.PreAuthorize;
-//import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -27,7 +29,7 @@ public class QuestionController {
     private ClubRepository clubRepository;
 
     @GetMapping("/questions")
-    //@PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER')")
     public List<Question> getAllQuestions(){
         return questionRepository.findAll();
     }
@@ -36,13 +38,20 @@ public class QuestionController {
     public ResponseEntity<?> createQuestions(@Valid @RequestBody CreateQuestionRequest createQuestionRequest){
             Question q = new Question(createQuestionRequest.getQues(),createQuestionRequest.getAnswer(),
                     createQuestionRequest.getClubName());
-            //Club c = clubRepository.findByClubName(createQuestionRequest.getClubName());
-            //Question q = questions;
+
             Club cl = clubRepository.findByclubName(createQuestionRequest.getClubName());
             q.setClubId(cl.getId());
 
-            //q.setClubId(c.getId());
             questionRepository.save(q);
         return ResponseEntity.ok(new MessageResponse("Questions added"));
+    }
+
+    @DeleteMapping("/test/deletequestion/{id}")
+    public ResponseEntity<Map<String,Boolean>> deleteClub(@PathVariable long id){
+        questionRepository.deleteClubById(id);
+
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }

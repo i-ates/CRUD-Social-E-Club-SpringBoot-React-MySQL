@@ -17,6 +17,20 @@ class ClubService{
             clubName:cName});
     }
 
+    deleteClub(clubId){
+        return axios.delete(API_URL+"deleteclub"+"/"+clubId);
+    }
+
+    deleteQuestion(clubId){
+        return axios.delete(API_URL+"deletequestion"+"/"+clubId);
+    }
+
+    deleteUserClubs(clubId){
+        return axios.delete(API_URL+"deleteuserclubs"+"/"+clubId);
+    }
+
+
+
 }
 
 export default new ClubService();

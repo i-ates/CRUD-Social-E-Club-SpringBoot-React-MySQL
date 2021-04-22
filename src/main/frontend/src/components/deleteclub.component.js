@@ -6,9 +6,28 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
-
+import ClubService from "../services/club.service";
 
 export default class DeleteClub extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            id:-1
+        }
+        this.setId = this.setId.bind(this);
+        this.deleteClub = this.deleteClub.bind(this);
+    }
+
+    setId = (event) =>{
+        this.setState({id: event.target.value});
+    }
+
+    deleteClub(id){
+        ClubService.deleteClub(id).then();
+        ClubService.deleteQuestion(id).then();
+        ClubService.deleteUserClubs(id).then();
+    }
 
     render() {
 
@@ -33,7 +52,7 @@ export default class DeleteClub extends Component {
                                 <Col></Col>
                                 <Col xs={6} style={{marginTop:50}}>
                                     <Row style={{marginTop:20}}>
-                                        <InputGroup size="lg" className="mb-3" >
+                                        <InputGroup size="lg" className="mb-3" value={this.state.id} onChange={this.setId}>
                                             <FormControl placeholder="Club ID" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                                         </InputGroup>
                                     </Row>
@@ -41,7 +60,7 @@ export default class DeleteClub extends Component {
                                         <Col></Col>
                                         <Col>
                                             <ButtonGroup vertical>
-                                                <Col ><Button style={{marginLeft:15,width:150,marginTop:20}} variant="dark">Delete Club</Button></Col>
+                                                <Col ><Button onClick={()=>this.deleteClub(this.state.id)} style={{marginLeft:15,width:150,marginTop:20}} variant="dark">Delete Club</Button></Col>
                                             </ButtonGroup>
                                         </Col>
                                         <Col>

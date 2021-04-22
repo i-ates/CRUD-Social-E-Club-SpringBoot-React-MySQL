@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -47,5 +49,14 @@ public class UserClubsController {
     @PostMapping("/getotheruserclubs")
     public List<String> getOtherClubs(@Valid @RequestBody UserIdRequest userIdRequest){
         return userClubsRepository.findUserOtherClubsByUserId(userIdRequest.getId());
+    }
+
+    @DeleteMapping("/deleteuserclubs/{id}")
+    public ResponseEntity<Map<String,Boolean>> deleteClub(@PathVariable long id){
+        userClubsRepository.deleteUserClubById(id);
+
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return ResponseEntity.ok(response);
     }
 }

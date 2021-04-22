@@ -4,6 +4,8 @@ import com.hf.eclub.models.User;
 import com.hf.eclub.payload.request.SetUserInfoRequest;
 import com.hf.eclub.payload.request.UserIdRequest;
 import com.hf.eclub.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +39,7 @@ public class UserController {
         User user=userRepository.findById(setUserInfoRequest.getId()).get(0);
         if (setUserInfoRequest.getType().equals("fullname")){
             user.setFullname(setUserInfoRequest.getArea());
-        }else if(setUserInfoRequest.equals("bio")){
+        }else if(setUserInfoRequest.getType().equals("bio")){
             user.setBio(setUserInfoRequest.getArea());
         }else{
             user.setCity(setUserInfoRequest.getArea());

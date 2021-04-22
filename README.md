@@ -27,6 +27,3 @@ and use these command npm install x (npm install axios)\
 "secure-ls": "^1.2.6",\
 "timeago.js": "^4.0.2",\
 "web-vitals": "^1.1.1" 
-
-
-dsaasdsaas

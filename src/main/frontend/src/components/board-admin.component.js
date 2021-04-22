@@ -7,6 +7,8 @@ import CreateClub from "./createClub";
 import AssignAdmin from "./assignadmin.component";
 import BanUser from "./banuser.component";
 import ManageUser from "./manageuser.component";
+import  listClubWithId from "./listClubWithId"
+import ListClubWithId from "./listClubWithId";
 
 export default class BoardAdmin extends Component {
   constructor(props) {
@@ -41,7 +43,7 @@ export default class BoardAdmin extends Component {
         <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
             <Tab eventKey={1} title="Club Browser">
                 <div className="container mt-3">
-                    <ListClubs/>
+                    <ListClubWithId/>
                 </div>
             </Tab>
             <Tab eventKey={2} title="Create Club">

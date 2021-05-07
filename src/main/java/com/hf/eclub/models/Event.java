@@ -38,7 +38,14 @@ public class Event {
     @Column(name = "content")
     private String content;
 
-    // To track persons' available schedule, external track url field is needed maybe ???
+    @Column(name = "author_id")
+    private Long authorId;
 
-
+    public Event(String title, Date date, Long parentClubId, String content, Long authorId) {
+        this.title = title;
+        this.date = date;
+        this.parentClubId = parentClubId;
+        this.content = content;
+        this.authorId = authorId;
+    }
 }

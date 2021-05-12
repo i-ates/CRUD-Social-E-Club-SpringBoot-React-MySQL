@@ -140,7 +140,9 @@ class createClub extends Component {
                                 <Col></Col>
                                 <Col xs={6}>
                                     <ButtonGroup vertical>
-                                        <Col ><Button style={{width:200}} variant="outline-light"  onClick={this.saveClub}>Add Club</Button></Col>
+                                        <Col>
+                                            <Button style={{width:200}} variant="outline-light"  onClick={this.saveClub}>Add Club</Button>
+                                        </Col>
                                     </ButtonGroup>
                                 </Col>
                                 <Col></Col>

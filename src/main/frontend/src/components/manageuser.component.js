@@ -82,7 +82,6 @@ export default class ManageUser extends Component {
                     </Col>
                 </Row>
             </div>
-
         )
     }
 }

@@ -29,6 +29,22 @@ class ClubService{
         return axios.delete(API_URL+"deleteuserclubs"+"/"+clubId);
     }
 
+    createRate(userId, clubId, comment, rate){
+        return axios.post(API_URL+"createrate",
+            {userId:userId,
+            clubId:clubId,
+            comment:comment,
+            rate:rate});
+    }
+
+    getRate(clubId){
+        return axios.get(API_URL+"rate"+"/"+clubId);
+    }
+
+    getComment(clubId){
+        return axios.get(API_URL+"comment"+"/"+clubId);
+    }
+
 
 
 }

@@ -74,18 +74,17 @@ export default class Profile extends Component {
     const { currentUser } = this.state;
 
     return (
-        <Container>
-
+        <div>
           <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
             <Tab eventKey={1} title="Edit Profile">
-              <Row>
+              <Row >
                 <Col>
-                  <div className="container mt-3">
+                  <div>
                     {(this.state.userReady) ?
                         <div>
                           <h2 className='text-center'>User Info </h2>
                           <div className='row'>
-                            <Table striped bordered hover size="sm">
+                            <Table style={{color:"white"}} striped bordered size="sm">
                               <thead>
                                 <tr>
                                   <th>User Name</th>
@@ -190,47 +189,43 @@ export default class Profile extends Component {
                 </Col>
 
                 <Col style={{marginTop:62}}>
-                  <Container>
+                  <div>
                     <Row>
-                      <InputGroup size="sm" className="mb-3"  onChange={e=>this.onchangeArea(e)}>
+                      <InputGroup style={{width:650,marginLeft:50}} size="sm" className="mb-3"  onChange={e=>this.onchangeArea(e)}>
                         <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
                       </InputGroup>
                     </Row>
                     <Row>
-                      <Col></Col>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button style={{width:150}} variant="dark" onClick={o=>this.updateName(this.state.area)}>Update Name</Button></Col>
+                          <Col xs={5}><Button style={{width:150,marginLeft:100}} variant="outline-light" onClick={o=>this.updateName(this.state.area)}>Update Name</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button style={{width:150}}variant="dark" onClick={o=>this.updateCity(this.state.area)}>Update City</Button></Col>
+                          <Col xs={5}><Button style={{width:150}}variant="outline-light" onClick={o=>this.updateCity(this.state.area)}>Update City</Button></Col>
                         </ButtonGroup>
                       </Col>
-                      <Col></Col>
                     </Row>
                     <Row style={{marginTop:62}}>
                       <InputGroup>
-                        <FormControl as="textarea" aria-label="With textarea" onChange={e=>this.onchangeArea2(e)} />
+                        <FormControl style={{width:500,marginLeft:50}} as="textarea" aria-label="With textarea" onChange={e=>this.onchangeArea2(e)} />
                       </InputGroup>
                     </Row>
                     <Row style={{marginTop:20}}>
-                      <Col></Col>
                       <Col xs={6}>
                         <ButtonGroup vertical>
-                          <Col ><Button style={{width:200}} variant="dark"  onClick={o=>this.updateBio(this.state.area2)}>Update Biography</Button></Col>
+                          <Col ><Button style={{width:200,marginLeft:250}} variant="outline-light"  onClick={o=>this.updateBio(this.state.area2)}>Update Biography</Button></Col>
                         </ButtonGroup>
                       </Col>
-                      <Col></Col>
                     </Row>
-                  </Container>
+                  </div>
                 </Col>
               </Row>
 
             </Tab>
             <Tab eventKey={2} title="Change Password">
-              <div className="container mt-3">
+              <div>
                 <Row>
                   <Col></Col>
                   <Col xs={6} style={{marginTop:50}}>
@@ -253,7 +248,7 @@ export default class Profile extends Component {
                       <Col></Col>
                       <Col xs={6}>
                         <ButtonGroup vertical>
-                          <Col ><Button style={{width:200,marginTop:20}} variant="dark">Submit</Button></Col>
+                          <Col ><Button style={{width:200,marginTop:20}} variant="outline-light">Submit</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col>
@@ -265,7 +260,7 @@ export default class Profile extends Component {
               </div>
             </Tab>
           </Tabs>
-        </Container>
+        </div>
     );
   }
 }

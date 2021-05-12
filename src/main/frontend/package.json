@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@typescript-eslint/experimental-utils": "^4.23.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "jquery": "^3.6.0",
@@ -15,8 +17,10 @@
     "react-bootstrap": "^1.5.2",
     "react-dom": "^16.13.0",
     "react-icons": "^4.2.0",
+    "react-rating": "^2.0.5",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-star-rating-component": "^1.4.1",
     "react-validation": "^3.0.7",
     "validator": "^12.2.0"
   },

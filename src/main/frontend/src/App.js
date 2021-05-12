@@ -14,6 +14,7 @@ import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
 import listQuestion from "./components/listQuestions"
 import listMyClubs from "./components/listMyClubs";
+import ClubPage from "./components/clubPage";
 import Searchbar from "./components/searchbar";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GiHighFive } from "react-icons/gi";
@@ -138,7 +139,7 @@ class App extends Component {
         </nav>
 
         <div className="container mt-3">
-          <Switch>
+          <Switch> localhost:3000/club-page/
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
@@ -148,6 +149,7 @@ class App extends Component {
             <Route path="/admin" component={BoardAdmin} />
             <Route path="/questions" component={listQuestion} />
             <Route path="/getuserclubs" component={listMyClubs}/>
+            <Route path="/club-page/:id" component={ClubPage}/>
           </Switch>
         </div>
       </div>

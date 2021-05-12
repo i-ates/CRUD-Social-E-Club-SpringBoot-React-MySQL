@@ -42,7 +42,6 @@ class Rate extends React.Component {
         super();
 
         this.state = {
-            id:-1,
             comm:"",
             rating: 1
 
@@ -59,11 +58,15 @@ class Rate extends React.Component {
         this.setState({comm: event.target.value});
     }
 
-    saveRate = (e) => {
+    saveRate = async (e) => {
         const currentUser = AuthService.getCurrentUser();
-        this.setState({id: currentUser.id})
-        ClubService.createRate(this.state.id, this.props.clubId, this.state.comm, this.state.rating).then();
+        ClubService.createRate(currentUser.id, this.props.clubId, this.state.comm, this.state.rating).then();
+        await this.timeout(2000);
         window.location.reload();
+    }
+
+    timeout(delay) {
+        return new Promise( res => setTimeout(res, delay) );
     }
 
     render() {

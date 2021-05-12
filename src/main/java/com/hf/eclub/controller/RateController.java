@@ -40,7 +40,7 @@ public class RateController {
         return rateRepository.findCommentById(id);
     }
 
-    @PreAuthorize("hasRole('USER')")
+    //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     @PostMapping("/test/createrate")
     public ResponseEntity<?> createRate(@Valid @RequestBody RateRequest rateRequest){
         if ( rateRepository.findByIdAndClubId(rateRequest.getClubId(), rateRequest.getUserId()) == 0){

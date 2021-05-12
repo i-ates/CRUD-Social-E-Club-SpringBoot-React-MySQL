@@ -30,7 +30,7 @@ class listOtherClubs extends Component{
             <div style={{marginTop:50}}>
                 <h2>Other Clubs </h2>
                 <div>
-                    <table className="table table-striped table-bordered">
+                    <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
                         <thead>
                         <tr>
                             <th style={{color:"white"}}>Club Name</th>

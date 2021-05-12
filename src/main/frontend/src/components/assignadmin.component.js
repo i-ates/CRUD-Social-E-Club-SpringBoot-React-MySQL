@@ -12,7 +12,7 @@ export default class AssignAdmin extends Component {
 
         return (
 
-            <div>
+            <div  className="panel-container">
                 <Row>
                     <Col sm style={{marginTop:50}}>
                         <p>

@@ -27,13 +27,13 @@ class listMyClubs extends Component{
 
     render() {
         return (
-            <div>
-                <h2 className='text-center'>My Clubs </h2>
+            <div style={{marginTop:50}}>
+                <h2 className='text-center' >My Clubs </h2>
                 <div className='row'>
                     <table className="table table-striped table-bordered">
                         <thead>
                         <tr>
-                            <th>Club Name</th>
+                            <th style={{color:"white"}}>Club Name</th>
                         </tr>
                         </thead>
 
@@ -43,7 +43,7 @@ class listMyClubs extends Component{
                                 club =>
                                     <tr key ={club}>
                                         <td>
-                                            <Link to={"/"+club} >
+                                            <Link to={"/"+club} style={{color:"white"}}>
                                                 {club}
                                             </Link>
                                         </td>

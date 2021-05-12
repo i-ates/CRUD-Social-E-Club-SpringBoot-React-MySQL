@@ -38,9 +38,9 @@ export default class DeleteClub extends Component {
 
         return (
 
-            <Container>
+            <div>
                 <Row>
-                    <Col style={{marginTop:70,marginLeft:100}}>
+                    <Col style={{marginTop:50,marginLeft:100}}>
                         <p>
                             SubCLUB-1 inactive for x days y hours
                         </p>
@@ -52,11 +52,11 @@ export default class DeleteClub extends Component {
                         </p>
                     </Col>
                     <Col>
-                        <div className="container mt-3">
+                        <div>
                             <Row>
                                 <Col></Col>
                                 <Col xs={6} style={{marginTop:50}}>
-                                    <Row style={{marginTop:20}}>
+                                    <Row >
                                         <InputGroup size="lg" className="mb-3" value={this.state.id} onChange={this.setId}>
                                             <FormControl placeholder="Club ID" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                                         </InputGroup>
@@ -65,7 +65,7 @@ export default class DeleteClub extends Component {
                                         <Col></Col>
                                         <Col>
                                             <ButtonGroup vertical>
-                                                <Col ><Button onClick={()=>this.deleteClub(this.state.id)} style={{marginLeft:15,width:150,marginTop:20}} variant="dark">Delete Club</Button></Col>
+                                                <Col ><Button onClick={()=>this.deleteClub(this.state.id)} style={{width:150,marginTop:20}} variant="outline-light">Delete Club</Button></Col>
                                             </ButtonGroup>
                                         </Col>
                                         <Col>
@@ -77,7 +77,7 @@ export default class DeleteClub extends Component {
                         </div>
                     </Col>
                 </Row>
-            </Container>
+            </div>
 
         )
     }

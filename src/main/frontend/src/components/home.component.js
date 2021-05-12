@@ -47,17 +47,17 @@ export default class Home extends Component {
   render() {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
     return (
-      <div className="container">
+      <div >
         {currentUser ? (
-            <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
+            <Tabs>
               <Tab eventKey={1} title="Enrolled Club">
-                <div className="container mt-3">
-                  <ListMyClubs/>
+                <div >
+                  <ListMyClubs />
                 </div>
               </Tab>
               <Tab eventKey={2} title="Other Club">
-                <div className="container mt-3">
-                  <div className="container mt-3">
+                <div>
+                  <div>
                     <OtherClubs/>
                   </div>
                 </div>

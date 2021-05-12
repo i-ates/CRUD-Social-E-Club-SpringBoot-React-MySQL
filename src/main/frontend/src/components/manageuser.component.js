@@ -15,16 +15,16 @@ export default class ManageUser extends Component {
 
         return (
 
-            <Container>
+            <div>
                 <Row>
-                    <Col sm style={{marginTop:50, marginLeft:30}}>
+                    <Col sm style={{marginTop:50, marginLeft:40}}>
                         <Row>
                             <Col xs={7}><FormControl type="text" placeholder="Search an user"></FormControl></Col>
-                            <Col xs={5}><Button variant="dark">Search</Button></Col>
+                            <Col xs={1}><Button variant="outline-light">Search</Button></Col>
                         </Row>
 
                         <Row>
-                            <Table striped bordered hover size={50} style={{marginTop:25, marginLeft:15, width:372}}>
+                            <Table striped bordered hover size={50} style={{marginTop:25, marginLeft:15, width:372, color:"white"}}>
                                 <thead>
                                 <tr>
                                     <th>User Name</th>
@@ -65,11 +65,11 @@ export default class ManageUser extends Component {
                         </InputGroup>
 
                         <ButtonGroup vertical>
-                            <Button style={{width:130, marginLeft:50, marginTop:15}} variant="dark" onClick={o=>this.updateName(this.state.area)}>Update Name</Button>
+                            <Button style={{width:130, marginLeft:40, marginTop:15}} variant="outline-light" onClick={o=>this.updateName(this.state.area)}>Update Name</Button>
                         </ButtonGroup>
 
                         <ButtonGroup vertical>
-                            <Button style={{width:120, marginLeft:150, marginTop:15}}variant="dark" onClick={o=>this.updateCity(this.state.area)}>Update City</Button>
+                            <Button style={{width:120, marginLeft:120, marginTop:15}}variant="outline-light" onClick={o=>this.updateCity(this.state.area)}>Update City</Button>
                         </ButtonGroup>
 
                         <InputGroup>
@@ -77,11 +77,11 @@ export default class ManageUser extends Component {
                         </InputGroup>
 
                         <ButtonGroup vertical>
-                            <Button style={{width:180, marginLeft:150, marginTop:25}} variant="dark"  onClick={o=>this.updateBio(this.state.area2)}>Update Biography</Button>
+                            <Button style={{width:180, marginTop:25}} variant="outline-light"  onClick={o=>this.updateBio(this.state.area2)}>Update Biography</Button>
                         </ButtonGroup>
                     </Col>
                 </Row>
-            </Container>
+            </div>
 
         )
     }

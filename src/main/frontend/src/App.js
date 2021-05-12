@@ -12,8 +12,8 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
-import listQuestion from "./components/listQuestions"
-import listMyClubs from "./components/listMyClubs";
+import ListQuestion from "./components/listQuestions"
+import ListMyClubs from "./components/listMyClubs";
 import Searchbar from "./components/searchbar";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GiHighFive } from "react-icons/gi";
@@ -50,8 +50,8 @@ class App extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
     return (
-      <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <div className="container">
+        <nav className="navbar navbar-expand navbar-dark " style={{paddingBottom:-3}}>
 
           <Link to={"/"} className="navbar-brand">
               <GiHighFive className="navbar-icon"></GiHighFive>
@@ -96,7 +96,7 @@ class App extends Component {
 
             )*/}
             {showAdminBoard && (<li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
+              <Link to={"/admin"} className="nav-link" style={{color:"white"}}>
                 Admin Panel
               </Link>
             </li>
@@ -111,7 +111,7 @@ class App extends Component {
           {currentUser ? (
               <div className="navbar-nav ml-auto">
                 <Dropdown>
-                  <Dropdown.Toggle variant="dark" >
+                  <Dropdown.Toggle variant="None" style={{color:"white"}} >
                     {currentUser.username}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
@@ -122,22 +122,21 @@ class App extends Component {
               </div>
           ) :  (
             <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
+              <li className="nav-item" >
+                <Link to={"/login"} className="nav-link" style={{color:"white"}}>
                   LOGIN
                 </Link>
               </li>
 
               <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
+                <Link to={"/register"} className="nav-link" style={{color:"white"}}>
                   SIGN UP
                 </Link>
               </li>
             </div>
           )}
         </nav>
-
-        <div className="container mt-3">
+        <div style={{marginTop:40,marginLeft:20,marginRight:20,color:"white"}}>
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
@@ -146,8 +145,8 @@ class App extends Component {
             {/*<Route path="/user" component={BoardUser} />*/}
             {/*<Route path="/mod" component={BoardModerator} />*/}
             <Route path="/admin" component={BoardAdmin} />
-            <Route path="/questions" component={listQuestion} />
-            <Route path="/getuserclubs" component={listMyClubs}/>
+            <Route path="/questions" component={ListQuestion} />
+            <Route path="/getuserclubs" component={ListMyClubs}/>
           </Switch>
         </div>
       </div>

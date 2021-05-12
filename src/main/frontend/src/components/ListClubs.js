@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import UserService from "../services/user.service";
+import {withRouter} from 'react-router-dom';
+
 import {Link} from "react-router-dom";
 
 class ListClubs extends Component{
@@ -10,6 +12,8 @@ class ListClubs extends Component{
         this.state = {
             clubs: []
         }
+
+        this.showPage = this.showPage.bind(this);
     }
 
 
@@ -17,6 +21,10 @@ class ListClubs extends Component{
         UserService.getClubs().then((res) =>{
             this.setState({clubs: res.data});
         });
+    }
+
+    showPage(id) {
+        this.props.history.push(`/club-page/${id}`);
     }
 
     render() {
@@ -37,9 +45,12 @@ class ListClubs extends Component{
                                 club =>
                                     <tr key ={club.id}>
                                         <td>
-                                            <Link to={"/"+club.clubName} style={{color:"white"}}>
+
+                                            <button variant="warning" onClick={() => this.showPage(club.id)} >
+
                                                 {club.clubName}
-                                            </Link></td>
+                                            </button>
+                                        </td>
                                     </tr>
                             )
 
@@ -56,4 +67,4 @@ class ListClubs extends Component{
 
 }
 
-export default ListClubs;
+export default withRouter(ListClubs);

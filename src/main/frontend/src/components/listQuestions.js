@@ -93,7 +93,7 @@ class ListQuestions extends Component{
             <div>
                 <h2 className='text-center'>Questions </h2>
                 <div className='row'>
-                    <table className="table table-striped table-bordered">
+                    <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
                         <thead>
                         <tr>
                             <th style={{color:"white"}}>Question</th>

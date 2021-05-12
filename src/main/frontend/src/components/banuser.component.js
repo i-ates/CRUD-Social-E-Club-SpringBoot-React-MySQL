@@ -12,7 +12,7 @@ export default class BanUser extends Component {
 
         return (
 
-            <div>
+            <div  className="panel-container">
                 <Row>
                     <Col sm style={{marginTop:50, marginLeft:50}}>
                         <p>

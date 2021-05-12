@@ -38,7 +38,7 @@ export default class DeleteClub extends Component {
 
         return (
 
-            <div>
+            <div  className="panel-container">
                 <Row>
                     <Col style={{marginTop:50,marginLeft:100}}>
                         <p>

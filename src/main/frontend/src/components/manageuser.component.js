@@ -24,7 +24,7 @@ export default class ManageUser extends Component {
                         </Row>
 
                         <Row>
-                            <Table striped bordered hover size={50} style={{marginTop:25, marginLeft:15, width:372, color:"white"}}>
+                            <Table striped bordered hover size={50} style={{marginTop:25, marginLeft:15, width:372, color:"white", backgroundColor: "#05082B",opacity: 0.8}} >
                                 <thead>
                                 <tr>
                                     <th>User Name</th>
@@ -59,7 +59,7 @@ export default class ManageUser extends Component {
                         </Row>
                     </Col>
 
-                    <Col sm style={{marginTop:50, marginRight:30}}>
+                    <Col sm style={{marginTop:50, marginRight:30}} className="panel-container">
                         <InputGroup size="sm" className="mb-3"  onChange={e=>this.onchangeArea(e)}>
                             <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
                         </InputGroup>

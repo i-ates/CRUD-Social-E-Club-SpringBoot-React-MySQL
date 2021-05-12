@@ -15,4 +15,7 @@ public interface RateRepository extends JpaRepository<Rate, Long> {
     @Query("SELECT r FROM Rate as r WHERE r.clubId = :clubId")
     List<Rate> findCommentById(@Param("clubId") long clubId);
 
+    @Query("SELECT COUNT(r) FROM Rate as r WHERE r.clubId = :clubId AND r.userId = :userId")
+    int findByIdAndClubId(@Param("clubId") long clubId, @Param("userId") long userId );
+
 }

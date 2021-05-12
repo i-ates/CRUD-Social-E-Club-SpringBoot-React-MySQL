@@ -31,7 +31,7 @@ public class Event {
     private Date date;
 
     @Column(name = "parent_club_id")
-    private Long parentClubId;
+    private Long clubId;
 
     @NotBlank
     @Size(max = 1000)
@@ -41,10 +41,10 @@ public class Event {
     @Column(name = "user_id")
     private Long userId;
 
-    public Event(String title, Long parentClubId, String content, Long userId) {
+    public Event(String title, Long clubId, String content, Long userId) {
         this.title = title;
         this.date = new Date();
-        this.parentClubId = parentClubId;
+        this.clubId = clubId;
         this.content = content;
         this.userId = userId;
     }

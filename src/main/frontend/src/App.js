@@ -12,8 +12,9 @@ import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
 import BoardAdmin from "./components/board-admin.component";
-import ListQuestion from "./components/listQuestions"
-import ListMyClubs from "./components/listMyClubs";
+import listQuestion from "./components/listQuestions"
+import listMyClubs from "./components/listMyClubs";
+import ClubPage from "./components/clubPage";
 import Searchbar from "./components/searchbar";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GiHighFive } from "react-icons/gi";
@@ -136,8 +137,9 @@ class App extends Component {
             </div>
           )}
         </nav>
+
         <div style={{marginTop:40,marginLeft:20,marginRight:20,color:"white"}}>
-          <Switch>
+          <Switch> localhost:3000/club-page/
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
@@ -145,8 +147,9 @@ class App extends Component {
             {/*<Route path="/user" component={BoardUser} />*/}
             {/*<Route path="/mod" component={BoardModerator} />*/}
             <Route path="/admin" component={BoardAdmin} />
-            <Route path="/questions" component={ListQuestion} />
-            <Route path="/getuserclubs" component={ListMyClubs}/>
+            <Route path="/questions" component={listQuestion} />
+            <Route path="/getuserclubs" component={listMyClubs}/>
+            <Route path="/club-page/:id" component={ClubPage}/>
           </Switch>
         </div>
       </div>

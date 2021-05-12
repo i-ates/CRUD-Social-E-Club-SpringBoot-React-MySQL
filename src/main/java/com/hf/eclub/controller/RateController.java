@@ -3,6 +3,7 @@ package com.hf.eclub.controller;
 
 import com.hf.eclub.models.Rate;
 import com.hf.eclub.payload.request.RateRequest;
+import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.repository.ClubRepository;
 import com.hf.eclub.repository.RateRepository;
 import com.hf.eclub.repository.UserRepository;
@@ -42,10 +43,15 @@ public class RateController {
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/test/createrate")
     public ResponseEntity<?> createRate(@Valid @RequestBody RateRequest rateRequest){
-        Rate rate = new Rate(rateRequest.getUserId(), rateRequest.getClubId(), rateRequest.getRate(),
-                rateRequest.getComment());
-        rateRepository.save(rate);
-        return ResponseEntity.ok("rate added");
+        if ( rateRepository.findByIdAndClubId(rateRequest.getClubId(), rateRequest.getUserId()) == 0){
+            Rate rate = new Rate(rateRequest.getUserId(), rateRequest.getClubId(), rateRequest.getRate(),
+                    rateRequest.getComment());
+            rateRepository.save(rate);
+            return ResponseEntity.ok("rate added");
+        }else{
+            return ResponseEntity.badRequest().body(new MessageResponse("Error: You have already rate this club!"));
+        }
+
     }
 
 }

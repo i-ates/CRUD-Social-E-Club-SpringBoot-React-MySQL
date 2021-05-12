@@ -10,7 +10,8 @@ class listMyClubs extends Component{
         super(props);
 
         this.state = {
-            clubs: []
+            clubs: [],
+            flag: true
         }
 
         this.showPage = this.showPage.bind(this);
@@ -29,7 +30,8 @@ class listMyClubs extends Component{
     }
 
     showPage(id) {
-        this.props.history.push(`/club-page/${id}`);
+        //this.props.history.push(`/club-page/${id}`);
+        this.props.history.push(`/club-page/${id}`, this.state.flag);
     }
 
     render() {

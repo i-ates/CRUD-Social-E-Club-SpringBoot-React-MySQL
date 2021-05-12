@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import Rate from "./rate";
 import UserService from "../services/user.service";
 import ClubService from "../services/club.service";
+import AuthService from "../services/auth.service";
 import { VscStarFull } from "react-icons/vsc";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+
 
 class ClubPage extends Component {
     constructor(props) {
@@ -13,12 +15,24 @@ class ClubPage extends Component {
 
         this.state = {
             rate: 0.0,
+            showPrivateMessage: false,
+            showRateBoard: false,
+            currentUser: undefined,
             clubId: this.props.match.params.id,
             comments:[]
         }
     }
 
     componentDidMount() {
+        const user = AuthService.getCurrentUser();
+
+        if (user && this.props.location.state) {
+            this.setState({
+                currentUser: user,
+                showRateBoard: user.roles.includes("ROLE_USER"),
+            });
+        }
+
         ClubService.getRate(this.state.clubId).then((res) =>{
             this.setState({rate: res.data})});
 
@@ -105,11 +119,13 @@ class ClubPage extends Component {
                     </Row>
                     <Row >
                         <h2>Rate Of Club {this.state.rate.toFixed(1)}</h2>
-                        <Rate clubId={this.state.clubId}>
-                        </Rate>
+                        {
+                          this.state.showRateBoard && <Rate clubId={this.state.clubId} />
+                        }
                     </Row>
                 </Col>
                 </Row>
+
             </div>
         );
     }

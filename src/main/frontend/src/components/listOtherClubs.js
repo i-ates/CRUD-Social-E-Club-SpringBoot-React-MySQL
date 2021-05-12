@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
 import {Link} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
 
 class listOtherClubs extends Component{
 
@@ -9,8 +10,11 @@ class listOtherClubs extends Component{
         super(props);
 
         this.state = {
-            clubs: []
+            clubs: [],
+            flag: false
         }
+
+        this.showPage = this.showPage.bind(this);
     }
 
 
@@ -23,6 +27,10 @@ class listOtherClubs extends Component{
             this.setState({clubs: res.data});
         }).catch(err=>
             console.log(err.response.data)) ;
+    }
+
+    showPage(id) {
+        this.props.history.push(`/club-page/${id}`, this.state.flag);
     }
 
     render() {
@@ -41,11 +49,11 @@ class listOtherClubs extends Component{
                         {
                             this.state.clubs.map(
                                 club =>
-                                    <tr key ={club}>
+                                    <tr key ={club.id}>
                                         <td>
-                                            <Link to={"/"+club} style={{color:"white"}}>
-                                                {club}
-                                            </Link>
+                                            <button variant="warning" onClick={() => this.showPage(club.id)} >
+                                                {club.clubName}
+                                            </button>
                                         </td>
 
                                     </tr>
@@ -64,4 +72,4 @@ class listOtherClubs extends Component{
 
 }
 
-export default listOtherClubs
+export default withRouter(listOtherClubs);

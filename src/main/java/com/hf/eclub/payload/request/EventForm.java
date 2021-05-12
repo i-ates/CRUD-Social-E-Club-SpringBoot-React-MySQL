@@ -20,8 +20,6 @@ public class EventForm {
     @Size(max = 100)
     private String title;
 
-    @NotBlank
-    private Date date;
 
     @NotBlank
     private Long parentClubId;
@@ -31,14 +29,13 @@ public class EventForm {
     private String content;
 
     @NotBlank
-    private Long authorId;
+    private Long userId;
 
-    public EventForm(String title, Date date, Long parentClubId, String content, Long authorId) {
+    public EventForm(String title, Long parentClubId, String content, Long userId) {
         this.title = title;
-        this.date = date;
         this.parentClubId = parentClubId;
         this.content = content;
-        this.authorId = authorId;
+        this.userId = userId;
     }
 
 }

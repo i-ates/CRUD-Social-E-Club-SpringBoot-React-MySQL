@@ -21,17 +21,16 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
-
-
-    // To create a new event, send POST request with json EventForm body, to path /api/events/create
+    // To create a new event, send POST request with EventForm body, to path /api/events/create
     @PostMapping("/create")
     public void createEvent(/*@Valid*/ @RequestBody EventForm eventForm){
+        // Check if user is a member of that club.
+
         Event eventToAdd = new Event (
                 eventForm.getTitle(),
-                eventForm.getDate(),
                 eventForm.getParentClubId(),
                 eventForm.getContent(),
-                eventForm.getAuthorId()
+                eventForm.getUserId()
                 );
         eventRepository.save(eventToAdd);
     }

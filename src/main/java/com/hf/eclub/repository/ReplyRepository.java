@@ -1,10 +1,10 @@
 package com.hf.eclub.repository;
 
-import com.hf.eclub.models.Message;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
+import com.hf.eclub.models.Reply;
 
 @Repository
-public interface MessageRepository extends JpaRepository<Message, Long> {
+public interface ReplyRepository extends JpaRepository<Reply, Long> {
 }

@@ -38,14 +38,14 @@ public class Event {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "author_id")
-    private Long authorId;
+    @Column(name = "user_id")
+    private Long userId;
 
-    public Event(String title, Date date, Long parentClubId, String content, Long authorId) {
+    public Event(String title, Long parentClubId, String content, Long userId) {
         this.title = title;
-        this.date = date;
+        this.date = new Date();
         this.parentClubId = parentClubId;
         this.content = content;
-        this.authorId = authorId;
+        this.userId = userId;
     }
 }

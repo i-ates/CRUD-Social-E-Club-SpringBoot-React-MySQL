@@ -5,6 +5,7 @@ import ClubService from "../services/club.service";
 import AuthService from "../services/auth.service";
 
 import StarRatingComponent from 'react-star-rating-component';
+import Row from "react-bootstrap/Row";
 
 
 const styles = {
@@ -16,6 +17,7 @@ const styles = {
     stars: {
         display: "flex",
         flexDirection: "row",
+
     },
     textarea: {
         border: "1px solid #a9a9a9",
@@ -69,23 +71,17 @@ class Rate extends React.Component {
 
         return (
             <div>
-                <h2> Give Rate</h2>
-                <StarRatingComponent
-                    name="rate1"
-                    starCount={5}
-                    value={rating}
-                    onStarClick={this.onStarClick.bind(this)}
-                />
-                <textarea value={this.state.comm} onChange={this.saveComment}
-                          placeholder="Leave a comment"
-                          style={styles.textarea}
-                />
-
-                <button
-                    style={styles.button} onClick={this.saveRate}
-                >
-                    Rate Club
-                </button>
+                <Row>
+                    <StarRatingComponent name="rate1" starCount={5} value={rating} onStarClick={this.onStarClick.bind(this)}/>
+                </Row>
+                <Row>
+                    <textarea value={this.state.comm} onChange={this.saveComment} placeholder="Leave a comment" style={styles.textarea}/>
+                </Row>
+                <Row>
+                    <button style={styles.button} onClick={this.saveRate} >
+                        Rate Club
+                    </button>
+                </Row>
             </div>
         );
     }

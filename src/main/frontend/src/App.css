@@ -42,9 +42,6 @@ select option:focus {
   -webkit-text-fill-color: #ffffff;
   color: #ffffff;
 }
-Link{
-  color: white;
-}
 
 .card {
   background-color: #023648;
@@ -57,6 +54,7 @@ Link{
   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
 }
 
 .profile-img-card {
@@ -67,4 +65,19 @@ Link{
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+.panel-container {
+  background-color: #02134C;
+  margin: 50px auto 25px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
+  max-width: 2000px;
+  padding: 40px;
+  color: white;
 }

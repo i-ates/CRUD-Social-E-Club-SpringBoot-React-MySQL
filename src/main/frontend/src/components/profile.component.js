@@ -77,14 +77,14 @@ export default class Profile extends Component {
         <div>
           <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
             <Tab eventKey={1} title="Edit Profile">
-              <Row >
+              <Row style={{marginTop:50}}>
                 <Col>
                   <div>
                     {(this.state.userReady) ?
                         <div>
                           <h2 className='text-center'>User Info </h2>
                           <div className='row'>
-                            <Table style={{color:"white"}} striped bordered size="sm">
+                            <Table style={{color:"white", backgroundColor: "#05082B",opacity: 0.8}} striped bordered size="sm">
                               <thead>
                                 <tr>
                                   <th>User Name</th>
@@ -188,34 +188,34 @@ export default class Profile extends Component {
 
                 </Col>
 
-                <Col style={{marginTop:62}}>
-                  <div>
+                <Col style={{marginTop:45}}>
+                  <div className="panel-container">
                     <Row>
-                      <InputGroup style={{width:650,marginLeft:50}} size="sm" className="mb-3"  onChange={e=>this.onchangeArea(e)}>
-                        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                      <InputGroup style={{width:800}} size="sm" className="mb-3"  onChange={e=>this.onchangeArea(e)}>
+                        <FormControl/>
                       </InputGroup>
                     </Row>
                     <Row>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button style={{width:150,marginLeft:100}} variant="outline-light" onClick={o=>this.updateName(this.state.area)}>Update Name</Button></Col>
+                          <Col xs={5}><Button style={{width:200,marginLeft:10}} variant="outline-light" onClick={o=>this.updateName(this.state.area)}>Update Full Name</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button style={{width:150}}variant="outline-light" onClick={o=>this.updateCity(this.state.area)}>Update City</Button></Col>
+                          <Col xs={5}><Button style={{width:150}} variant="outline-light" onClick={o=>this.updateCity(this.state.area)}>Update City</Button></Col>
                         </ButtonGroup>
                       </Col>
                     </Row>
                     <Row style={{marginTop:62}}>
                       <InputGroup>
-                        <FormControl style={{width:500,marginLeft:50}} as="textarea" aria-label="With textarea" onChange={e=>this.onchangeArea2(e)} />
+                        <FormControl style={{width:500}} as="textarea" aria-label="With textarea" onChange={e=>this.onchangeArea2(e)} />
                       </InputGroup>
                     </Row>
                     <Row style={{marginTop:20}}>
                       <Col xs={6}>
                         <ButtonGroup vertical>
-                          <Col ><Button style={{width:200,marginLeft:250}} variant="outline-light"  onClick={o=>this.updateBio(this.state.area2)}>Update Biography</Button></Col>
+                          <Col ><Button style={{width:200,marginLeft:285}} variant="outline-light"  onClick={o=>this.updateBio(this.state.area2)}>Update Biography</Button></Col>
                         </ButtonGroup>
                       </Col>
                     </Row>
@@ -225,7 +225,7 @@ export default class Profile extends Component {
 
             </Tab>
             <Tab eventKey={2} title="Change Password">
-              <div>
+              <div className="panel-container">
                 <Row>
                   <Col></Col>
                   <Col xs={6} style={{marginTop:50}}>

@@ -167,6 +167,7 @@ export default class Register extends Component {
                     type="text"
                     className="form-control"
                     name="username"
+                    placeholder="Enter an username"
                     value={this.state.username}
                     onChange={this.onChangeUsername}
                     validations={[required, vusername]}
@@ -179,6 +180,7 @@ export default class Register extends Component {
                     type="text"
                     className="form-control"
                     name="email"
+                    placeholder="Enter an email"
                     value={this.state.email}
                     onChange={this.onChangeEmail}
                     validations={[required, email]}
@@ -191,6 +193,7 @@ export default class Register extends Component {
                     type="password"
                     className="form-control"
                     name="password"
+                    placeholder="Enter a password"
                     value={this.state.password}
                     onChange={this.onChangePassword}
                     validations={[required, vpassword]}

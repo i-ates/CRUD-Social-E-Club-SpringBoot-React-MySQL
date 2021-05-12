@@ -32,7 +32,7 @@ class ListClubs extends Component{
             <div style={{marginTop:50}}>
                 <h2 className='text-center'>Clubs </h2>
                 <div>
-                    <table className="table table-striped table-bordered"style={{color:"white"}}>
+                    <table className="table table-striped table-bordered"style={{color:"white", backgroundColor: "#05082B",opacity: 0.8}} >
                         <thead>
                         <tr>
                             <th style={{color:"white"}}>Club Name</th>

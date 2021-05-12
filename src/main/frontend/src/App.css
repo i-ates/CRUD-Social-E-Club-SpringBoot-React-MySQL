@@ -2,12 +2,24 @@
   margin-right: 10px;
   margin-bottom: 3px;
 }
-
+.container {
+  text-align: center;
+  background-image: url("https://cdn.wallpapersafari.com/7/74/JFeEHc.jpg");
+  position: center;
+  min-width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
 .navbar-brand {
   margin-left: 15px;
   font-family: Consolas;
 }
-
+nav{
+  margin-left: -15px;
+  margin-right: -15px;
+  color: purple;
+}
 label {
   display: block;
   margin-top: 10px;
@@ -16,6 +28,7 @@ label {
 .card-container.card {
   max-width: 350px !important;
   padding: 40px 40px;
+  color: white;
 }
 
 option {
@@ -29,10 +42,12 @@ select option:focus {
   -webkit-text-fill-color: #ffffff;
   color: #ffffff;
 }
-
+Link{
+  color: white;
+}
 
 .card {
-  background-color: #f7f7f7;
+  background-color: #023648;
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;

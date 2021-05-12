@@ -1,5 +1,6 @@
 package com.hf.eclub.repository;
 
+import com.hf.eclub.models.Club;
 import com.hf.eclub.models.UserClubs;
 //import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public interface UserClubsRepository extends JpaRepository<UserClubs,Long> {
 
     List<UserClubs> findByClubIdAndUserId(long clubId,long userId);
 
-    @Query("SELECT c.clubName FROM UserClubs as uc, Club as c WHERE uc.clubId=c.id and uc.userId= :userId")
-    List<String> findUserClubsByUserId(@Param("userId") long userId);
+    @Query("SELECT c FROM UserClubs as uc, Club as c WHERE uc.clubId=c.id and uc.userId= :userId")
+    List<Club> findUserClubsByUserId(@Param("userId") long userId);
 
     @Query("SELECT c.clubName FROM Club as c WHERE c.clubName NOT IN( SELECT c.clubName FROM UserClubs as uc, Club as c WHERE uc.clubId=c.id and uc.userId= :userId)")
     List<String> findUserOtherClubsByUserId(@Param("userId") long userId);

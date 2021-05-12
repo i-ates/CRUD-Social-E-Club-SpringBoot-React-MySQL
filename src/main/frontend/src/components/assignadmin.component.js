@@ -12,7 +12,7 @@ export default class AssignAdmin extends Component {
 
         return (
 
-            <Container>
+            <div>
                 <Row>
                     <Col sm style={{marginTop:50}}>
                         <p>
@@ -54,12 +54,12 @@ export default class AssignAdmin extends Component {
 
                         </FormControl>
 
-                        <Button variant="dark" type="submit" style={{marginTop:15, marginLeft:100}}>
+                        <Button variant="outline-light" type="submit" style={{marginTop:15}}>
                             Update Admin
                         </Button>
                     </Col>
                 </Row>
-            </Container>
+            </div>
         )
     }
 }

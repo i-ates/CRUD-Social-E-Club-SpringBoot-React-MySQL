@@ -45,7 +45,9 @@ class ListClubs extends Component{
                                 club =>
                                     <tr key ={club.id}>
                                         <td>
+
                                             <button variant="warning" onClick={() => this.showPage(club.id)} >
+
                                                 {club.clubName}
                                             </button>
                                         </td>

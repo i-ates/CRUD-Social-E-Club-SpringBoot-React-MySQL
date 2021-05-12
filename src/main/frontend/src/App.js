@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
 import AuthService from "./services/auth.service";
-
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
@@ -140,6 +138,7 @@ class App extends Component {
 
         <div style={{marginTop:40,marginLeft:20,marginRight:20,color:"white"}}>
           <Switch> localhost:3000/club-page/
+
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
@@ -150,6 +149,7 @@ class App extends Component {
             <Route path="/questions" component={listQuestion} />
             <Route path="/getuserclubs" component={listMyClubs}/>
             <Route path="/club-page/:id" component={ClubPage}/>
+
           </Switch>
         </div>
       </div>

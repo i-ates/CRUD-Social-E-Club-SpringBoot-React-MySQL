@@ -43,7 +43,7 @@ class listOtherClubs extends Component{
                                 club =>
                                     <tr key ={club}>
                                         <td>
-                                            <Link to={"/"+club} >
+                                            <Link to={"/"+club} style={{color:"white"}}>
                                                 {club}
                                             </Link>
                                         </td>

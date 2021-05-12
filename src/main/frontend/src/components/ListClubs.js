@@ -3,6 +3,7 @@ import UserService from "../services/user.service";
 import {withRouter} from 'react-router-dom';
 
 import {Link} from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 class ListClubs extends Component{
 
@@ -45,9 +46,9 @@ class ListClubs extends Component{
                                 club =>
                                     <tr key ={club.id}>
                                         <td>
-                                            <button variant="warning" onClick={() => this.showPage(club.id)} >
+                                            <Button variant="None" style={{color:"white"}} onClick={() => this.showPage(club.id)} >
                                                 {club.clubName}
-                                            </button>
+                                            </Button>
                                         </td>
                                     </tr>
                             )

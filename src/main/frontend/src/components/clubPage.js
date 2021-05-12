@@ -81,7 +81,7 @@ class ClubPage extends Component {
                     </Row>
                     <Row>
                         <div className='panel-container' style={{marginTop:0,marginBottom:0,overflowY: "scroll",scrollBehaviour: "smooth",
-                            height:300,opacity:0.9 ,width:400}}>
+                            height:300,opacity:0.9 ,width:500}}>
                             <h2 className='text-center'>Comments </h2>
                             <table className="table table-striped table-bordered" style={{color:"white", backgroundColor: "#05082B",opacity: 0.8}}>
                                 <thead>
@@ -99,7 +99,7 @@ class ClubPage extends Component {
                                                 <th>{comment.userId}</th>
                                                 <th>{comment.comment}</th>
                                                 <th>
-                                                    {comment.rate} <VscStarFull style={{color:"yellow",marginBottom:3}}/>
+                                                    {comment.rate} <VscStarFull style={{color:"yellow",marginBottom:5}}/>
                                                 </th>
                                             </tr>
                                     )
@@ -111,16 +111,17 @@ class ClubPage extends Component {
                 </Col>
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
-                        <Button style={{width:150,marginLeft:120,marginBottom:20}} variant="outline-light"  >Send Message</Button>
-                        <h5>
-                            You want to be admin in this subclub?
+                        <Button style={{width:150,marginLeft:200,marginBottom:20}} variant="outline-light">Send Message</Button>
+                        <h5 style={{marginLeft:100, paddingBottom:15}}>
+                            You want to be admin in this sub club?
                         </h5>
-                        <Button style={{width:200,marginLeft:95,marginBottom:20}} variant="outline-light"  >Request to be an Admin</Button>
+                        <Button style={{width:200,marginLeft:175,marginBottom:20}} variant="outline-light"  >Request to be an Admin</Button>
                     </Row>
-                    <Row >
-                        <h2>Rate Of Club {this.state.rate.toFixed(1)}</h2>
+                    <Row>
+                        <h3 style={{marginLeft:200}}>Rate Of Club</h3>
+                        <h4 style={{marginLeft:-95, marginTop:50}}>{this.state.rate.toFixed(1)}</h4>
                         {
-                          this.state.showRateBoard && <Rate clubId={this.state.clubId} />
+                          this.state.showRateBoard && <Rate style={{marginTop:20}} clubId={this.state.clubId} />
                         }
                     </Row>
                 </Col>

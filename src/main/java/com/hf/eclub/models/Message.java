@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -14,6 +15,7 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
     private Long id;
 
     @NotBlank
@@ -25,7 +27,7 @@ public class Message {
     private Date date;
 
     @Column(name = "parent_club_id")
-    private Long parentClubId;
+    private Long clubId;
 
     @NotBlank
     @Size(max = 1000)
@@ -35,6 +37,20 @@ public class Message {
     @Column(name = "user_id")
     private Long userId;
 
+    @Column(name = "is_private")
+    private Boolean isPrivate;
 
+    public Message (){
+
+    }
+
+    public Message(String title, Long clubId, String content, Long userId, Boolean isPrivate) {
+        this.title = title;
+        this.clubId = clubId;
+        this.content = content;
+        this.userId = userId;
+        this.isPrivate = isPrivate;
+        this.date = new Date();
+    }
 
 }

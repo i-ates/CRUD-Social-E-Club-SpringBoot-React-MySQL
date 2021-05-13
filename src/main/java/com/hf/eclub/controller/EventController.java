@@ -52,23 +52,24 @@ public class EventController {
                 );
 
         eventRepository.save(eventToAdd);
-        return ResponseEntity.ok(new MessageResponse("Event succesfully created."));
+        return ResponseEntity.ok(new MessageResponse("Event successfully created."));
     }
 
 
     // To fetch a certain club's events, make a GET request /api/events/fetch/1 for example
     @GetMapping("/fetch/{id}")
-    public List<Map<String,String>> getEventsByClub(@PathVariable long id){
+    public List<Map<String,Object>> getEventsByClub(@PathVariable long id){
 
-        List<Map<String,String>> result = new ArrayList<>();
+        List<Map<String,Object>> result = new ArrayList<>();
         List<Event> listOfEvents = eventRepository.findByClubId(id);
 
         for (Event tempEvent : listOfEvents) {
-            Map<String, String> tempMap = new HashMap<>();
+            Map<String, Object> tempMap = new HashMap<>();
             tempMap.put("title", tempEvent.getTitle());
             tempMap.put("content", tempEvent.getContent());
             tempMap.put("username", userRepository.findUsernameById(tempEvent.getUserId()));
             tempMap.put("date", tempEvent.getDate().toString().substring(0,19));
+            tempMap.put("userId", tempEvent.getUserId());
             result.add(tempMap);
         }
 

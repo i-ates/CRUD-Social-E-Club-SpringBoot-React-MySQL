@@ -6,6 +6,7 @@ import AuthService from "../services/auth.service";
 
 import StarRatingComponent from 'react-star-rating-component';
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
 
 const styles = {
@@ -81,9 +82,9 @@ class Rate extends React.Component {
                     <textarea value={this.state.comm} onChange={this.saveComment} placeholder="Leave a comment" style={styles.textarea}/>
                 </Row>
                 <Row>
-                    <button style={styles.button} onClick={this.saveRate} >
+                    <Button variant="outline-light" style={{width:150}} onClick={this.saveRate} >
                         Rate Club
-                    </button>
+                    </Button>
                 </Row>
             </div>
         );

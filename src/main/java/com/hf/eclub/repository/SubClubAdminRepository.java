@@ -12,9 +12,8 @@ import java.util.List;
 public interface SubClubAdminRepository extends JpaRepository<SubClubAdmin, Long> {
 
 
-    @Query("SELECT * FROM SubClubAdmin as sca WHERE sca.userId =: userId AND sca.subClubId =: subClubId")
-    List<SubClubAdmin> findUserSubClubAdminByIdAndClubId(@Param("userId") long userId, @Param("subClubId") long subClubId);
-     //SELECT COUNT(*) FROM `sub_club_admin` WHERE `sub_club_admin`.`user_id` = 5 AND `sub_club_admin`.`subclub_id` = 1
+    @Query("FROM SubClubAdmin sca WHERE sca.userId= :userId and sca.subClubId= :subClubId")
+    List<SubClubAdmin> findUserSubClubAdminByIdAndClubId(@Param("userId") Long userId, @Param("subClubId") Long subClubId);
 
 
 }

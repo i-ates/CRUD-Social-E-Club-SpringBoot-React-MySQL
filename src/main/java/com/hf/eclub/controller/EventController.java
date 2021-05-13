@@ -11,6 +11,7 @@ import com.hf.eclub.repository.EventRepository;
 import com.hf.eclub.repository.SubClubAdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class EventController {
     public ResponseEntity<?> createEvent(/*@Valid*/ @RequestBody EventRequest eventForm){
 
         // Check if user is a member of that club.
+
         if (scaRepository.findUserSubClubAdminByIdAndClubId(
                 eventForm.getUserId(), eventForm.getClubId()).size() < 1)
         {
@@ -48,10 +50,11 @@ public class EventController {
         return ResponseEntity.ok(new MessageResponse("Event succesfully created."));
     }
 
+
     // To fetch a certain club's events, make a GET request /api/events/fetch/1 for example
     @GetMapping("/fetch/{id}")
     public List<Event> getEventsByClub(@PathVariable long id){
-        return eventRepository.findByParentClubId(id);
+        return eventRepository.findByClubId(id);
     }
 
     // TODO : Other event operations.

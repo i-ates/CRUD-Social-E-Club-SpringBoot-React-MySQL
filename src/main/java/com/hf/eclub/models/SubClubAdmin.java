@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
+@Table(name = "sub_club_admin")
 public class SubClubAdmin {
 
     @Id

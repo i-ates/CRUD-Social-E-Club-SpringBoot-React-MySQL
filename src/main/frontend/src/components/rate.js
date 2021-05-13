@@ -74,15 +74,15 @@ class Rate extends React.Component {
         const { rating } = this.state;
 
         return (
-            <div style={{marginLeft:150}}>
-                <Row style={{marginLeft:95}}>
+            <div style={{marginLeft:130}}>
+                <Row style={{marginLeft:100}}>
                     <StarRatingComponent name="rate1" starCount={5} value={rating} onStarClick={this.onStarClick.bind(this)}/>
                 </Row>
                 <Row>
                     <textarea value={this.state.comm} onChange={this.saveComment} placeholder="Leave a comment" style={styles.textarea}/>
                 </Row>
                 <Row>
-                    <Button variant="outline-light" style={{width:150}} onClick={this.saveRate} >
+                    <Button variant="outline-light" style={{width:150, marginLeft:75}} onClick={this.saveRate} >
                         Rate Club
                     </Button>
                 </Row>

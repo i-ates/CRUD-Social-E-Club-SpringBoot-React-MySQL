@@ -1,9 +1,4 @@
-/*
-Object class to represents Events assigned to sub clubs
-*/
-
 package com.hf.eclub.models;
-
 
 import lombok.Data;
 
@@ -13,11 +8,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-
 @Data
 @Entity
-@Table(name = "events")
-public class Event {
+@Table(name = "messages")
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,16 +37,20 @@ public class Event {
     @Column(name = "user_id")
     private Long userId;
 
-    public Event(String title, Long clubId, String content, Long userId) {
+    @Column(name = "is_private")
+    private Boolean isPrivate;
+
+    public Message (){
+
+    }
+
+    public Message(String title, Long clubId, String content, Long userId, Boolean isPrivate) {
         this.title = title;
-        this.date = new Date();
         this.clubId = clubId;
         this.content = content;
         this.userId = userId;
-    }
-
-    public Event(){
-
+        this.isPrivate = isPrivate;
+        this.date = new Date();
     }
 
 }

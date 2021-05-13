@@ -45,7 +45,9 @@ class ClubService{
         return axios.get(API_URL+"comment"+"/"+clubId);
     }
 
-
+    getEvent(clubId){
+        return axios.get(API_URL+"events/fetch"+"/"+clubId);
+    }
 
 }
 

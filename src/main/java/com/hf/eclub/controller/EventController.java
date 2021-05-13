@@ -13,7 +13,6 @@ import com.hf.eclub.repository.SubClubAdminRepository;
 import com.hf.eclub.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,9 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/events")
+@RequestMapping("/api/test/events")
 public class EventController {
 
     @Autowired

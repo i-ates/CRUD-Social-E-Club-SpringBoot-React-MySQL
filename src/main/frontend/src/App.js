@@ -50,7 +50,7 @@ class App extends Component {
 
     return (
       <div className="container">
-        <nav className="navbar navbar-expand navbar-dark " style={{paddingBottom:-3}}>
+        <nav className="navbar navbar-expand navbar-dark" style={{paddingBottom:-3}}>
 
           <Link to={"/"} className="navbar-brand">
               <GiHighFive className="navbar-icon"></GiHighFive>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import UserService from "../services/user.service";
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 class ListClubWithId extends Component{
 
@@ -10,6 +11,7 @@ class ListClubWithId extends Component{
         this.state = {
             clubs: []
         }
+        this.showPage = this.showPage.bind(this);
     }
 
 
@@ -18,7 +20,9 @@ class ListClubWithId extends Component{
             this.setState({clubs: res.data});
         });
     }
-
+    showPage(id) {
+        this.props.history.push(`/club-page/${id}`);
+    }
     render() {
         return (
             <div style={{marginTop:50}}>
@@ -38,23 +42,19 @@ class ListClubWithId extends Component{
                                 club =>
                                     <tr key ={club.id}>
                                         <td>
-                                            <Link to={"/"+club.clubName} style={{color:"white"}}>
+                                            <Button variant="None" style={{color:"white"}} onClick={() => this.showPage(club.id)} >
                                                 {club.clubName}
-                                            </Link></td>
+                                            </Button>
+                                        </td>
                                         <td style={{color:"white"}}>
                                             {club.id}
                                         </td>
                                     </tr>
-
-
                             )
-
                         }
-
                         </tbody>
                     </table>
                 </div>
-
             </div>
         )
     }
@@ -62,4 +62,4 @@ class ListClubWithId extends Component{
 
 }
 
-export default ListClubWithId;
+export default withRouter(ListClubWithId);

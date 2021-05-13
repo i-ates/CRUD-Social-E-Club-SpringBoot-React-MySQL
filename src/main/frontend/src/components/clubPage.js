@@ -7,6 +7,7 @@ import { VscStarFull } from "react-icons/vsc";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 
 class ClubPage extends Component {
@@ -46,38 +47,80 @@ class ClubPage extends Component {
                 <Row>
                 <Col className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
                     height:600,opacity:0.9,marginTop:0}}>
-                    <h2>
-                        Messages
-                    </h2>
-                    <ul style={{listStyle:"None",textAlign:"left"}}>
-                        <li>
-                            Message Title
-                        </li>
-                        <li>
-                            Message Content
-                        </li>
-                        <li>
-                            Username
-                        </li>
-                    </ul>
+                    <Card style={{ width: 485, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                        <Card.Body>
+                            <Card.Title>Message Title</Card.Title>
+                            <Card.Text>
+                                Bla bla Bla bla Bla bla Bla bla
+                            </Card.Text>
+                            <Card.Text>
+                                Sender(Username)
+                            </Card.Text>
+                        </Card.Body>
+                        <Card.Body>
+                            <Button href="#" variant="outline-light">Reply</Button>
+                        </Card.Body>
+                    </Card>
+                    <Card style={{ width: 485, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                        <Card.Body>
+                            <Card.Title>Message Title</Card.Title>
+                            <Card.Text>
+                                Bla bla Bla bla Bla bla Bla bla
+                            </Card.Text>
+                            <Card.Text>
+                                Sender(Username)
+                            </Card.Text>
+                        </Card.Body>
+                        <Card.Body>
+                            <Button href="#" variant="outline-light">Reply</Button>
+                        </Card.Body>
+                    </Card>
+                    <Card style={{ width: 485, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                        <Card.Body>
+                            <Card.Title>Message Title</Card.Title>
+                            <Card.Text>
+                                Bla bla Bla bla Bla bla Bla bla
+                            </Card.Text>
+                            <Card.Text>
+                                Sender(Username)
+                            </Card.Text>
+                        </Card.Body>
+                        <Card.Body>
+                            <Button href="#" variant="outline-light">Reply</Button>
+                        </Card.Body>
+                    </Card>
                 </Col>
                 <Col>
                     <Row className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
                         height:290,opacity:0.9,marginTop:0,marginBottom:10}}>
-                        <ul style={{listStyle:"None",textAlign:"left"}}>
-                            <h2 style={{textAlign:"center"}}>
-                                    Events
-                            </h2>
-                            <li>
-                                Event Title
-                            </li>
-                            <li>
-                                Event Content
-                            </li>
-                            <li>
-                                Username
-                            </li>
-                        </ul>
+                        <Card style={{ width: 350, height:250, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                            <Card.Body>
+                                <Card.Title>Event Title</Card.Title>
+                                <Card.Text>
+                                    Bla bla Bla bla Bla bla Bla bla
+                                </Card.Text>
+                                <Card.Text>
+                                    Creator (Username)
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Button href="#" variant="outline-light">Join Event</Button>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: 350, height:250, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                            <Card.Body>
+                                <Card.Title>Event Title</Card.Title>
+                                <Card.Text>
+                                    Bla bla Bla bla Bla bla Bla bla
+                                </Card.Text>
+                                <Card.Text>
+                                    Creator (Username)
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Body>
+                                <Button href="#" variant="outline-light">Join Event</Button>
+                            </Card.Body>
+                        </Card>
                     </Row>
                     <Row>
                         <div className='panel-container' style={{marginTop:0,marginBottom:0,overflowY: "scroll",scrollBehaviour: "smooth",
@@ -111,14 +154,14 @@ class ClubPage extends Component {
                 </Col>
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
-                        <Button style={{width:150,marginLeft:200,marginBottom:20}} variant="outline-light">Send Message</Button>
-                        <h5 style={{marginLeft:100, paddingBottom:15}}>
+                        <Button style={{width:150,marginLeft:189,marginBottom:20}} variant="outline-light">Send Message</Button>
+                        <h5 style={{marginLeft:90, paddingBottom:15}}>
                             You want to be admin in this sub club?
                         </h5>
-                        <Button style={{width:200,marginLeft:175,marginBottom:20}} variant="outline-light"  >Request to be an Admin</Button>
+                        <Button style={{width:200,marginLeft:165,marginBottom:20}} variant="outline-light"  >Request to be an Admin</Button>
                     </Row>
                     <Row>
-                        <h3 style={{marginLeft:200}}>Rate Of Club</h3>
+                        <h3 style={{marginLeft:185}}>Rate Of Club</h3>
                         <h4 style={{marginLeft:-95, marginTop:50}}>{this.state.rate.toFixed(1)}</h4>
                         {
                           this.state.showRateBoard && <Rate style={{marginTop:20}} clubId={this.state.clubId} />

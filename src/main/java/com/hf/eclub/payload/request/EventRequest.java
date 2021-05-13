@@ -14,7 +14,6 @@ public class EventRequest {
     @Size(max = 100)
     private String title;
 
-
     @NotBlank
     private Long clubId;
 

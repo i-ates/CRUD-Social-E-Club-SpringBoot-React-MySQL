@@ -48,4 +48,9 @@ public class Event {
         this.content = content;
         this.userId = userId;
     }
+
+    public Event(){
+
+    }
+
 }

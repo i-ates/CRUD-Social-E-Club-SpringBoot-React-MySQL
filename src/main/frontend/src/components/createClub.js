@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 class createClub extends Component {
 
@@ -79,10 +80,10 @@ class createClub extends Component {
     render() {
         return (
             <div>
-                <div className="container">
-                    <Row>
+                <div  className="panel-container">
+                    <Row style={{marginTop:50}}>
                         <Col xs lg="3">
-                            <Row style={{marginTop:20,marginLeft:10}}>
+                            <Row style={{marginLeft:10}}>
                                 Requested Club
                             </Row>
                             <Row style={{marginTop:50,marginLeft:10}}>
@@ -95,14 +96,12 @@ class createClub extends Component {
                                 Request 3
                             </Row>
                         </Col>
-                        <Col >
+                        <Col>
                             <Row>
-
                                 <Col>
                                     <input placeholder="Club Name" name="clubName" className="form-control"
                                            value={this.state.clubName} onChange={this.changeClubName}/>
                                 </Col>
-
                             </Row>
 
                             <Row style={{marginTop:50}}>
@@ -141,7 +140,9 @@ class createClub extends Component {
                                 <Col></Col>
                                 <Col xs={6}>
                                     <ButtonGroup vertical>
-                                        <Col ><Button style={{width:200}} variant="dark"  onClick={this.saveClub}>Add Club</Button></Col>
+                                        <Col>
+                                            <Button style={{width:200}} variant="outline-light"  onClick={this.saveClub}>Add Club</Button>
+                                        </Col>
                                     </ButtonGroup>
                                 </Col>
                                 <Col></Col>

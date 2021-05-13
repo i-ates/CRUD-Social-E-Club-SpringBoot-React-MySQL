@@ -12,9 +12,9 @@ export default class BanUser extends Component {
 
         return (
 
-            <Container>
+            <div  className="panel-container">
                 <Row>
-                    <Col sm style={{marginTop:50, marginLeft:150}}>
+                    <Col sm style={{marginTop:50, marginLeft:50}}>
                         <p>
                             Banned Users
                         </p>
@@ -34,12 +34,12 @@ export default class BanUser extends Component {
 
                         </FormControl>
 
-                        <Button variant="dark" type="submit" style={{marginTop:35, marginLeft:130}}>
+                        <Button variant="outline-light" type="submit" style={{marginTop:35, marginLeft:20}}>
                             Ban User
                         </Button>
                     </Col>
                 </Row>
-            </Container>
+            </div>
         )
     }
 }

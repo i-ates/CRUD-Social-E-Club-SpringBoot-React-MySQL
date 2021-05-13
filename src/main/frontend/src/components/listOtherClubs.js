@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import UserService from "../services/user.service";
 import AuthService from "../services/auth.service";
 import {Link} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
+import Button from "react-bootstrap/Button";
 
 class listOtherClubs extends Component{
 
@@ -9,8 +11,11 @@ class listOtherClubs extends Component{
         super(props);
 
         this.state = {
-            clubs: []
+            clubs: [],
+            flag: false
         }
+
+        this.showPage = this.showPage.bind(this);
     }
 
 
@@ -25,15 +30,19 @@ class listOtherClubs extends Component{
             console.log(err.response.data)) ;
     }
 
+    showPage(id) {
+        this.props.history.push(`/club-page/${id}`, this.state.flag);
+    }
+
     render() {
         return (
-            <div>
-                <h2 className='text-center'>Other Clubs </h2>
-                <div className='row'>
-                    <table className="table table-striped table-bordered">
+            <div style={{marginTop:50}}>
+                <h2>Other Clubs </h2>
+                <div>
+                    <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
                         <thead>
                         <tr>
-                            <th>Club Name</th>
+                            <th style={{color:"white"}}>Club Name</th>
                         </tr>
                         </thead>
 
@@ -41,11 +50,11 @@ class listOtherClubs extends Component{
                         {
                             this.state.clubs.map(
                                 club =>
-                                    <tr key ={club}>
+                                    <tr key ={club.id}>
                                         <td>
-                                            <Link to={"/"+club} >
-                                                {club}
-                                            </Link>
+                                            <Button variant="None" style={{color:"white"}} onClick={() => this.showPage(club.id)} >
+                                                {club.clubName}
+                                            </Button>
                                         </td>
 
                                     </tr>
@@ -64,4 +73,4 @@ class listOtherClubs extends Component{
 
 }
 
-export default listOtherClubs
+export default withRouter(listOtherClubs);

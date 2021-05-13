@@ -101,6 +101,7 @@ export default class Login extends Component {
                 type="text"
                 className="form-control"
                 name="username"
+                placeholder="Enter username"
                 value={this.state.username}
                 onChange={this.onChangeUsername}
                 validations={[required]}
@@ -113,6 +114,7 @@ export default class Login extends Component {
                 type="password"
                 className="form-control"
                 name="password"
+                placeholder="Enter password"
                 value={this.state.password}
                 onChange={this.onChangePassword}
                 validations={[required]}
@@ -121,7 +123,7 @@ export default class Login extends Component {
 
             <div className="form-group">
               <button
-                className="btn btn-primary btn-block"
+                className="btn btn-outline-light btn-block"
                 disabled={this.state.loading}
               >
                 {this.state.loading && (

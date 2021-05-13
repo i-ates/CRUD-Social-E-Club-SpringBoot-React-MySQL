@@ -6,6 +6,8 @@ import AuthService from "../services/auth.service";
 import userClubsService from "../services/userclub.service"
 import  $ from "jquery"
 import { Button, Modal } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 class ListQuestions extends Component{
 
     constructor(props) {
@@ -91,11 +93,11 @@ class ListQuestions extends Component{
             <div>
                 <h2 className='text-center'>Questions </h2>
                 <div className='row'>
-                    <table className="table table-striped table-bordered">
+                    <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
                         <thead>
                         <tr>
-                            <th>Question</th>
-                            <th>Action</th>
+                            <th style={{color:"white"}}>Question</th>
+                            <th style={{color:"white"}}>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -103,12 +105,18 @@ class ListQuestions extends Component{
                             this.state.questions.map(
                                 question =>
                                     <tr key ={question.question?.id}>
-                                        <td>{question.question?.ques}</td>
-                                        <td>
-                                            <input type="checkbox" name="inStock[]"  onClick={o=>{this.handleToggle();
-                                            this.getAnswer(question.question.id,"yes",question.question.clubId,question.question.answer)}}/>Yes
-                                            <input type="checkbox" name="inStock[]"  onClick={o=>{this.handleToggle();
-                                                this.getAnswer(question.question.id,"no",question.question.clubId,question.question.answer)}}/>No
+                                        <td style={{color:"white"}}>{question.question?.ques}</td>
+                                        <td style={{color:"white"}}>
+                                            <Row>
+                                                <Col xs={6}>
+                                                    <input  type="checkbox" name="inStock[]"  onClick={o=>{this.handleToggle();
+                                                        this.getAnswer(question.question.id,"yes",question.question.clubId,question.question.answer)}}/>Yes
+                                                </Col>
+                                                <Col xs={6}>
+                                                    <input type="checkbox" name="inStock[]"  onClick={o=>{this.handleToggle();
+                                                        this.getAnswer(question.question.id,"no",question.question.clubId,question.question.answer)}}/>No
+                                                </Col>
+                                            </Row>
                                         </td>
                                     </tr>
                             )
@@ -117,7 +125,7 @@ class ListQuestions extends Component{
                     </table>
                 </div>
                     <Button
-                        className="btn btn-primary"
+                        className="btn btn-outline-light"
                         variant="none"
                         onClick={() => {this.setState({ show: true });this.submit()}}
                     >Submit</Button>

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Rate from "./rate";
-import UserService from "../services/user.service";
 import ClubService from "../services/club.service";
 import AuthService from "../services/auth.service";
 import { VscStarFull } from "react-icons/vsc";
@@ -20,7 +19,8 @@ class ClubPage extends Component {
             showRateBoard: false,
             currentUser: undefined,
             clubId: this.props.match.params.id,
-            comments:[]
+            comments:[],
+            events:[]
         }
     }
 
@@ -39,6 +39,11 @@ class ClubPage extends Component {
 
         ClubService.getComment(this.state.clubId).then((res) =>{
             this.setState({comments: res.data})});
+        ClubService.getEvent(this.state.clubId).then((res) =>{
+            this.setState({events: res.data})});
+        console.log("adsadsa")
+        console.log(this.state.events)
+        console.log(this.state.comments)
     }
 
     render() {
@@ -93,34 +98,26 @@ class ClubPage extends Component {
                 <Col>
                     <Row className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
                         height:290,opacity:0.9,marginTop:0,marginBottom:10}}>
-                        <Card style={{ width: 350, height:250, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
-                            <Card.Body>
-                                <Card.Title>Event Title</Card.Title>
-                                <Card.Text>
-                                    Bla bla Bla bla Bla bla Bla bla
-                                </Card.Text>
-                                <Card.Text>
-                                    Creator (Username)
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Body>
-                                <Button href="#" variant="outline-light">Join Event</Button>
-                            </Card.Body>
-                        </Card>
-                        <Card style={{ width: 350, height:250, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
-                            <Card.Body>
-                                <Card.Title>Event Title</Card.Title>
-                                <Card.Text>
-                                    Bla bla Bla bla Bla bla Bla bla
-                                </Card.Text>
-                                <Card.Text>
-                                    Creator (Username)
-                                </Card.Text>
-                            </Card.Body>
-                            <Card.Body>
-                                <Button href="#" variant="outline-light">Join Event</Button>
-                            </Card.Body>
-                        </Card>
+                        {
+                            this.state.events.map(
+                                event =>
+                                    <Card style={{ width: 350, height:250, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                                        <Card.Body>
+                                            <Card.Title>{event.title}</Card.Title>
+                                            <Card.Text>
+                                                {event.content}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                {event.username}
+                                            </Card.Text>
+                                        </Card.Body>
+                                        <Card.Body>
+                                            <Button href="#" variant="outline-light">Join Event</Button>
+                                        </Card.Body>
+                                    </Card>
+                            )
+                        }
+
                     </Row>
                     <Row>
                         <div className='panel-container' style={{marginTop:0,marginBottom:0,overflowY: "scroll",scrollBehaviour: "smooth",

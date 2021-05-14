@@ -82,7 +82,7 @@ class Rate extends React.Component {
                     <textarea value={this.state.comm} onChange={this.saveComment} placeholder="Leave a comment" style={styles.textarea}/>
                 </Row>
                 <Row>
-                    <Button variant="outline-light" style={{width:150, marginLeft:75}} onClick={this.saveRate} >
+                    <Button variant="outline-light" style={{width:150, margin:"auto"}} onClick={this.saveRate} >
                         Rate Club
                     </Button>
                 </Row>

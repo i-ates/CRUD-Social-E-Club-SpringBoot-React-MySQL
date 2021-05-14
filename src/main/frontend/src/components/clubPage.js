@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
+import { BiCalendarPlus } from "react-icons/bi";
 
 class ClubPage extends Component {
     constructor(props) {
@@ -54,46 +54,46 @@ class ClubPage extends Component {
                     height:600,opacity:0.9,marginTop:0}}>
                     <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                         marginTop:-20,marginLeft:-20,marginRight:-20}}>
-                        <Card.Body>
+                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
                             <Card.Title>Message Title</Card.Title>
                             <Card.Text>
-                                Bla bla Bla bla Bla bla Bla bla
+                                Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla
                             </Card.Text>
                             <Card.Text>
                                 Sender(Username)
                             </Card.Text>
                         </Card.Body>
-                        <Card.Body>
+                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
                             <Button href="#" variant="outline-light">Reply</Button>
                         </Card.Body>
                     </Card>
                     <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                         marginTop:-20,marginLeft:-20,marginRight:-20}}>
-                        <Card.Body>
+                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
                             <Card.Title>Message Title</Card.Title>
                             <Card.Text>
-                                Bla bla Bla bla Bla bla Bla bla
+                                Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla
                             </Card.Text>
                             <Card.Text>
                                 Sender(Username)
                             </Card.Text>
                         </Card.Body>
-                        <Card.Body>
+                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
                             <Button href="#" variant="outline-light">Reply</Button>
                         </Card.Body>
                     </Card>
                     <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                         marginTop:-20,marginLeft:-20,marginRight:-20}}>
-                        <Card.Body>
+                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
                             <Card.Title>Message Title</Card.Title>
                             <Card.Text>
-                                Bla bla Bla bla Bla bla Bla bla
+                                Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla
                             </Card.Text>
                             <Card.Text>
                                 Sender(Username)
                             </Card.Text>
                         </Card.Body>
-                        <Card.Body>
+                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
                             <Button href="#" variant="outline-light">Reply</Button>
                         </Card.Body>
                     </Card>
@@ -104,10 +104,12 @@ class ClubPage extends Component {
                         {
                             this.state.events.map(
                                 event =>
-                                    <Card style={{ width: 350, height:270, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                                    <Card style={{ width: 350, height:200, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                                         marginTop:-20,marginLeft:-20,marginRight:-20}}>
-                                        <Card.Body>
-                                            <Card.Title>{event.title}</Card.Title>
+                                        <Card.Body style={{marginTop:-30,marginLeft:-40,marginRight:-40}}>
+                                            <Card.Title>
+                                                {event.title}
+                                            </Card.Title>
                                             <Card.Text>
                                                 {event.content}
                                             </Card.Text>
@@ -115,8 +117,8 @@ class ClubPage extends Component {
                                                 {event.username}
                                             </Card.Text>
                                         </Card.Body>
-                                        <Card.Body>
-                                            <Button href="#" variant="outline-light" >Join Event</Button>
+                                        <Card.Body style={{marginBottom:-30}}>
+                                            <Button href="#" variant="outline-light" ><BiCalendarPlus/> Join Event <BiCalendarPlus/></Button>
                                         </Card.Body>
                                     </Card>
                             )
@@ -155,14 +157,16 @@ class ClubPage extends Component {
                 </Col>
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
-                        <Button style={{width:150,marginLeft:130,marginBottom:20}} variant="outline-light">Send Message</Button>
+                        <Button style={{width:150,margin:"auto",marginBottom:10}} variant="outline-light">Send Message</Button>
                         <h5 style={{margin:"auto", paddingBottom:15}}>
                             You want to be admin in this sub club?
                         </h5>
                         <Button style={{width:200,margin:"auto",marginBottom:20}} variant="outline-light"  >Request to be an Admin</Button>
                     </Row>
                     <Row style={{marginTop:50}}>
-                        <h3 style={{margin:"auto"}}>Rate Of Club: {this.state.rate.toFixed(1)}</h3>
+                        <h3 style={{margin:"auto"}}>Rate Of Club: {this.state.rate.toFixed(1)}
+                             <VscStarFull style={{color:"yellow",marginBottom:8,marginLeft:2}}/>
+                        </h3>
                         {
                           this.state.showRateBoard && <Rate style={{marginTop:20}} clubId={this.state.clubId} />
                         }

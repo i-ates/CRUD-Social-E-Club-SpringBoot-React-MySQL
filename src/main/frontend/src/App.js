@@ -16,6 +16,8 @@ import ClubPage from "./components/clubPage";
 import Searchbar from "./components/searchbar";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { GiHighFive } from "react-icons/gi";
+import {IoLogOutOutline} from "react-icons/io5";
+import {CgProfile} from "react-icons/cg";
 
 class App extends Component {
   constructor(props) {
@@ -115,8 +117,12 @@ class App extends Component {
                     {currentUser.username}
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item href="/profile">Edit Profile</Dropdown.Item>
-                    <Dropdown.Item href="/home" onClick={this.logOut}>LOGOUT</Dropdown.Item>
+                    <Dropdown.Item href="/profile" style={{color:"#004FB1"}}>
+                      Edit Profile <CgProfile size={18} style={{marginBottom:3,marginRight:5}}/>
+                    </Dropdown.Item>
+                    <Dropdown.Item href="/home" onClick={this.logOut} style={{color:"#004FB1"}}>
+                      LOGOUT <IoLogOutOutline size={18} style={{marginBottom:3,marginRight:5}}/>
+                    </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>

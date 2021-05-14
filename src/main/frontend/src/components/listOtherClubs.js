@@ -4,6 +4,7 @@ import AuthService from "../services/auth.service";
 import {Link} from "react-router-dom";
 import {withRouter} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
+import { RiUserUnfollowFill} from "react-icons/ri";
 
 class listOtherClubs extends Component{
 
@@ -42,7 +43,9 @@ class listOtherClubs extends Component{
                     <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
                         <thead>
                         <tr>
-                            <th style={{color:"white"}}>Club Name</th>
+                            <th style={{color:"white",fontSize:25}}>
+                                 Club Name
+                            </th>
                         </tr>
                         </thead>
 
@@ -52,16 +55,13 @@ class listOtherClubs extends Component{
                                 club =>
                                     <tr key ={club.id}>
                                         <td>
-                                            <Button variant="None" style={{color:"white"}} onClick={() => this.showPage(club.id)} >
-                                                {club.clubName}
+                                            <Button variant="None" style={{color:"white", fontSize:20}} onClick={() => this.showPage(club.id)} >
+                                                <RiUserUnfollowFill size={25} style={{marginBottom:6,marginRight:5}}/> {club.clubName}
                                             </Button>
                                         </td>
-
                                     </tr>
                             )
-
                         }
-
                         </tbody>
                     </table>
                 </div>

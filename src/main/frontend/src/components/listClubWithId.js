@@ -42,8 +42,8 @@ class ListClubWithId extends Component{
                     <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
                         <thead>
                         <tr>
-                            <th style={{color:"white"}}>Club Name</th>
-                            <th style={{color:"white"}}>Id</th>
+                            <th style={{color:"white",fontSize:25}}>Club Name</th>
+                            <th style={{color:"white",fontSize:25}}>Id</th>
                         </tr>
                         </thead>
 
@@ -53,11 +53,11 @@ class ListClubWithId extends Component{
                                 club =>
                                     <tr key ={club.id}>
                                         <td>
-                                            <Button variant="None" style={{color:"white"}} onClick={() => this.showPage(club.id)} >
+                                            <Button variant="None" style={{color:"white",fontSize:20}} onClick={() => this.showPage(club.id)} >
                                                 {club.clubName}
                                             </Button>
                                         </td>
-                                        <td style={{color:"white"}}>
+                                        <td style={{color:"white",fontSize:20}}>
                                             {club.id}
                                         </td>
                                     </tr>

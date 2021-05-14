@@ -52,7 +52,8 @@ class ClubPage extends Component {
                 <Row>
                 <Col className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
                     height:600,opacity:0.9,marginTop:0}}>
-                    <Card style={{ width: 485, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
                         <Card.Body>
                             <Card.Title>Message Title</Card.Title>
                             <Card.Text>
@@ -66,7 +67,8 @@ class ClubPage extends Component {
                             <Button href="#" variant="outline-light">Reply</Button>
                         </Card.Body>
                     </Card>
-                    <Card style={{ width: 485, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
                         <Card.Body>
                             <Card.Title>Message Title</Card.Title>
                             <Card.Text>
@@ -80,7 +82,8 @@ class ClubPage extends Component {
                             <Button href="#" variant="outline-light">Reply</Button>
                         </Card.Body>
                     </Card>
-                    <Card style={{ width: 485, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
                         <Card.Body>
                             <Card.Title>Message Title</Card.Title>
                             <Card.Text>
@@ -97,11 +100,12 @@ class ClubPage extends Component {
                 </Col>
                 <Col>
                     <Row className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
-                        height:290,opacity:0.9,marginTop:0,marginBottom:10}}>
+                        height:290,opacity:0.9,marginTop:0,marginBottom:10, maxWidth:377}}>
                         {
                             this.state.events.map(
                                 event =>
-                                    <Card style={{ width: 350, height:250, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50}}>
+                                    <Card style={{ width: 350, height:270, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
                                         <Card.Body>
                                             <Card.Title>{event.title}</Card.Title>
                                             <Card.Text>
@@ -112,7 +116,7 @@ class ClubPage extends Component {
                                             </Card.Text>
                                         </Card.Body>
                                         <Card.Body>
-                                            <Button href="#" variant="outline-light">Join Event</Button>
+                                            <Button href="#" variant="outline-light" >Join Event</Button>
                                         </Card.Body>
                                     </Card>
                             )
@@ -121,7 +125,7 @@ class ClubPage extends Component {
                     </Row>
                     <Row>
                         <div className='panel-container' style={{marginTop:0,marginBottom:0,overflowY: "scroll",scrollBehaviour: "smooth",
-                            height:300,opacity:0.9 ,width:500}}>
+                            height:300,opacity:0.9 , maxWidth:377}}>
                             <h2 className='text-center'>Comments </h2>
                             <table className="table table-striped table-bordered" style={{color:"white", backgroundColor: "#05082B",opacity: 0.8}}>
                                 <thead>
@@ -151,15 +155,14 @@ class ClubPage extends Component {
                 </Col>
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
-                        <Button style={{width:150,marginLeft:189,marginBottom:20}} variant="outline-light">Send Message</Button>
-                        <h5 style={{marginLeft:90, paddingBottom:15}}>
+                        <Button style={{width:150,marginLeft:130,marginBottom:20}} variant="outline-light">Send Message</Button>
+                        <h5 style={{margin:"auto", paddingBottom:15}}>
                             You want to be admin in this sub club?
                         </h5>
-                        <Button style={{width:200,marginLeft:165,marginBottom:20}} variant="outline-light"  >Request to be an Admin</Button>
+                        <Button style={{width:200,margin:"auto",marginBottom:20}} variant="outline-light"  >Request to be an Admin</Button>
                     </Row>
-                    <Row>
-                        <h3 style={{marginLeft:185}}>Rate Of Club</h3>
-                        <h4 style={{marginLeft:-95, marginTop:50}}>{this.state.rate.toFixed(1)}</h4>
+                    <Row style={{marginTop:50}}>
+                        <h3 style={{margin:"auto"}}>Rate Of Club: {this.state.rate.toFixed(1)}</h3>
                         {
                           this.state.showRateBoard && <Rate style={{marginTop:20}} clubId={this.state.clubId} />
                         }

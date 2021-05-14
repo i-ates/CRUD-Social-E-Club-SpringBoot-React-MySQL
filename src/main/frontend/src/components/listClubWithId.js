@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import UserService from "../services/user.service";
 import {Link, withRouter} from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import AuthService from "../services/auth.service";
 
 class ListClubWithId extends Component{
 
@@ -9,9 +10,17 @@ class ListClubWithId extends Component{
         super(props);
 
         this.state = {
-            clubs: []
+            clubs: [],
+            flag: true
         }
-        this.showPage = this.showPage.bind(this);
+        const currentUser = AuthService.getCurrentUser();
+        console.log(currentUser);
+        let json= {"id":currentUser.id};
+        console.log(currentUser.id)
+        UserService.getUserClubs(currentUser.id).then((res) =>{
+            this.setState({clubs: res.data});
+        }).catch(err=>
+            console.log(err.response.data)) ;
     }
 
 
@@ -21,8 +30,10 @@ class ListClubWithId extends Component{
         });
     }
     showPage(id) {
-        this.props.history.push(`/club-page/${id}`);
+        //this.props.history.push(`/club-page/${id}`);
+        this.props.history.push(`/club-page/${id}`, this.state.flag);
     }
+
     render() {
         return (
             <div style={{marginTop:50}}>

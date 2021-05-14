@@ -74,7 +74,7 @@ class Rate extends React.Component {
         const { rating } = this.state;
 
         return (
-            <div style={{marginLeft:130}}>
+            <div style={{margin:"auto"}}>
                 <Row style={{marginLeft:100}}>
                     <StarRatingComponent name="rate1" starCount={5} value={rating} onStarClick={this.onStarClick.bind(this)}/>
                 </Row>

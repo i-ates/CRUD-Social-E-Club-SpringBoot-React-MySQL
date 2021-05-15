@@ -84,7 +84,6 @@ class ListQuestions extends Component{
             }
         }
     }
-
     navigate(){
         this.props.history.push("/home");
         window.location.reload();
@@ -106,6 +105,7 @@ class ListQuestions extends Component{
                             this.state.questions.map(
                                 question =>
                                     <tr key ={question.question?.id}>
+                                        <td style={{color:"white"}}>{question.question?.ques}</td>
                                         <td style={{color:"white"}}>
                                             <Row>
                                                 <Col xs={6}>
@@ -119,7 +119,6 @@ class ListQuestions extends Component{
                                             </Row>
                                         </td>
                                     </tr>
-
                             )
                         }
                         </tbody>

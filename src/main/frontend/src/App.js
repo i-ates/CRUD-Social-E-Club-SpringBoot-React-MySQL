@@ -18,6 +18,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { GiHighFive } from "react-icons/gi";
 import {IoLogOutOutline} from "react-icons/io5";
 import {CgProfile} from "react-icons/cg";
+import SendMessage from "./components/sendMessage";
 
 class App extends Component {
   constructor(props) {
@@ -156,6 +157,7 @@ class App extends Component {
             <Route path="/questions" component={listQuestion} />
             <Route path="/getuserclubs" component={listMyClubs}/>
             <Route path="/club-page/:id" component={ClubPage}/>
+            <Route path="/sendmessage" component={SendMessage}/>
 
           </Switch>
         </div>

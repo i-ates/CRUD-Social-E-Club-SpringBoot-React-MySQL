@@ -6,6 +6,8 @@ public class RateRequest {
     @NotBlank
     private Long userId;
     @NotBlank
+    private String userName;
+    @NotBlank
     private Long clubId;
     @NotBlank
     private String comment;
@@ -15,8 +17,9 @@ public class RateRequest {
     public RateRequest() {
     }
 
-    public RateRequest(@NotBlank Long userId, @NotBlank Long clubId, @NotBlank String comment, @NotBlank double rate) {
+    public RateRequest(@NotBlank Long userId,@NotBlank String userName, @NotBlank Long clubId, @NotBlank String comment, @NotBlank double rate) {
         this.userId = userId;
+        this.userName = userName;
         this.clubId = clubId;
         this.comment = comment;
         this.rate = rate;
@@ -28,6 +31,14 @@ public class RateRequest {
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public long getClubId() {

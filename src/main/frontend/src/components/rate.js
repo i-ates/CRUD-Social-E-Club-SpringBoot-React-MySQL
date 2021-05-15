@@ -61,7 +61,7 @@ class Rate extends React.Component {
 
     saveRate = async (e) => {
         const currentUser = AuthService.getCurrentUser();
-        ClubService.createRate(currentUser.id, this.props.clubId, this.state.comm, this.state.rating).then();
+        ClubService.createRate(currentUser.id, this.props.username, this.props.clubId, this.state.comm, this.state.rating).then();
         await this.timeout(2000);
         window.location.reload();
     }

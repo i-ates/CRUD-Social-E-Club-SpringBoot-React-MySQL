@@ -43,7 +43,7 @@ public class RateController {
     @PostMapping("/test/createrate")
     public ResponseEntity<?> createRate(@Valid @RequestBody RateRequest rateRequest){
         if ( rateRepository.findByIdAndClubId(rateRequest.getClubId(), rateRequest.getUserId()) == 0){
-            Rate rate = new Rate(rateRequest.getUserId(), rateRequest.getClubId(), rateRequest.getRate(),
+            Rate rate = new Rate(rateRequest.getUserId(), rateRequest.getUserName(), rateRequest.getClubId(), rateRequest.getRate(),
                     rateRequest.getComment());
             rateRepository.save(rate);
             return ResponseEntity.ok("rate added");

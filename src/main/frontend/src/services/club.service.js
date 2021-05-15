@@ -29,9 +29,10 @@ class ClubService{
         return axios.delete(API_URL+"deleteuserclubs"+"/"+clubId);
     }
 
-    createRate(userId, clubId, comment, rate){
+    createRate(userId, username, clubId, comment, rate){
         return axios.post(API_URL+"createrate",
             {userId:userId,
+                userName:username,
             clubId:clubId,
             comment:comment,
             rate:rate});

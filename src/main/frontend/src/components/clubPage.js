@@ -21,16 +21,19 @@ class ClubPage extends Component {
             currentUser: undefined,
             clubId: this.props.match.params.id,
             comments:[],
-            events:[]
+            events:[],
+            username:""
         }
     }
 
     componentDidMount() {
         const user = AuthService.getCurrentUser();
+        //this.setState({nickname: user.username})
 
         if (user && this.props.location.state) {
             this.setState({
                 currentUser: user,
+                username: user.username,
                 showRateBoard: user.roles.includes("ROLE_USER"),
             });
         }
@@ -45,6 +48,7 @@ class ClubPage extends Component {
         console.log("adsadsa")
         console.log(this.state.events)
         console.log(this.state.comments)
+
     }
 
     showMessage() {
@@ -137,7 +141,7 @@ class ClubPage extends Component {
                             <table className="table table-striped table-bordered" style={{color:"white", backgroundColor: "#05082B",opacity: 0.8}}>
                                 <thead>
                                 <tr>
-                                    <th>User Id</th>
+                                    <th>Username</th>
                                     <th>Users Comment</th>
                                     <th>Rate</th>
                                 </tr>
@@ -147,7 +151,7 @@ class ClubPage extends Component {
                                     this.state.comments.map(
                                         comment =>
                                             <tr key ={comment.id}>
-                                                <th>{comment.userId}</th>
+                                                <th>{comment.userName}</th>
                                                 <th>{comment.comment}</th>
                                                 <th>
                                                     {comment.rate} <VscStarFull style={{color:"yellow",marginBottom:5}}/>
@@ -173,7 +177,8 @@ class ClubPage extends Component {
                              <VscStarFull style={{color:"yellow",marginBottom:8,marginLeft:2}}/>
                         </h3>
                         {
-                          this.state.showRateBoard && <Rate style={{marginTop:20}} clubId={this.state.clubId} />
+                          this.state.showRateBoard && <Rate style={{marginTop:20}} clubId={this.state.clubId}
+                                                            username={this.state.username} />
                         }
                     </Row>
                 </Col>

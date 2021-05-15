@@ -16,6 +16,9 @@ public class Rate {
     @Column(name="user_id")
     private Long userId;
 
+    @Column(name="username")
+    private String userName;
+
     @Column(name="club_id")
     private Long clubId;
 
@@ -28,8 +31,9 @@ public class Rate {
     public Rate() {
     }
 
-    public Rate(Long userId, Long clubId, double rate, String comment) {
+    public Rate(Long userId, String userName, Long clubId, double rate, String comment) {
         this.userId = userId;
+        this.userName = userName;
         this.clubId = clubId;
         this.rate = rate;
         this.comment = comment;

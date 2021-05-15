@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {withRouter} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { RiUserUnfollowFill} from "react-icons/ri";
+import Row from "react-bootstrap/Row";
 
 class listOtherClubs extends Component{
 
@@ -17,6 +18,7 @@ class listOtherClubs extends Component{
         }
 
         this.showPage = this.showPage.bind(this);
+        this.solveQuestion = this.solveQuestion.bind(this);
     }
 
 
@@ -33,6 +35,10 @@ class listOtherClubs extends Component{
 
     showPage(id) {
         this.props.history.push(`/club-page/${id}`, this.state.flag);
+    }
+
+    solveQuestion = (name, id) =>{
+        this.props.history.push('/subclub-questions/'+name, id);
     }
 
     render() {
@@ -58,6 +64,11 @@ class listOtherClubs extends Component{
                                             <Button variant="None" style={{color:"white", fontSize:20}} onClick={() => this.showPage(club.id)} >
                                                 <RiUserUnfollowFill size={25} style={{marginBottom:6,marginRight:5}}/> {club.clubName}
                                             </Button>
+                                            <Row>
+                                                <Button variant="None" style={{color:"white", fontSize:15}} onClick={() => this.solveQuestion(club.clubName, club.clubId)} >
+                                                    <RiUserUnfollowFill size={25} style={{marginBottom:6,marginRight:5}}/> Join SubClub
+                                                </Button>
+                                            </Row>
                                         </td>
                                     </tr>
                             )

@@ -58,9 +58,9 @@ class ListQuestions extends Component{
                 answers: this.state.answers.concat([answer])
             })
         }else{
-           this.setState({
-               answers:this.state.answers.map(el=>(el.id===id ? Object.assign({},el,answer):el))
-           })
+            this.setState({
+                answers:this.state.answers.map(el=>(el.id===id ? Object.assign({},el,answer):el))
+            })
         }
     }
     submit(){
@@ -84,6 +84,7 @@ class ListQuestions extends Component{
             }
         }
     }
+
     navigate(){
         this.props.history.push("/home");
         window.location.reload();
@@ -105,7 +106,6 @@ class ListQuestions extends Component{
                             this.state.questions.map(
                                 question =>
                                     <tr key ={question.question?.id}>
-                                        <td style={{color:"white"}}>{question.question?.ques}</td>
                                         <td style={{color:"white"}}>
                                             <Row>
                                                 <Col xs={6}>
@@ -119,34 +119,35 @@ class ListQuestions extends Component{
                                             </Row>
                                         </td>
                                     </tr>
+
                             )
                         }
                         </tbody>
                     </table>
                 </div>
-                    <Button
-                        className="btn btn-outline-light"
-                        variant="none"
-                        onClick={() => {this.setState({ show: true });this.submit()}}
-                    >Submit</Button>
-                    <Modal
-                        show={this.state.show}
-                        animation={true}
-                        size="md" className=" shadow-lg border">
-          <Modal.Header className="modal-header">
-            <Modal.Title className="text-center">
-              <h5>Answer Saved</h5>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body className="py-0 border">
-            You are navigated to "MyClubs"
-          </Modal.Body>
-<Modal.Footer className="py-1 d-flex justify-content-center">
-              <div>
-                <Button  className="mx-2 px-3" onClick={()=>this.navigate()}>Okay</Button>
-              </div>
-            </Modal.Footer>
-        </Modal>
+                <Button
+                    className="btn btn-outline-light"
+                    variant="none"
+                    onClick={() => {this.setState({ show: true });this.submit()}}
+                >Submit</Button>
+                <Modal
+                    show={this.state.show}
+                    animation={true}
+                    size="md" className=" shadow-lg border">
+                    <Modal.Header className="modal-header">
+                        <Modal.Title className="text-center">
+                            <h5>Answer Saved</h5>
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="py-0 border">
+                        You are navigated to "MyClubs"
+                    </Modal.Body>
+                    <Modal.Footer className="py-1 d-flex justify-content-center">
+                        <div>
+                            <Button  className="mx-2 px-3" onClick={()=>this.navigate()}>Okay</Button>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
             </div>
         )
     }

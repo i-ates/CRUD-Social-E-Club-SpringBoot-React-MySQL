@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import AuthService from "../services/auth.service";
+import Card from "react-bootstrap/Card";
 
 class createClub extends Component {
 
@@ -20,6 +22,7 @@ class createClub extends Component {
             answer1: '',
             answer2: '',
             answer3: '',
+            offers:[]
         }
 
         this.changeClubName = this.changeClubName.bind(this);
@@ -30,6 +33,13 @@ class createClub extends Component {
         this.changeAnswer2 = this.changeAnswer2.bind(this);
         this.changeAnswer3 = this.changeAnswer3.bind(this);
         this.saveClub = this.saveClub.bind(this);
+    }
+
+    componentDidMount() {
+
+        ClubService.getAllOffers().then((res) =>{
+            this.setState({offers: res.data})});
+
     }
 
     changeClubName = (event) =>{
@@ -76,26 +86,31 @@ class createClub extends Component {
         return new Promise( res => setTimeout(res, delay) );
     }
 
+    deleteTask(i) {
+        const messages = this.state.messages.filter((_, index) => index !== i)
+        this.setState({ messages });
+    }
+
 
     render() {
         return (
             <div>
                 <div  className="panel-container">
                     <Row style={{marginTop:50}}>
-                        <Col xs lg="3">
-                            <Row style={{marginLeft:10}}>
-                                Requested Club
-                            </Row>
-                            <Row style={{marginTop:50,marginLeft:10}}>
-                                Request 1
-                            </Row>
-                            <Row style={{marginTop:10,marginLeft:10}}>
-                                Request 2
-                            </Row>
-                            <Row style={{marginTop:10,marginLeft:10}}>
-                                Request 3
-                            </Row>
-                        </Col>
+                        {
+                            this.state.offers.map(
+                                offer =>
+                                    <Card style={{ width: 300, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
+                                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
+                                            <Card.Title>{offer.userName}</Card.Title>
+                                            <Card.Text>
+                                                {offer.offer}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                            )
+                        }
                         <Col>
                             <Row>
                                 <Col>

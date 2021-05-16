@@ -50,6 +50,18 @@ class ClubService{
         return axios.get(API_URL+"events/fetch"+"/"+clubId);
     }
 
+    createSubClubRequest(userId, username, offer){
+        return axios.post(API_URL+"createsubclubrequest", {
+            userId:userId,
+            userName:username,
+            offer:offer
+        });
+    }
+
+    getAllOffers(){
+        return axios.get(API_URL+"subclubrequest");
+    }
+
 }
 
 export default new ClubService();

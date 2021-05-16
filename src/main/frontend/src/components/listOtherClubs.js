@@ -6,6 +6,9 @@ import {withRouter} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { RiUserUnfollowFill} from "react-icons/ri";
 import Row from "react-bootstrap/Row";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import ClubService from "../services/club.service";
 
 class listOtherClubs extends Component{
 
@@ -14,11 +17,14 @@ class listOtherClubs extends Component{
 
         this.state = {
             clubs: [],
-            flag: false
+            flag: false,
+            offerSubClub:''
         }
 
         this.showPage = this.showPage.bind(this);
         this.solveQuestion = this.solveQuestion.bind(this);
+        this.offerClub = this.offerClub.bind(this);
+        this.saveOffer = this.saveOffer.bind(this);
     }
 
 
@@ -39,6 +45,18 @@ class listOtherClubs extends Component{
 
     solveQuestion(subClubId, name) {
         this.props.history.push(`/subclub-questions/${subClubId}`,name);
+    }
+
+    offerClub = (event) =>{
+        this.setState({offerSubClub: event.target.value});
+    }
+
+    saveOffer = (e) =>{
+        e.preventDefault();
+
+        const currentUser = AuthService.getCurrentUser();
+        ClubService.createSubClubRequest(currentUser.id, currentUser.username, this.state.offerSubClub).then();
+        window.location.reload();
     }
 
     render() {
@@ -76,8 +94,29 @@ class listOtherClubs extends Component{
                         </tbody>
                     </table>
                 </div>
+                <div>
+                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
+                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
+                            <Card.Title>Are There Any Suggestions about a New Club?</Card.Title>
+                            <Card.Text>
+                                (Note:Please enter a single club name otherwise, we can not consider your offer.)
+                            </Card.Text>
+                            <Row>
+                                <Col>
+                                    <input placeholder="Club Name" name="clubName" className="form-control"
+                                           value={this.state.offerSubClub} onChange={this.offerClub}/>
+                                </Col>
+                            </Row>
+                        </Card.Body>
+                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
+                            <Button href="#" variant="outline-light" onClick={this.saveOffer}>Offer a New Club</Button>
+                        </Card.Body>
+                    </Card>
+                </div>
 
             </div>
+
         )
     }
 

@@ -81,3 +81,11 @@ select option:focus {
   padding: 40px;
   color: white;
 }
+
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}

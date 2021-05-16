@@ -18,6 +18,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { GiHighFive } from "react-icons/gi";
 import {IoLogOutOutline} from "react-icons/io5";
 import {CgProfile} from "react-icons/cg";
+import Button from "react-bootstrap/Button";
 import SendMessage from "./components/sendMessage";
 import SubclubQuestions from "./components/subclubQuestions";
 
@@ -109,7 +110,12 @@ class App extends Component {
           </div>
 
           <div>
-            <Searchbar/>
+            <Link to={"/search"} className="nav-link" style={{color:"white"}}>
+              <Button variant="outline-light" style={{width:300}}>
+                Search
+              </Button>
+          </Link>
+
           </div>
 
           {currentUser ? (
@@ -150,6 +156,7 @@ class App extends Component {
 
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/search" component={Searchbar} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             {/*<Route path="/user" component={BoardUser} />*/}

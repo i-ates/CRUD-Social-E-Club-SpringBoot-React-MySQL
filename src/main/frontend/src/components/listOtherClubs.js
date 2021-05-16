@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {withRouter} from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import { RiUserUnfollowFill} from "react-icons/ri";
+import { AiOutlinePlus} from "react-icons/ai";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
@@ -61,10 +62,11 @@ class listOtherClubs extends Component{
 
     render() {
         return (
-            <div style={{marginTop:50}}>
-                <h2>Other Clubs </h2>
-                <div>
-                    <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
+            <Row style={{marginTop:50}}>
+
+                <Col style={{marginRight:20}}>
+                    <h2>Other Clubs </h2>
+                    <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8,width:900}}>
                         <thead>
                         <tr>
                             <th style={{color:"white",fontSize:25}}>
@@ -79,22 +81,21 @@ class listOtherClubs extends Component{
                                 club =>
                                     <tr key ={club.id}>
                                         <td>
+
                                             <Button variant="None" style={{color:"white", fontSize:20}} onClick={() => this.showPage(club.id)} >
                                                 <RiUserUnfollowFill size={25} style={{marginBottom:6,marginRight:5}}/> {club.clubName}
                                             </Button>
-                                            <Row>
-                                                <Button variant="None" style={{color:"white", fontSize:15}} onClick={() => this.solveQuestion(club.id, club.clubName)} >
-                                                    <RiUserUnfollowFill size={25} style={{marginBottom:6,marginRight:5}}/> Join to {club.clubName}
-                                                </Button>
-                                            </Row>
+                                            <Button variant="None" style={{color:"white", fontSize:15, marginLeft:40}} onClick={() => this.solveQuestion(club.id, club.clubName)} >
+                                                <AiOutlinePlus size={25} style={{marginBottom:6,marginRight:5}}/> Join to {club.clubName}
+                                            </Button>
                                         </td>
                                     </tr>
                             )
                         }
                         </tbody>
                     </table>
-                </div>
-                <div>
+                </Col>
+                <Col style={{marginTop:60}}>
                     <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                         marginTop:-20,marginLeft:-20,marginRight:-20}}>
                         <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
@@ -113,9 +114,9 @@ class listOtherClubs extends Component{
                             <Button href="#" variant="outline-light" onClick={this.saveOffer}>Offer a New Club</Button>
                         </Card.Body>
                     </Card>
-                </div>
+                </Col>
 
-            </div>
+            </Row>
 
         )
     }

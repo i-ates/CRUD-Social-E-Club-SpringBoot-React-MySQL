@@ -37,8 +37,8 @@ class listOtherClubs extends Component{
         this.props.history.push(`/club-page/${id}`, this.state.flag);
     }
 
-    solveQuestion = (name, id) =>{
-        this.props.history.push('/subclub-questions/'+name, id);
+    solveQuestion(subClubId, name) {
+        this.props.history.push(`/subclub-questions/${subClubId}`,name);
     }
 
     render() {
@@ -65,8 +65,8 @@ class listOtherClubs extends Component{
                                                 <RiUserUnfollowFill size={25} style={{marginBottom:6,marginRight:5}}/> {club.clubName}
                                             </Button>
                                             <Row>
-                                                <Button variant="None" style={{color:"white", fontSize:15}} onClick={() => this.solveQuestion(club.clubName, club.clubId)} >
-                                                    <RiUserUnfollowFill size={25} style={{marginBottom:6,marginRight:5}}/> Join SubClub
+                                                <Button variant="None" style={{color:"white", fontSize:15}} onClick={() => this.solveQuestion(club.id, club.clubName)} >
+                                                    <RiUserUnfollowFill size={25} style={{marginBottom:6,marginRight:5}}/> Join to {club.clubName}
                                                 </Button>
                                             </Row>
                                         </td>

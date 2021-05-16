@@ -22,6 +22,9 @@ class UserService {
   getQuestion(){
     return axios.get("http://localhost:8080/api/questions",{headers:authHeader()});
   }
+  getSubClubQuestions(clubId){
+    return axios.get("http://localhost:8080/api/test/subclubquestions"+"/"+clubId);
+  }
   getClubs(){
     return axios.get("http://localhost:8080/api/test/clubs");
   }

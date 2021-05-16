@@ -19,6 +19,7 @@ import { GiHighFive } from "react-icons/gi";
 import {IoLogOutOutline} from "react-icons/io5";
 import {CgProfile} from "react-icons/cg";
 import SendMessage from "./components/sendMessage";
+import SubclubQuestions from "./components/subclubQuestions";
 
 class App extends Component {
   constructor(props) {
@@ -145,7 +146,7 @@ class App extends Component {
         </nav>
 
         <div style={{marginTop:40,marginLeft:20,marginRight:20,color:"white"}}>
-          <Switch> localhost:3000/club-page/
+          <Switch>
 
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
@@ -158,6 +159,7 @@ class App extends Component {
             <Route path="/getuserclubs" component={listMyClubs}/>
             <Route path="/club-page/:id" component={ClubPage}/>
             <Route path="/sendmessage" component={SendMessage}/>
+            <Route path="/subclub-questions/:id" component={SubclubQuestions}/>
 
           </Switch>
         </div>

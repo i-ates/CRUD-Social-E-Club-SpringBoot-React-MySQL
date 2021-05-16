@@ -28,7 +28,6 @@ class ClubPage extends Component {
 
     componentDidMount() {
         const user = AuthService.getCurrentUser();
-        //this.setState({nickname: user.username})
 
         if (user && this.props.location.state) {
             this.setState({

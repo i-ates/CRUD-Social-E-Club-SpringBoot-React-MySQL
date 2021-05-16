@@ -8,9 +8,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-    Question findById(long id);
+
+    @Query("SELECT q FROM Question as q WHERE q.clubId = :id")
+    List<Question> findById(long id);
 
     @Transactional
     @Modifying

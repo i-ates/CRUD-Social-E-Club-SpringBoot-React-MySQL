@@ -34,6 +34,12 @@ public class QuestionController {
         return questionRepository.findAll();
     }
 
+    @GetMapping("/test/subclubquestions/{id}")
+    //@PreAuthorize("hasRole('USER')")
+    public List<Question> getSubClubQuestions(@PathVariable long id){
+        return questionRepository.findById(id);
+    }
+
     @PostMapping("/test/createquestion")
     public ResponseEntity<?> createQuestions(@Valid @RequestBody CreateQuestionRequest createQuestionRequest){
             Question q = new Question(createQuestionRequest.getQues(),createQuestionRequest.getAnswer(),

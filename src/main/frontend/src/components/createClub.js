@@ -16,6 +16,7 @@ class createClub extends Component {
 
         this.state = {
             clubName: '',
+            subClubName: '',
             question1: '',
             question2: '',
             question3: '',
@@ -26,6 +27,7 @@ class createClub extends Component {
         }
 
         this.changeClubName = this.changeClubName.bind(this);
+        this.changeSubClubName = this.changeSubClubName.bind(this);
         this.changeQuestion1 = this.changeQuestion1.bind(this);
         this.changeQuestion2 = this.changeQuestion2.bind(this);
         this.changeQuestion3 = this.changeQuestion3.bind(this);
@@ -45,7 +47,9 @@ class createClub extends Component {
     changeClubName = (event) =>{
         this.setState({clubName: event.target.value});
     }
-
+    changeSubClubName = (event) =>{
+        this.setState({subClubName: event.target.value});
+    }
     changeQuestion1 = (event) =>{
         this.setState({question1: event.target.value});
     }
@@ -74,6 +78,7 @@ class createClub extends Component {
         e.preventDefault();
 
         await ClubService.createClub(this.state.clubName);
+        await ClubService.createSubClub(this.state.subClubName, this.state.clubName);
         await this.timeout(1000);
         ClubService.createQuestion(this.state.question1, this.state.answer1, this.state.clubName).then();
         ClubService.createQuestion(this.state.question2, this.state.answer2, this.state.clubName).then();
@@ -95,30 +100,39 @@ class createClub extends Component {
     render() {
         return (
             <div>
-                <div  className="panel-container">
-                    <Row style={{marginTop:50}}>
-                        {
-                            this.state.offers.map(
-                                offer =>
-                                    <Card style={{ width: 300, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
-                                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
-                                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
-                                            <Card.Title>{offer.userName}</Card.Title>
-                                            <Card.Text>
-                                                {offer.offer}
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                            )
-                        }
-                        <Col>
+                <div  >
+                    <Row >
+                        <Col className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
+                            height:400,opacity:0.9,maxWidth: 350,marginRight:40}}>
+                            {
+                                this.state.offers.map(
+                                    offer =>
+                                        <Card style={{height:80, width: 300, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                                            marginTop:-20,marginLeft:-20,marginRight:-20}}>
+                                            <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
+                                                <Card.Title>{offer.userName}</Card.Title>
+                                                <Card.Text>
+                                                    {offer.offer}
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Card>
+                                )
+                            }
+                        </Col>
+
+                        <Col className="panel-container" style={{opacity:0.9}}>
                             <Row>
                                 <Col>
                                     <input placeholder="Club Name" name="clubName" className="form-control"
                                            value={this.state.clubName} onChange={this.changeClubName}/>
                                 </Col>
                             </Row>
-
+                            <Row style={{marginTop:10}}>
+                                <Col>
+                                    <input placeholder="Sub Club Name" name="clubName" className="form-control"
+                                           value={this.state.subClubName} onChange={this.changeSubClubName}/>
+                                </Col>
+                            </Row>
                             <Row style={{marginTop:50}}>
                                 <Col>
                                     <input placeholder="Question1" name="question" className="form-control"

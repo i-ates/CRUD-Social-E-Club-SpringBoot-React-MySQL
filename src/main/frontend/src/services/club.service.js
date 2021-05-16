@@ -9,7 +9,10 @@ class ClubService{
             {clubName});
 
     }
-
+    createSubClub(sCName, cName){
+        return axios.post(API_URL+"createsubclub",
+            {subClubName:sCName,clubName:cName});
+    }
     createQuestion(question, answ, cName){
         return axios.post(API_URL+"createquestion",
             {ques:question,

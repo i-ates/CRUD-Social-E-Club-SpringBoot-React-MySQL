@@ -64,6 +64,10 @@ class ClubService{
     getAllOffers(){
         return axios.get(API_URL+"subclubrequest");
     }
+    getMessages(clubid,userid){
+        return axios.post("http://localhost:8080/api/messages/fetch/"+clubid+"/"+userid
+        );
+    }
 
 }
 

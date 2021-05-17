@@ -22,6 +22,7 @@ class ClubPage extends Component {
             clubId: this.props.match.params.id,
             comments:[],
             events:[],
+            messages:[],
             username:""
         }
     }
@@ -44,9 +45,13 @@ class ClubPage extends Component {
             this.setState({comments: res.data})});
         ClubService.getEvent(this.state.clubId).then((res) =>{
             this.setState({events: res.data})});
-        console.log("adsadsa")
-        console.log(this.state.events)
-        console.log(this.state.comments)
+        if (user){
+            ClubService.getMessages(this.state.clubId,user.id).then((res) =>
+                this.setState({messages: res.data}));
+        }else{
+            ClubService.getMessages(this.state.clubId,-1).then((res) =>
+                this.setState({messages: res.data}));
+        }
 
     }
 
@@ -58,54 +63,31 @@ class ClubPage extends Component {
         return (
             <div>
                 <Row>
-                <Col className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
-                    height:600,opacity:0.9,marginTop:0}}>
-                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
-                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
-                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
-                            <Card.Title>Message Title</Card.Title>
-                            <Card.Text>
-                                Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla
-                            </Card.Text>
-                            <Card.Text>
-                                Sender(Username)
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
-                            <Button href="#" variant="outline-light">Reply</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
-                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
-                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
-                            <Card.Title>Message Title</Card.Title>
-                            <Card.Text>
-                                Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla
-                            </Card.Text>
-                            <Card.Text>
-                                Sender(Username)
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
-                            <Button href="#" variant="outline-light">Reply</Button>
-                        </Card.Body>
-                    </Card>
-                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
-                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
-                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
-                            <Card.Title>Message Title</Card.Title>
-                            <Card.Text>
-                                Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla Bla bla
-                            </Card.Text>
-                            <Card.Text>
-                                Sender(Username)
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
-                            <Button href="#" variant="outline-light">Reply</Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
+                    <Col className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
+                        height:600,opacity:0.9,marginTop:0}}>
+
+                        {
+                            this.state.messages.map(
+                                message =>
+                                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
+                                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
+                                            <Card.Title>{message.title}</Card.Title>
+                                            <Card.Text>
+                                                {message.content}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                Sender: {message.username}
+                                            </Card.Text>
+                                        </Card.Body>
+                                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
+                                            <Button href="#" variant="outline-light">Reply</Button>
+                                        </Card.Body>
+                                    </Card>
+                            )
+                        }
+
+                    </Col>
                 <Col>
                     <Row className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
                         height:290,opacity:0.9,marginTop:0,marginBottom:10, maxWidth:377}}>

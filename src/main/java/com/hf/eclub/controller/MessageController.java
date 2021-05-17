@@ -55,12 +55,11 @@ public class MessageController {
     }
 
 
-    @GetMapping("/fetch/{id}")
-    public List<Map<String,Object>> getMessagesByClub(@PathVariable long id,
-                                           @Valid @RequestBody CurrentUserIdRequest userIdRequest){
+    @PostMapping("/fetch/{id}/{userid}")
+    public List<Map<String,Object>> getMessagesByClub(@PathVariable long id,@PathVariable long userid){
 
-        if (userIdRequest.getUserId() == null ) { userIdRequest.setUserId(-1L); }
-        List<UserClubs> userEnrollment = userClubsRepository.findByClubIdAndUserId(id, userIdRequest.getUserId());
+
+        List<UserClubs> userEnrollment = userClubsRepository.findByClubIdAndUserId(id, userid);
         List<Message> listOfMessages;
 
         if (userEnrollment.size() > 0){

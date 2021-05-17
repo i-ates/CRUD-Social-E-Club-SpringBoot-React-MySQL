@@ -169,14 +169,12 @@ export default class Profile extends Component {
                                   {
                                     this.state.users.map(
                                         user =>
-                                            <tr key ={user.id}>
-                                              <td>{user.roles.map(
-                                                  role =>
-                                                      <tr key ={role}>
-                                                        <td>{role.name}</td>
-                                                      </tr>
-                                              )}</td>
-                                            </tr>
+                                            <td>{user.roles.map(
+                                                role =>
+                                                    <div>
+                                                      {role.name}
+                                                    </div>
+                                            )}</td>
                                     )
                                   }
                                   </tbody>

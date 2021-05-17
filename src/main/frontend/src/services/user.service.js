@@ -28,6 +28,10 @@ class UserService {
   getClubs(){
     return axios.get("http://localhost:8080/api/test/clubs");
   }
+  getCommonUsers(userId){
+    return axios.get(API_URL +"getcommonusers"+"/"+userId);
+  }
+
   getUserClubs(userid){
     return axios.post("http://localhost:8080/api/test/getuserclubs", {
       id:userid

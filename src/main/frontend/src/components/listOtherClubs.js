@@ -106,7 +106,8 @@ class listOtherClubs extends Component{
                             <Row>
                                 <Col>
                                     <input placeholder="Club Name" name="clubName" className="form-control"
-                                           value={this.state.offerSubClub} onChange={this.offerClub}/>
+                                           value={this.state.offerSubClub} onChange={this.offerClub} style={{width:200, margin:"auto"}}/>
+
                                 </Col>
                             </Row>
                         </Card.Body>

@@ -98,4 +98,5 @@ select option:focus {
   font-size: 20px;
   padding-left: 10px;
   border-radius : 20px;
+  margin-bottom: 20px;
 }

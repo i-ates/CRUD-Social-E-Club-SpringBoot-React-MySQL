@@ -8,6 +8,8 @@ import {BsSearch} from "react-icons/bs";
 import Card from "react-bootstrap/Card";
 import {CgProfile} from "react-icons/cg";
 import {IoEnter} from "react-icons/io5";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 class SearchBar extends Component{
 
@@ -92,80 +94,92 @@ class SearchBar extends Component{
                         <input className="input" type="text" placeholder="Enter Club or Username"
                                onChange={this.setSearchTerm}/>
                         <div>
-                            {
-                                this.state.clubs.filter((club) => {
-                                        if (this.state.searchTerm == "") {
-                                            return club.clubName
-                                        } else if (club.clubName.toLowerCase().includes(this.state.searchTerm.toLowerCase())) {
-                                            return club.clubName
-                                        }
+                            <Row>
+
+                                <Col>
+                                    <h2>Members of the same sub-clubs</h2>
+                                    {
+                                        this.state.users.filter((user) => {
+                                                if (this.state.searchTerm == "") {
+                                                    return user.username
+                                                } else if (user.username.toLowerCase().includes(this.state.searchTerm.toLowerCase())) {
+                                                    return user.username
+                                                }
+                                            }
+                                        ).map(
+                                            user =>
+                                                <Card style={{
+                                                    width: 300, display: "inline-block", marginRight: 10, borderRadius: 25,
+                                                    marginTop: 20, marginBottom: 0
+                                                }}>
+                                                    <Button variant="None" style={{color: "white", fontSize: 20}}
+                                                            onClick={() => this.showUser(user.userId)}>
+                                                        <CgProfile size={25}
+                                                                   style={{marginBottom: 3, marginRight: 5}}/> {user.username}
+                                                    </Button>
+                                                </Card>
+                                        )
                                     }
-                                ).map(
-                                    club2 =>
-                                        <Card style={{
-                                            width: 300,
-                                            display: "inline-block",
-                                            marginRight: 10,
-                                            borderRadius: 25,
-                                            marginTop: 20,
-                                            marginBottom: 0
-                                        }}>
-                                            <Button variant="None" style={{color: "white", fontSize: 20}}
-                                                    onClick={() => this.showPage(club2.id)}>
-                                                <RiUserFollowFill size={25} style={{
-                                                    marginBottom: 6,
-                                                    marginRight: 5
-                                                }}/> {club2.clubName}
-                                            </Button>
-                                        </Card>
-                                )
-                            }
-                            {
-                                this.state.clubs2.filter((club) => {
-                                        if (this.state.searchTerm == "") {
-                                            return club.clubName
-                                        } else if (club.clubName.toLowerCase().includes(this.state.searchTerm.toLowerCase())) {
-                                            return club.clubName
-                                        }
+                                </Col>
+
+                                <Col>
+                                    <h2>Sub-clubs</h2>
+                                    {
+                                        this.state.clubs.filter((club) => {
+                                                if (this.state.searchTerm == "") {
+                                                    return club.clubName
+                                                } else if (club.clubName.toLowerCase().includes(this.state.searchTerm.toLowerCase())) {
+                                                    return club.clubName
+                                                }
+                                            }
+                                        ).map(
+                                            club2 =>
+                                                <Card style={{
+                                                    width: 300,
+                                                    display: "inline-block",
+                                                    marginRight: 10,
+                                                    borderRadius: 25,
+                                                    marginTop: 20,
+                                                    marginBottom: 0
+                                                }}>
+                                                    <Button variant="None" style={{color: "white", fontSize: 20}}
+                                                            onClick={() => this.showPage(club2.id)}>
+                                                        <RiUserFollowFill size={25} style={{
+                                                            marginBottom: 6,
+                                                            marginRight: 5
+                                                        }}/> {club2.clubName}
+                                                    </Button>
+                                                </Card>
+                                        )
                                     }
-                                ).map(
-                                    club2 =>
-                                        <Card style={{
-                                            width: 300, display: "inline-block", marginRight: 10, borderRadius: 25,
-                                            marginTop: 20, marginBottom: 0
-                                        }}>
-                                            <Button variant="None" style={{color: "white", fontSize: 20}}
-                                                    onClick={() => this.showPage2(club2.id)}>
-                                                <RiUserUnfollowFill size={25} style={{
-                                                    marginBottom: 6,
-                                                    marginRight: 5
-                                                }}/> {club2.clubName}
-                                            </Button>
-                                        </Card>
-                                )
-                            }
-                            {
-                                this.state.users.filter((user) => {
-                                        if (this.state.searchTerm == "") {
-                                            return user.username
-                                        } else if (user.username.toLowerCase().includes(this.state.searchTerm.toLowerCase())) {
-                                            return user.username
-                                        }
+                                    {
+                                        this.state.clubs2.filter((club) => {
+                                                if (this.state.searchTerm == "") {
+                                                    return club.clubName
+                                                } else if (club.clubName.toLowerCase().includes(this.state.searchTerm.toLowerCase())) {
+                                                    return club.clubName
+                                                }
+                                            }
+                                        ).map(
+                                            club2 =>
+                                                <Card style={{
+                                                    width: 300, display: "inline-block", marginRight: 10, borderRadius: 25,
+                                                    marginTop: 20, marginBottom: 0
+                                                }}>
+                                                    <Button variant="None" style={{color: "white", fontSize: 20}}
+                                                            onClick={() => this.showPage2(club2.id)}>
+                                                        <RiUserUnfollowFill size={25} style={{
+                                                            marginBottom: 6,
+                                                            marginRight: 5
+                                                        }}/> {club2.clubName}
+                                                    </Button>
+                                                </Card>
+                                        )
                                     }
-                                ).map(
-                                    user =>
-                                        <Card style={{
-                                            width: 300, display: "inline-block", marginRight: 10, borderRadius: 25,
-                                            marginTop: 20, marginBottom: 0
-                                        }}>
-                                            <Button variant="None" style={{color: "white", fontSize: 20}}
-                                                    onClick={() => this.showUser(user.userId)}>
-                                                <CgProfile size={25}
-                                                           style={{marginBottom: 3, marginRight: 5}}/> {user.username}
-                                            </Button>
-                                        </Card>
-                                )
-                            }
+                                </Col>
+
+
+                            </Row>
                         </div>
                     </div>
                 ) : (
@@ -174,6 +188,7 @@ class SearchBar extends Component{
                         <input className="input" type="text" placeholder="Enter Club or Username"
                                onChange={this.setSearchTerm}/>
                         <div>
+                            <h2>Sub-clubs</h2>
                             {
                                 this.state.clubs3.filter((club) => {
                                         if (this.state.searchTerm == "") {

@@ -5,6 +5,7 @@ import com.hf.eclub.models.User;
 import com.hf.eclub.models.UserClubs;
 import com.hf.eclub.payload.request.UserClubsRequest;
 import com.hf.eclub.payload.request.UserIdRequest;
+import com.hf.eclub.payload.response.GetCommonUserResponse;
 import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.repository.ClubRepository;
 import com.hf.eclub.repository.UserClubsRepository;
@@ -62,7 +63,7 @@ public class UserClubsController {
     }
 
     @PostMapping("/getcommonusers/{uid}")
-    public List<Map<String,Object>> getCommonUsers(@PathVariable Long uid){ // returns all users that are common (in same club) with the given user id
+    public List<GetCommonUserResponse> getCommonUsers(@PathVariable Long uid){ // returns all users that are common (in same club) with the given user id
         List<Club> listOfEnrolledClubs = userClubsRepository.findUserClubsByUserId(uid);
         Set<Long> commonUserIds = new HashSet<>();   // Set is used to avoid duplicates
 
@@ -71,14 +72,13 @@ public class UserClubsController {
         }
         commonUserIds.remove(uid); // remove user thyself from the list
 
-        List<Map<String,Object>> result = new ArrayList<>();
+        List<GetCommonUserResponse> result = new ArrayList<>();
         for (Long userid : commonUserIds){
             Map<String, Object> tempMap = new HashMap<>();
-            tempMap.put("userId", userid);
-            tempMap.put("username", userRepository.findUsernameById(userid));
-            result.add(tempMap);
+            Long userId= userid;
+            String userName=userRepository.findUsernameById(userid);
+            result.add(new GetCommonUserResponse(userId,userName));
         }
-
         return result;
     }
 }

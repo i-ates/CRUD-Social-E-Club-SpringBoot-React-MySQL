@@ -159,7 +159,7 @@ class SearchBar extends Component{
                                             marginTop: 20, marginBottom: 0
                                         }}>
                                             <Button variant="None" style={{color: "white", fontSize: 20}}
-                                                    onClick={() => this.showUser(user.id)}>
+                                                    onClick={() => this.showUser(user.userId)}>
                                                 <CgProfile size={25}
                                                            style={{marginBottom: 3, marginRight: 5}}/> {user.username}
                                             </Button>

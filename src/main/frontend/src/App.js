@@ -21,6 +21,7 @@ import {CgProfile} from "react-icons/cg";
 import Button from "react-bootstrap/Button";
 import SendMessage from "./components/sendMessage";
 import SubclubQuestions from "./components/subclubQuestions";
+import ProfileView from "./components/profile.view";
 
 class App extends Component {
   constructor(props) {
@@ -167,7 +168,7 @@ class App extends Component {
             <Route path="/club-page/:id" component={ClubPage}/>
             <Route path="/sendmessage" component={SendMessage}/>
             <Route path="/subclub-questions/:id" component={SubclubQuestions}/>
-
+            <Route path="/user-page/:id" component={ProfileView}/>
           </Switch>
         </div>
       </div>

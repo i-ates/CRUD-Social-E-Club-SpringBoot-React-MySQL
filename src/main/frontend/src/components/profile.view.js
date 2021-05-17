@@ -27,7 +27,13 @@ class ProfileView extends Component {
     }
     render() {
         return (
-            <div className="panel-container" style={{width:800}}>
+            <div className="panel-container" style={{width:1000,fontSize:20}}>
+                <h2> {
+                    this.state.users.map(
+                        user =>
+                                user.username
+                    )
+                }'s Profile</h2>
                 <Table style={{color:"white", backgroundColor: "#05082B",opacity: 0.8}} striped bordered size="sm">
                     <thead>
                     <tr>

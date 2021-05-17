@@ -1,22 +1,21 @@
 package com.hf.eclub.controller;
 
 import com.hf.eclub.models.Club;
+import com.hf.eclub.models.User;
 import com.hf.eclub.models.UserClubs;
 import com.hf.eclub.payload.request.UserClubsRequest;
 import com.hf.eclub.payload.request.UserIdRequest;
 import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.repository.ClubRepository;
 import com.hf.eclub.repository.UserClubsRepository;
+import com.hf.eclub.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -28,6 +27,8 @@ public class UserClubsController {
     @Autowired
     ClubRepository clubRepository;
 
+    @Autowired
+    UserRepository userRepository;
 
     @PostMapping("/userclubs")
     public ResponseEntity<?> saveSurvey(@Valid @RequestBody UserClubsRequest userClubsRequest) {
@@ -58,5 +59,26 @@ public class UserClubsController {
         Map<String,Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/getcommonusers/{uid}")
+    public List<Map<String,Object>> getCommonUsers(@PathVariable Long uid){ // returns all users that are common (in same club) with the given user id
+        List<Club> listOfEnrolledClubs = userClubsRepository.findUserClubsByUserId(uid);
+        Set<Long> commonUserIds = new HashSet<>();   // Set is used to avoid duplicates
+
+        for (Club club : listOfEnrolledClubs){
+            commonUserIds.addAll(userClubsRepository.findMemberIdsByClubId(club.getId()));
+        }
+        commonUserIds.remove(uid); // remove user thyself from the list
+
+        List<Map<String,Object>> result = new ArrayList<>();
+        for (Long userid : commonUserIds){
+            Map<String, Object> tempMap = new HashMap<>();
+            tempMap.put("userId", userid);
+            tempMap.put("username", userRepository.findUsernameById(userid));
+            result.add(tempMap);
+        }
+
+        return result;
     }
 }

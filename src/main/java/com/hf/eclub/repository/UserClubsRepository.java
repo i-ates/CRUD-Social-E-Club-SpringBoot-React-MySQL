@@ -28,6 +28,9 @@ public interface UserClubsRepository extends JpaRepository<UserClubs,Long> {
     @Query("SELECT c FROM Club as c WHERE c.clubName NOT IN( SELECT c.clubName FROM UserClubs as uc, Club as c WHERE uc.clubId=c.id and uc.userId= :userId)")
     List<Club> findUserOtherClubsByUserId(@Param("userId") long userId);
 
+    @Query("SELECT uc.userId FROM UserClubs as uc WHERE uc.clubId= :clubId")
+    List<Long> findMemberIdsByClubId (@Param("clubId") Long clubId);
+
     @Transactional
     @Modifying
     @Query("DELETE FROM UserClubs as u WHERE u.clubId = :clubId")

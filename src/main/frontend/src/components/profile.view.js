@@ -15,10 +15,6 @@ class ProfileView extends Component {
         }
     }
     componentDidMount() {
-
-        ClubService.getRate(this.state.clubId).then((res) =>{
-            this.setState({rate: res.data})});
-
         UserService.getUserInfo(this.state.userId).then((res) =>{
             this.setState({users: res.data});
         }).catch(err=>

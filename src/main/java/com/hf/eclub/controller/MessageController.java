@@ -32,7 +32,7 @@ public class MessageController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/create")
+        @PostMapping("/create")
     public ResponseEntity<?> createMessage(@Valid @RequestBody MessageRequest messageRequest){
         //check if user is a member of the subclub
         if (messageRequest.getUserId() == null ) { messageRequest.setUserId(-1L); }

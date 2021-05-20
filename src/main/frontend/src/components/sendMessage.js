@@ -6,7 +6,8 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {FormControl, InputGroup} from "react-bootstrap";
-import Form from "react-bootstrap/Form";
+import AuthService from "../services/auth.service";
+import ClubService from "../services/club.service";
 
 
 class SendMessage extends Component {
@@ -17,10 +18,21 @@ class SendMessage extends Component {
         this.state = {
             editorState: EditorState.createWithText(""),
             isPublic: true,
-            title:""
+            title:"",
+            currentUser: undefined,
+            clubid:this.props.match.params.clubid,
         }
     }
 
+    componentDidMount() {
+        const user = AuthService.getCurrentUser();
+
+       this.setState({
+           currentUser:user
+           }
+       )
+
+    }
     onchangeTitle(e){
         this.setState({
             title: e.target.value
@@ -38,7 +50,23 @@ class SendMessage extends Component {
             isPublic:event.target.value
         })
     }
-    onChangeT
+
+    sendMessage= (e) =>{
+        e.preventDefault();
+
+        const currentUser = AuthService.getCurrentUser();
+        ClubService.createMessage(this.state.title, this.state.clubid,
+            this.state.editorState.getCurrentContent().getPlainText(),currentUser.id,
+            this.state.isPublic
+            )
+
+        this.navigate();
+    }
+
+    async navigate() {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        this.props.history.push(`/club-page/${this.state.clubid}`);
+    }
 
     render() {
         const {editorState} = this.state;
@@ -74,7 +102,7 @@ class SendMessage extends Component {
                     />
 
                 </div>
-                <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginRight:5}}>Send Message</Button>
+                <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginRight:5}} onClick={this.sendMessage}>Send Message</Button>
                 <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginLeft:5}}>Create Event</Button>
             </div>
         )

@@ -170,7 +170,7 @@ class App extends Component {
             <Route path="/questions" component={listQuestion} />
             <Route path="/getuserclubs" component={listMyClubs}/>
             <Route path="/club-page/:id" component={ClubPage}/>
-            <Route path="/sendmessage" component={SendMessage}/>
+            <Route path="/sendmessage/:clubid" component={SendMessage}/>
             <Route path="/subclub-questions/:id" component={SubclubQuestions}/>
             <Route path="/user-page/:id" component={ProfileView}/>
             <Route path="/passwordrecovery" component={PasswordRecovery}/>

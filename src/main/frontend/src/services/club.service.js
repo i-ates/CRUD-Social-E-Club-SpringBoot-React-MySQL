@@ -69,6 +69,16 @@ class ClubService{
         );
     }
 
+    createMessage(messagetitle,clubid,messagecontent,userid,isprivate){
+        return axios.post("http://localhost:8080/api/messages/create", {
+            title:messagetitle,
+            clubId:clubid,
+            content:messagecontent,
+            userId: userid,
+            isPrivate: isprivate
+        });
+    }
+
 }
 
 export default new ClubService();

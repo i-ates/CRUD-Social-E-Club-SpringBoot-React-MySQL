@@ -32,7 +32,6 @@ class listMyClubs extends Component{
     }
 
     showPage(id) {
-        //this.props.history.push(`/club-page/${id}`);
         this.props.history.push(`/club-page/${id}`, this.state.flag);
     }
 

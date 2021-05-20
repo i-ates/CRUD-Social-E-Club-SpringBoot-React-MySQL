@@ -196,12 +196,14 @@ export default class Profile extends Component {
                     <Row>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button style={{width:200,marginLeft:10}} variant="outline-light" onClick={o=>this.updateName(this.state.area)}>Update Full Name</Button></Col>
+                          <Col xs={5}><Button style={{width:200,marginLeft:10}} variant="outline-light"
+                                              onClick={o=>this.updateName(this.state.area)}>Update Full Name</Button></Col>
                         </ButtonGroup>
                       </Col>
                       <Col>
                         <ButtonGroup vertical>
-                          <Col xs={5}><Button style={{width:150}} variant="outline-light" onClick={o=>this.updateCity(this.state.area)}>Update City</Button></Col>
+                          <Col xs={5}><Button style={{width:150}} variant="outline-light"
+                                              onClick={o=>this.updateCity(this.state.area)}>Update City</Button></Col>
                         </ButtonGroup>
                       </Col>
                     </Row>
@@ -223,37 +225,29 @@ export default class Profile extends Component {
 
             </Tab>
             <Tab eventKey={2} title="Change Password">
-              <div className="panel-container">
+              <div className="panel-container" style={{width:500}}>
                 <Row>
-                  <Col></Col>
-                  <Col xs={6} style={{marginTop:50}}>
-                    <Row style={{marginTop:20}}>
-                      <InputGroup size="sm" className="mb-3" >
-                        <FormControl placeholder="Old Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
-                      </InputGroup>
-                    </Row>
-                    <Row style={{marginTop:20}}>
-                      <InputGroup size="sm" className="mb-3" >
-                        <FormControl placeholder="New Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
-                      </InputGroup>
-                    </Row>
-                    <Row style={{marginTop:20}}>
-                      <InputGroup size="sm" className="mb-3" >
-                        <FormControl placeholder="Confirm New Password" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
-                      </InputGroup>
-                    </Row>
-                    <Row>
-                      <Col></Col>
-                      <Col xs={6}>
-                        <ButtonGroup vertical>
-                          <Col ><Button style={{width:200,marginTop:20}} variant="outline-light">Submit</Button></Col>
-                        </ButtonGroup>
-                      </Col>
-                      <Col>
-                      </Col>
-                    </Row>
+                  <InputGroup style={{width:800}} size="sm" className="mb-3">
+                    <FormControl placeholder="Old Password"/>
+                  </InputGroup>
+                </Row>
+                <Row>
+                  <InputGroup style={{width:800}} size="sm" className="mb-3">
+                    <FormControl placeholder="New Password" />
+                  </InputGroup>
+                </Row>
+                <Row>
+                  <InputGroup style={{width:800}} size="sm" className="mb-3" >
+                    <FormControl placeholder="Confirm New Password"/>
+                  </InputGroup>
+                </Row>
+                <Row>
+                  <Col>
+                    <ButtonGroup vertical>
+                      <Col xs={5}><Button style={{width:200,marginLeft:10}} variant="outline-light"
+                                          >Change password</Button></Col>
+                    </ButtonGroup>
                   </Col>
-                  <Col></Col>
                 </Row>
               </div>
             </Tab>

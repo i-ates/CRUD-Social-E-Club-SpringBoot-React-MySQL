@@ -75,7 +75,7 @@ export default class Profile extends Component {
 
     return (
         <div>
-          <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
+          <Tabs>
             <Tab eventKey={1} title="Edit Profile">
               <Row style={{marginTop:50}}>
                 <Col>

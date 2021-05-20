@@ -4,6 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
 import AuthService from "../services/auth.service";
+import {Link} from "react-router-dom";
 
 const required = value => {
   if (!value) {
@@ -131,6 +132,12 @@ export default class Login extends Component {
                 )}
                 <span>Login</span>
               </button>
+              <Link to={"/passwordrecovery"} className="nav-link" style={{color:"white", fontSize:16}}>
+                Forgot Password?
+              </Link>
+              <Link to={"/register"} className="nav-link" style={{color:"white", fontSize:16}}>
+                Don't have an account?
+              </Link>
             </div>
 
             {this.state.message && (

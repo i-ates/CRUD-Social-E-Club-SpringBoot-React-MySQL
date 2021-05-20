@@ -22,6 +22,9 @@ import Button from "react-bootstrap/Button";
 import SendMessage from "./components/sendMessage";
 import SubclubQuestions from "./components/subclubQuestions";
 import ProfileView from "./components/profile.view";
+import PasswordRecovery from "./components/passwordRecovery";
+import NewPassword from "./components/newPassword";
+
 
 class App extends Component {
   constructor(props) {
@@ -169,6 +172,8 @@ class App extends Component {
             <Route path="/sendmessage" component={SendMessage}/>
             <Route path="/subclub-questions/:id" component={SubclubQuestions}/>
             <Route path="/user-page/:id" component={ProfileView}/>
+            <Route path="/passwordrecovery" component={PasswordRecovery}/>
+            <Route path="/newpassword" component={NewPassword}/>
           </Switch>
         </div>
       </div>

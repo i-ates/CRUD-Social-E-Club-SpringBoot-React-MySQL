@@ -18,10 +18,15 @@ public class Club {
 
     private String clubName;
 
+    @Column(name="parentname")
+
+    private String parentName;
+
     public Club() {
     }
 
-    public Club(String clubName) {
+    public Club(String clubName, String parentName) {
         this.clubName = clubName;
+        this.parentName = parentName;
     }
 }

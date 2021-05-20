@@ -24,6 +24,10 @@ public class Question {
 
     private String clubName;
 
+    @Column(name="parentname")
+
+    private String parentName;
+
     @Column (name="answer")
     private  String  answer;
 
@@ -33,9 +37,10 @@ public class Question {
     public Question() {
     }
 
-    public Question(String ques, String answer, String clubName) {
+    public Question(String ques, String answer, String clubName, String parentName) {
         this.ques = ques;
         this.clubName = clubName;
         this.answer = answer;
+        this.parentName = parentName;
     }
 }

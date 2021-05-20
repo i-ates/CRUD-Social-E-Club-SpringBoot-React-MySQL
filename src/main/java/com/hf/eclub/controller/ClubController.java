@@ -29,7 +29,7 @@ public class ClubController {
     @PostMapping("/createclub")
     public void createClub(@Valid @RequestBody CreateClubRequest createClubRequest){
         System.out.println(createClubRequest.getClubName());
-        Club c = new Club(createClubRequest.getClubName());
+        Club c = new Club(createClubRequest.getClubName(), createClubRequest.getParentName());
         clubRepository.save(c);
     }
     @DeleteMapping("/deleteclub/{id}")

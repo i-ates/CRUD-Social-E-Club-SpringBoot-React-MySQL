@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import AuthService from "../services/auth.service";
 import Card from "react-bootstrap/Card";
+import { BsTrash } from "react-icons/bs";
 
 class createClub extends Component {
 
@@ -16,7 +17,7 @@ class createClub extends Component {
 
         this.state = {
             clubName: '',
-            subClubName: '',
+            parentName: '',
             question1: '',
             question2: '',
             question3: '',
@@ -26,8 +27,8 @@ class createClub extends Component {
             offers:[]
         }
 
+        this.changeParentName = this.changeParentName.bind(this);
         this.changeClubName = this.changeClubName.bind(this);
-        this.changeSubClubName = this.changeSubClubName.bind(this);
         this.changeQuestion1 = this.changeQuestion1.bind(this);
         this.changeQuestion2 = this.changeQuestion2.bind(this);
         this.changeQuestion3 = this.changeQuestion3.bind(this);
@@ -35,6 +36,7 @@ class createClub extends Component {
         this.changeAnswer2 = this.changeAnswer2.bind(this);
         this.changeAnswer3 = this.changeAnswer3.bind(this);
         this.saveClub = this.saveClub.bind(this);
+        this.deleteOffer = this.deleteOffer.bind(this);
     }
 
     componentDidMount() {
@@ -44,11 +46,11 @@ class createClub extends Component {
 
     }
 
+    changeParentName = (event) =>{
+        this.setState({parentName: event.target.value});
+    }
     changeClubName = (event) =>{
         this.setState({clubName: event.target.value});
-    }
-    changeSubClubName = (event) =>{
-        this.setState({subClubName: event.target.value});
     }
     changeQuestion1 = (event) =>{
         this.setState({question1: event.target.value});
@@ -77,12 +79,11 @@ class createClub extends Component {
     saveClub = async (e) => {
         e.preventDefault();
 
-        await ClubService.createClub(this.state.clubName);
-        await ClubService.createSubClub(this.state.subClubName, this.state.clubName);
+        await ClubService.createClub(this.state.clubName, this.state.parentName);
         await this.timeout(1000);
-        ClubService.createQuestion(this.state.question1, this.state.answer1, this.state.clubName).then();
-        ClubService.createQuestion(this.state.question2, this.state.answer2, this.state.clubName).then();
-        ClubService.createQuestion(this.state.question3, this.state.answer3, this.state.clubName).then();
+        ClubService.createQuestion(this.state.question1, this.state.answer1, this.state.clubName, this.state.parentName).then();
+        ClubService.createQuestion(this.state.question2, this.state.answer2, this.state.clubName, this.state.parentName).then();
+        ClubService.createQuestion(this.state.question3, this.state.answer3, this.state.clubName, this.state.parentName).then();
         await this.timeout(1000);
         window.location.reload();
     }
@@ -91,9 +92,9 @@ class createClub extends Component {
         return new Promise( res => setTimeout(res, delay) );
     }
 
-    deleteTask(i) {
-        const messages = this.state.messages.filter((_, index) => index !== i)
-        this.setState({ messages });
+    deleteOffer = (i) =>{
+        //e.preventDefault();
+
     }
 
 
@@ -110,7 +111,7 @@ class createClub extends Component {
                                         <Card style={{height:80, width: 300, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                                             marginTop:-20,marginLeft:-20,marginRight:-20}}>
                                             <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
-                                                <Card.Title>{offer.userName}</Card.Title>
+                                                <Card.Title>{offer.userName}<button><BsTrash onClick={() => this.deleteOffer(offer.id)}/></button></Card.Title>
                                                 <Card.Text>
                                                     {offer.offer}
                                                 </Card.Text>
@@ -124,13 +125,13 @@ class createClub extends Component {
                             <Row>
                                 <Col>
                                     <input placeholder="Club Name" name="clubName" className="form-control"
-                                           value={this.state.clubName} onChange={this.changeClubName}/>
+                                           value={this.state.parentName} onChange={this.changeParentName}/>
                                 </Col>
                             </Row>
                             <Row style={{marginTop:10}}>
                                 <Col>
                                     <input placeholder="Sub Club Name" name="clubName" className="form-control"
-                                           value={this.state.subClubName} onChange={this.changeSubClubName}/>
+                                           value={this.state.clubName} onChange={this.changeClubName}/>
                                 </Col>
                             </Row>
                             <Row style={{marginTop:50}}>

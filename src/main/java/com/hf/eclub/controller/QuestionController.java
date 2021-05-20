@@ -43,7 +43,7 @@ public class QuestionController {
     @PostMapping("/test/createquestion")
     public ResponseEntity<?> createQuestions(@Valid @RequestBody CreateQuestionRequest createQuestionRequest){
             Question q = new Question(createQuestionRequest.getQues(),createQuestionRequest.getAnswer(),
-                    createQuestionRequest.getClubName());
+                    createQuestionRequest.getClubName(), createQuestionRequest.getParentName());
 
             Club cl = clubRepository.findByclubName(createQuestionRequest.getClubName());
             q.setClubId(cl.getId());

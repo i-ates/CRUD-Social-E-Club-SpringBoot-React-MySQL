@@ -4,20 +4,20 @@ import authHeader from './auth-header';
 const API_URL = 'http://localhost:8080/api/test/';
 
 class ClubService{
-    createClub(clubName){
+    createClub(clubName, parentName){
         return axios.post(API_URL+"createclub",
-            {clubName});
+            {clubName: clubName,
+                parentName:parentName
+            });
 
     }
-    createSubClub(sCName, cName){
-        return axios.post(API_URL+"createsubclub",
-            {subClubName:sCName,clubName:cName});
-    }
-    createQuestion(question, answ, cName){
+
+    createQuestion(question, answ, cName, pName){
         return axios.post(API_URL+"createquestion",
             {ques:question,
             answer:answ,
-            clubName:cName});
+            clubName:cName,
+            parentName:pName});
     }
 
     deleteClub(clubId){

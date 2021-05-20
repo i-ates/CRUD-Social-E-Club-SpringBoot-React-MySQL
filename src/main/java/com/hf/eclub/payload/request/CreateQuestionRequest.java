@@ -9,14 +9,17 @@ public class CreateQuestionRequest {
     private String answer;
     @NotBlank
     private String clubName;
+    @NotBlank
+    private String parentName;
 
     public CreateQuestionRequest() {
     }
 
-    public CreateQuestionRequest(@NotBlank String ques, @NotBlank String answer, @NotBlank String clubName) {
+    public CreateQuestionRequest(@NotBlank String ques, @NotBlank String answer, @NotBlank String clubName, @NotBlank String parentName) {
         this.ques = ques;
         this.answer = answer;
         this.clubName = clubName;
+        this.parentName = parentName;
     }
 
     public String getQues() {
@@ -41,5 +44,13 @@ public class CreateQuestionRequest {
 
     public void setClubName(String clubName) {
         this.clubName = clubName;
+    }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
     }
 }

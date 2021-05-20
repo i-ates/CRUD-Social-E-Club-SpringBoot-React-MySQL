@@ -80,9 +80,6 @@ class ClubPage extends Component {
                                                 Sender: {message.username}
                                             </Card.Text>
                                         </Card.Body>
-                                        <Card.Body style={{marginBottom:-40,marginTop:-20}}>
-                                            <Button href="#" variant="outline-light">Reply</Button>
-                                        </Card.Body>
                                     </Card>
                             )
                         }

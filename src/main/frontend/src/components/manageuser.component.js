@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import {FormControl} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -8,7 +7,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Table from "react-bootstrap/Table";
 import {Redirect} from "react-router-dom";
-import AuthService from "../services/auth.service";
 import UserService from "../services/user.service";
 
 
@@ -67,7 +65,7 @@ export default class ManageUser extends Component {
 
     async navigate() {
         await new Promise(resolve => setTimeout(resolve, 1000));
-        window.location.reload();
+        this.updateUserId(this.state.userId)
     }
     render() {
         if (this.state.redirect) {
@@ -190,8 +188,6 @@ export default class ManageUser extends Component {
                                         }
                                         </tbody>
                                     </Table>
-
-
 
                         </Row>
                     </Col>

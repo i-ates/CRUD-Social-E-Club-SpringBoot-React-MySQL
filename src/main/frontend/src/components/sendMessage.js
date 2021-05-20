@@ -13,17 +13,32 @@ class SendMessage extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            editorState: EditorState.createWithText(""),
+            isPublic: true,
+            title:""
+        }
     }
 
-    state = {
-        editorState: EditorState.createWithText(""),
+    onchangeTitle(e){
+        this.setState({
+            title: e.target.value
+        });
     }
 
     onEditorStateChange = (editorState) => {
         this.setState({
             editorState,
         });
+    // console.log(this.state.editorState.getCurrentContent().getPlainText())
     }
+    onChangeRadioButton= (event) =>{
+        this.setState( {
+            isPublic:event.target.value
+        })
+    }
+    onChangeT
 
     render() {
         const {editorState} = this.state;
@@ -33,12 +48,18 @@ class SendMessage extends Component {
                 <Row>
                     <Col>
                         <InputGroup size="sm" className="mb-3" style={{width:530, marginLeft:366}}>
-                            <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter title"/>
+                            <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter title" onChange={e=> this.onchangeTitle(e)}/>
                         </InputGroup>
                     </Col>
                     <Col style={{marginRight:370}}>
-                        <Form.Check type="checkbox" name="inStock[]" style={{display:"inline-block"}}/>Private
-                        <Form.Check type="checkbox" name="inStock[]" style={{display:"inline-block"}}/>Public
+                        <input className="form-check-input" value={true} type="radio" name="fl" id="fl1" onChange={this.onChangeRadioButton}/>
+                        <label className="form-check-label">
+                            Public
+                        </label>
+                        <input className="form-check-input" type="radio"  value={false} name="fl" id="fl1" onChange={this.onChangeRadioButton}/>
+                        <label className="form-check-label">
+                            Private
+                        </label>
                     </Col>
                 </Row>
 

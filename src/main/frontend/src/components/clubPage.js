@@ -8,7 +8,6 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { BiCalendarPlus } from "react-icons/bi";
-import {Link} from "react-router-dom";
 
 class ClubPage extends Component {
     constructor(props) {
@@ -23,7 +22,8 @@ class ClubPage extends Component {
             comments:[],
             events:[],
             messages:[],
-            username:""
+            username:"",
+            showSubClubAdminBoard:""
         }
     }
 
@@ -35,6 +35,7 @@ class ClubPage extends Component {
                 currentUser: user,
                 username: user.username,
                 showRateBoard: user.roles.includes("ROLE_USER"),
+                showSubClubAdminBoard: user.roles.includes("ROLE_SUBCLUBADMIN"),
             });
         }
 
@@ -57,6 +58,9 @@ class ClubPage extends Component {
 
     showMessage() {
         this.props.history.push(`/sendmessage`);
+    }
+    showBanUSer() {
+        this.props.history.push(`/subclubadmin`);
     }
 
     render() {
@@ -144,11 +148,19 @@ class ClubPage extends Component {
                 </Col>
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
-                        <Button onClick={()=> this.showMessage()} style={{width:150,margin:"auto",marginBottom:10}} variant="outline-light">Send Message</Button>
-                        <h5 style={{margin:"auto", paddingBottom:15}}>
-                            You want to be admin in this sub club?
-                        </h5>
-                        <Button style={{width:200,margin:"auto",marginBottom:20}} variant="outline-light"  >Request to be an Admin</Button>
+                        <Row>
+                            <Button onClick={()=> this.showMessage()} style={{width:150,margin:"auto",marginBottom:10}} variant="outline-light">Send Message</Button>
+                            <h5 style={{margin:"auto", paddingBottom:15}}>
+                                You want to be admin in this sub club?
+                            </h5>
+                            <Button style={{width:200,margin:"auto",marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
+                        </Row>
+                        <Row style={{margin:"auto"}}>
+                            {this.state.showSubClubAdminBoard && (
+                                <Button style={{margin:"auto",width:200}} variant="outline-light"
+                                        onClick={() => this.showBanUSer()}>Ban User</Button>
+                            )}
+                        </Row>
                     </Row>
                     <Row style={{marginTop:50}}>
                         <h3 style={{margin:"auto"}}>Rate Of Club: {this.state.rate.toFixed(1)}

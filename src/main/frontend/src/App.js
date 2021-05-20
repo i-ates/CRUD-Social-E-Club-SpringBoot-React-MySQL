@@ -24,7 +24,7 @@ import SubclubQuestions from "./components/subclubQuestions";
 import ProfileView from "./components/profile.view";
 import PasswordRecovery from "./components/passwordRecovery";
 import NewPassword from "./components/newPassword";
-
+import BoardSubClubAdminComponent from "./components/board-subclubadmin.component";
 
 class App extends Component {
   constructor(props) {
@@ -166,6 +166,7 @@ class App extends Component {
             {/*<Route path="/user" component={BoardUser} />*/}
             {/*<Route path="/mod" component={BoardModerator} />*/}
             <Route path="/admin" component={BoardAdmin} />
+            <Route path="/subclubadmin" component={BoardSubClubAdminComponent} />
             <Route path="/questions" component={listQuestion} />
             <Route path="/getuserclubs" component={listMyClubs}/>
             <Route path="/club-page/:id" component={ClubPage}/>

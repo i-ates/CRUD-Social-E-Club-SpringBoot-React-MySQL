@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import {FormControl} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 

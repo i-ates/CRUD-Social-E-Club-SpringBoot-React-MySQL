@@ -11,6 +11,7 @@ import FormControl from 'react-bootstrap/FormControl'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import UserService from "../services/user.service";
 import Table from 'react-bootstrap/Table'
+import ChangePassword from "./changePassword";
 
 
 export default class Profile extends Component {
@@ -225,31 +226,7 @@ export default class Profile extends Component {
 
             </Tab>
             <Tab eventKey={2} title="Change Password">
-              <div className="panel-container" style={{width:500}}>
-                <Row>
-                  <InputGroup style={{width:800}} size="sm" className="mb-3">
-                    <FormControl placeholder="Old Password"/>
-                  </InputGroup>
-                </Row>
-                <Row>
-                  <InputGroup style={{width:800}} size="sm" className="mb-3">
-                    <FormControl placeholder="New Password" />
-                  </InputGroup>
-                </Row>
-                <Row>
-                  <InputGroup style={{width:800}} size="sm" className="mb-3" >
-                    <FormControl placeholder="Confirm New Password"/>
-                  </InputGroup>
-                </Row>
-                <Row>
-                  <Col>
-                    <ButtonGroup vertical>
-                      <Col xs={5}><Button style={{width:200,marginLeft:10}} variant="outline-light"
-                                          >Change password</Button></Col>
-                    </ButtonGroup>
-                  </Col>
-                </Row>
-              </div>
+              <ChangePassword/>
             </Tab>
           </Tabs>
         </div>

@@ -69,13 +69,20 @@ class ClubService{
         );
     }
 
-    createMessage(messagetitle,clubid,messagecontent,userid,isprivate){
+    createMessage(messagetitle,clubid,messagecontent,userid){
         return axios.post("http://localhost:8080/api/messages/create", {
             title:messagetitle,
             clubId:clubid,
             content:messagecontent,
             userId: userid,
-            isPrivate: isprivate
+        });
+    }
+    createEvent(messagetitle,clubid,messagecontent,userid){
+        return axios.post("http://localhost:8080/api/test/events/create", {
+            title:messagetitle,
+            clubId:clubid,
+            content:messagecontent,
+            userId: userid
         });
     }
 

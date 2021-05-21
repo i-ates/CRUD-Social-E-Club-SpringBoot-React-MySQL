@@ -9,7 +9,6 @@ import {FormControl, InputGroup} from "react-bootstrap";
 import AuthService from "../services/auth.service";
 import ClubService from "../services/club.service";
 
-
 class SendMessage extends Component {
 
     constructor(props) {
@@ -63,10 +62,22 @@ class SendMessage extends Component {
         this.navigate();
     }
 
+    sendEvent= (e) =>{
+        e.preventDefault();
+
+        const currentUser = AuthService.getCurrentUser();
+        ClubService.createEvent(this.state.title, this.state.clubid,
+            this.state.editorState.getCurrentContent().getPlainText(),currentUser.id
+        )
+
+        this.navigate();
+    }
+
     async navigate() {
         await new Promise(resolve => setTimeout(resolve, 1000));
         this.props.history.push(`/club-page/${this.state.clubid}`);
     }
+
 
     render() {
         const {editorState} = this.state;
@@ -103,7 +114,7 @@ class SendMessage extends Component {
 
                 </div>
                 <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginRight:5}} onClick={this.sendMessage}>Send Message</Button>
-                <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginLeft:5}}>Create Event</Button>
+                <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginLeft:5}} onClick={this.sendEvent}>Create Event</Button>
             </div>
         )
     }

@@ -25,6 +25,7 @@ import ProfileView from "./components/profile.view";
 import PasswordRecovery from "./components/passwordRecovery";
 import NewPassword from "./components/newPassword";
 import BoardSubClubAdminComponent from "./components/board-subclubadmin.component";
+import Deleteoffer from "./components/deleteoffer";
 
 class App extends Component {
   constructor(props) {
@@ -175,6 +176,7 @@ class App extends Component {
             <Route path="/user-page/:id" component={ProfileView}/>
             <Route path="/passwordrecovery" component={PasswordRecovery}/>
             <Route path="/newpassword" component={NewPassword}/>
+            <Route path="/deleteoffer" component={Deleteoffer}/>
           </Switch>
         </div>
       </div>

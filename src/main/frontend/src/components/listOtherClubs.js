@@ -31,9 +31,9 @@ class listOtherClubs extends Component{
 
     componentDidMount() {
         const currentUser = AuthService.getCurrentUser();
-        console.log(currentUser);
+
         let json= {"id":currentUser.id};
-        console.log(currentUser.id)
+
         UserService.getOtherClubs(currentUser.id).then((res) =>{
             this.setState({clubs: res.data});
         }).catch(err=>

@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -30,5 +32,16 @@ public class SubClubRequestController {
                 subClubOffer.getOffer());
         subClubRequestRepository.save(subClubRequest);
         return ResponseEntity.ok(new MessageResponse("subclub request added"));
+    }
+
+    @DeleteMapping("/removesubclubrequest/{id}")
+    public ResponseEntity<Map<String,Boolean>> deleteSubClubRequest(@PathVariable long id){
+        SubClubRequest scr = subClubRequestRepository.findById(id).get(0);
+        subClubRequestRepository.delete(scr);
+
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+
+        return ResponseEntity.ok(response);
     }
 }

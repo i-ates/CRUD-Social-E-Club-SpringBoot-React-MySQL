@@ -14,9 +14,9 @@ class ListClubWithId extends Component{
             flag: true
         }
         const currentUser = AuthService.getCurrentUser();
-        console.log(currentUser);
+
         let json= {"id":currentUser.id};
-        console.log(currentUser.id)
+
         UserService.getUserClubs(currentUser.id).then((res) =>{
             this.setState({clubs: res.data});
         }).catch(err=>

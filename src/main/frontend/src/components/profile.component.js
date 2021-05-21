@@ -33,7 +33,7 @@ export default class Profile extends Component {
     const currentUser = AuthService.getCurrentUser();
     if (!currentUser) this.setState({ redirect: "/home" });
     this.setState({ currentUser: currentUser, userReady: true })
-    console.log(currentUser.id)
+
     UserService.getUserInfo(currentUser.id).then((res) =>{
       this.setState({users: res.data});
     }).catch(err=>

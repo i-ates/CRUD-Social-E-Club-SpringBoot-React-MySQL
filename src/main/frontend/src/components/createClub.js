@@ -8,6 +8,7 @@ import Container from "react-bootstrap/Container";
 import AuthService from "../services/auth.service";
 import Card from "react-bootstrap/Card";
 import { BsTrash } from "react-icons/bs";
+import {withRouter} from "react-router-dom";
 
 class createClub extends Component {
 
@@ -92,10 +93,24 @@ class createClub extends Component {
         return new Promise( res => setTimeout(res, delay) );
     }
 
-    deleteOffer = (i) =>{
-        //e.preventDefault();
+    deleteOffer = (id) =>{
+        this.props.history.push("/deleteoffer", id);
+        window.location.reload();
+        //const offers = this.state.offers.filter((_, index) => index !== id)
+        //this.setState({ offers });
 
+        //ClubService.deleteOffer(id).then();
+        //console.log("idtestttttttt");
+        //console.log(id);
+        //this.navigate();
     }
+
+    async navigate() {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        //window.location.reload();
+    }
+
+
 
 
     render() {
@@ -187,4 +202,4 @@ class createClub extends Component {
 
 }
 
-export default createClub
+export default withRouter(createClub);

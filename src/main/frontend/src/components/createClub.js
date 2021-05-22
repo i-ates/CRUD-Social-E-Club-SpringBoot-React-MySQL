@@ -123,12 +123,25 @@ class createClub extends Component {
                             {
                                 this.state.offers.map(
                                     offer =>
-                                        <Card style={{height:80, width: 300, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                                        <Card style={{height:120, width: 300, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                                             marginTop:-20,marginLeft:-20,marginRight:-20}}>
                                             <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
-                                                <Card.Title>{offer.userName}<button><BsTrash onClick={() => this.deleteOffer(offer.id)}/></button></Card.Title>
+                                                <Card.Title>
+                                                    {offer.userName}
+                                                </Card.Title>
                                                 <Card.Text>
-                                                    {offer.offer}
+                                                    <Row>
+                                                        <Col xs={6} md={4}>
+                                                        </Col>
+                                                        <Col xs={6} md={4} style={{marginTop:8}}>
+                                                            {offer.offer}
+                                                        </Col>
+                                                        <Col xs={6} md={4} >
+                                                            <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                                <BsTrash onClick={() => this.deleteOffer(offer.id)}/>
+                                                            </Button>
+                                                        </Col>
+                                                    </Row>
                                                 </Card.Text>
                                             </Card.Body>
                                         </Card>
@@ -182,15 +195,7 @@ class createClub extends Component {
                                 </Col>
                             </Row>
                             <Row style={{marginTop:20}}>
-                                <Col></Col>
-                                <Col xs={6}>
-                                    <ButtonGroup vertical>
-                                        <Col>
-                                            <Button style={{width:200}} variant="outline-light"  onClick={this.saveClub}>Add Club</Button>
-                                        </Col>
-                                    </ButtonGroup>
-                                </Col>
-                                <Col></Col>
+                                    <Button style={{width:200 ,margin:"auto"}} variant="outline-light"  onClick={this.saveClub}>Add Club</Button>
                             </Row>
                         </Col>
                     </Row>

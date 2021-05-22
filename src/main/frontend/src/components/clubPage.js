@@ -24,7 +24,7 @@ class ClubPage extends Component {
             events:[],
             messages:[],
             username:"",
-            showSubClubAdminBoard:""
+            showSubClubAdminBoard:false
         }
     }
 
@@ -167,14 +167,20 @@ class ClubPage extends Component {
                         <h3 style={{margin:"auto"}}>Rate Of Club: {this.state.rate.toFixed(1)}
                              <VscStarFull style={{color:"yellow",marginBottom:8,marginLeft:2}}/>
                         </h3>
-                        {
-                          this.state.showRateBoard && <Rate style={{marginTop:20}} clubId={this.state.clubId}
-                                                            username={this.state.username} />
-                        }
+                        {this.state.showRateBoard ? (<div>
+                            <Rate style={{marginTop:20}} clubId={this.state.clubId}
+                                  username={this.state.username} />
+                        </div>):(<div>
+                            <h4 style={{fontFamily:"Arial, Helvetica, Cursive", color:"red", marginTop:50}}>
+                                You must be a member to view private messages for club members or
+                                to vote on the club. If you are a registered user,
+                                you must click the join club button on the Other Club page
+                                and answer more than half of the club questions correctly.
+                            </h4>
+                        </div>)}
                     </Row>
                 </Col>
                 </Row>
-
             </div>
         );
     }

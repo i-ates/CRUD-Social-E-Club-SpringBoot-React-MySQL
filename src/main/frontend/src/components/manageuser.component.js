@@ -21,7 +21,7 @@ export default class ManageUser extends Component {
             users : [],
             area:"",
             area2:"",
-            userId: 6,
+            userId: -1,
         };
     }
 

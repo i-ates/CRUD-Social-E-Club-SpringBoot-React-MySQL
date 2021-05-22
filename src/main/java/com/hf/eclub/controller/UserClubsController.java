@@ -1,18 +1,16 @@
 package com.hf.eclub.controller;
 
 import com.hf.eclub.models.Club;
-import com.hf.eclub.models.User;
 import com.hf.eclub.models.UserClubs;
 import com.hf.eclub.payload.request.UserClubsRequest;
 import com.hf.eclub.payload.request.UserIdRequest;
-import com.hf.eclub.payload.response.GetCommonUserResponse;
+import com.hf.eclub.payload.response.UserBriefResponse;
 import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.repository.ClubRepository;
 import com.hf.eclub.repository.UserClubsRepository;
 import com.hf.eclub.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -63,7 +61,7 @@ public class UserClubsController {
     }
 
     @PostMapping("/getcommonusers/{uid}")
-    public List<GetCommonUserResponse> getCommonUsers(@PathVariable Long uid){ // returns all users that are common (in same club) with the given user id
+    public List<UserBriefResponse> getCommonUsers(@PathVariable Long uid){ // returns all users that are common (in same club) with the given user id
         List<Club> listOfEnrolledClubs = userClubsRepository.findUserClubsByUserId(uid);
         Set<Long> commonUserIds = new HashSet<>();   // Set is used to avoid duplicates
 
@@ -72,12 +70,12 @@ public class UserClubsController {
         }
         commonUserIds.remove(uid); // remove user thyself from the list
 
-        List<GetCommonUserResponse> result = new ArrayList<>();
+        List<UserBriefResponse> result = new ArrayList<>();
         for (Long userid : commonUserIds){
             Map<String, Object> tempMap = new HashMap<>();
             Long userId= userid;
             String userName=userRepository.findUsernameById(userid);
-            result.add(new GetCommonUserResponse(userId,userName));
+            result.add(new UserBriefResponse(userId,userName));
         }
         return result;
     }

@@ -96,7 +96,9 @@ class SubclubQuestions extends Component{
                 <h4 style={{fontFamily:"Arial, Helvetica, Cursive", color:"red"}}>
                     Thank you for your interest in {this.props.location.state} club.
                     We hope you can become a member of {this.props.location.state} club.
-                    Please read the questions carefully. As HiClub, we wish you success.
+                    Please read the questions carefully.
+                    If you want to join a club, you have to answer more than half of the questions of that club correctly.
+                    As HiClub, we wish you success.
                 </h4>
                 <div>
                     <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>

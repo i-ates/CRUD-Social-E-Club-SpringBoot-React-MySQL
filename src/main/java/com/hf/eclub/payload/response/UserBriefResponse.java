@@ -1,10 +1,10 @@
 package com.hf.eclub.payload.response;
 
-public class GetCommonUserResponse {
+public class UserBriefResponse {
     private Long userId;
     private String Username;
 
-    public GetCommonUserResponse(Long userId, String username) {
+    public UserBriefResponse(Long userId, String username) {
         this.userId = userId;
         Username = username;
     }

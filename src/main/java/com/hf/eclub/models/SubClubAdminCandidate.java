@@ -5,10 +5,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
 @Entity
-@Table(name = "sub_club_admin")
-public class SubClubAdmin {
+@Data
+@Table(name = "subclub_admin_canditates")
+public class SubClubAdminCandidate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +20,11 @@ public class SubClubAdmin {
     @Column (name = "subclub_id")
     private Long subClubId;
 
-    public SubClubAdmin(Long userId, Long subClubId) {
+    public SubClubAdminCandidate(Long userId, Long subClubId) {
         this.userId = userId;
         this.subClubId = subClubId;
     }
 
-    public SubClubAdmin(){}
+    public SubClubAdminCandidate(){}
 
 }

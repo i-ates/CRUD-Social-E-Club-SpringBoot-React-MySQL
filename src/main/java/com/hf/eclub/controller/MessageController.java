@@ -2,7 +2,6 @@ package com.hf.eclub.controller;
 
 import com.hf.eclub.models.Message;
 import com.hf.eclub.models.UserClubs;
-import com.hf.eclub.payload.request.CurrentUserIdRequest;
 import com.hf.eclub.payload.request.MessageRequest;
 import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.repository.MessageRepository;

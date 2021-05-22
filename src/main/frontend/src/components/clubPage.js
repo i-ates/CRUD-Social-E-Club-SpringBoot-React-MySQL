@@ -24,7 +24,8 @@ class ClubPage extends Component {
             events:[],
             messages:[],
             username:"",
-            showSubClubAdminBoard:false
+            showSubClubAdminBoard:false,
+            showUserButtons: false,
         }
     }
 
@@ -37,6 +38,7 @@ class ClubPage extends Component {
                 username: user.username,
                 showRateBoard: user.roles.includes("ROLE_USER"),
                 showSubClubAdminBoard: user.roles.includes("ROLE_ADMIN"),
+                showUserButtons: user.roles.includes("ROLE_USER"),
             });
         }
 
@@ -150,15 +152,21 @@ class ClubPage extends Component {
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
                         <Row>
-                            <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,margin:"auto",marginBottom:10}} variant="outline-light">Send Message</Button>
-                            <h5 style={{margin:"auto", paddingBottom:15}}>
-                                You want to be admin in this sub club?
-                            </h5>
-                            <Button style={{width:200,margin:"auto",marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
+                            {this.state.showUserButtons && (
+                                <div style={{marginLeft:70}}>
+                                    <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10}} variant="outline-light">
+                                        Send Message
+                                    </Button>
+                                    <h5 style={{paddingBottom:15}}>
+                                        You want to be admin in this sub club?
+                                    </h5>
+                                    <Button style={{width:200,marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
+                                </div>
+                            )}
                         </Row>
-                        <Row style={{margin:"auto"}}>
+                        <Row style={{marginLeft:130}}>
                             {this.state.showSubClubAdminBoard && (
-                                <Button style={{margin:"auto",width:200}} variant="outline-light"
+                                <Button style={{width:200}} variant="outline-light"
                                         onClick={() => this.showBanUSer()}>Ban User</Button>
                             )}
                         </Row>

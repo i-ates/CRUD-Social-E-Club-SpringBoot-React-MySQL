@@ -20,6 +20,7 @@ class SendMessage extends Component {
             title:"",
             currentUser: undefined,
             clubid:this.props.match.params.clubid,
+            showCreateEvent: false
         }
     }
 
@@ -27,7 +28,8 @@ class SendMessage extends Component {
         const user = AuthService.getCurrentUser();
 
        this.setState({
-           currentUser:user
+           currentUser:user,
+           showCreateEvent: user.roles.includes("ROLE_ADMIN")
            }
        )
 
@@ -86,12 +88,12 @@ class SendMessage extends Component {
             <div className="panel-container" >
                 <Row>
                     <Col>
-                        <InputGroup size="sm" className="mb-3" style={{width:530, marginLeft:366}}>
+                        <InputGroup size="sm" className="mb-3" style={{width:500, marginLeft:366}}>
                             <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter title" onChange={e=> this.onchangeTitle(e)}/>
                         </InputGroup>
                     </Col>
-                    <Col style={{marginRight:400}}>
-                        <Row style={{width:200,margin:"auto"}}>
+                    <Col>
+                        <Row style={{width:200}}>
                             <Col>
                                 <input className="form-check-input" value={true} type="radio" name="fl" id="fl1"
                                        onChange={this.onChangeRadioButton}/>
@@ -121,7 +123,8 @@ class SendMessage extends Component {
 
                 </div>
                 <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginRight:5}} onClick={this.sendMessage}>Send Message</Button>
-                <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginLeft:5}} onClick={this.sendEvent}>Create Event</Button>
+                {this.state.showCreateEvent &&(
+                    <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginLeft:5}} onClick={this.sendEvent}>Create Event</Button>)}
             </div>
         )
     }

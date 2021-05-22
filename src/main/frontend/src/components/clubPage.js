@@ -36,7 +36,7 @@ class ClubPage extends Component {
                 currentUser: user,
                 username: user.username,
                 showRateBoard: user.roles.includes("ROLE_USER"),
-                showSubClubAdminBoard: user.roles.includes("ROLE_SUBCLUBADMIN"),
+                showSubClubAdminBoard: user.roles.includes("ROLE_ADMIN"),
             });
         }
 

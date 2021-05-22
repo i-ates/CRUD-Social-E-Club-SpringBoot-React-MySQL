@@ -92,13 +92,18 @@ class SubclubQuestions extends Component{
     render() {
         return (
             <div>
-                <h2 className='text-center'>{this.props.location.state} Clubs' Questions</h2>
-                <div className='row'>
+                <h2 className='text-center'>{this.props.location.state} Club's Questions</h2>
+                <h4 style={{fontFamily:"Arial, Helvetica, Cursive", color:"red"}}>
+                    Thank you for your interest in {this.props.location.state} club.
+                    We hope you can become a member of {this.props.location.state} club.
+                    Please read the questions carefully. As HiClub, we wish you success.
+                </h4>
+                <div>
                     <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
                         <thead>
                         <tr>
-                            <th style={{color:"white"}}>Question</th>
-                            <th style={{color:"white"}}>Action</th>
+                            <th style={{color:"white",fontSize:25}}>Question</th>
+                            <th style={{color:"white",fontSize:25}}>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -106,8 +111,8 @@ class SubclubQuestions extends Component{
                             this.state.questions.map(
                                 question =>
                                     <tr key ={question.question?.id}>
-                                        <td style={{color:"white"}}>{question.question?.ques}</td>
-                                        <td style={{color:"white"}}>
+                                        <td style={{color:"white",fontSize:20}}>{question.question?.ques}</td>
+                                        <td style={{color:"white",fontSize:20}}>
                                             <Row>
                                                 <Col xs={6}>
                                                     <input  type="checkbox" name="inStock[]"  onClick={o=>{this.handleToggle();
@@ -129,6 +134,7 @@ class SubclubQuestions extends Component{
                     className="btn btn-outline-light"
                     variant="none"
                     onClick={() => {this.setState({ show: true });this.submit()}}
+                    style={{width:200}}
                 >Submit</Button>
                 <Modal
                     show={this.state.show}
@@ -144,7 +150,7 @@ class SubclubQuestions extends Component{
                     </Modal.Body>
                     <Modal.Footer className="py-1 d-flex justify-content-center">
                         <div>
-                            <Button  className="mx-2 px-3" onClick={()=>this.navigate()}>Okay</Button>
+                            <Button variant="outline-dark" className="mx-2 px-3" onClick={()=>this.navigate()}>Okay</Button>
                         </div>
                     </Modal.Footer>
                 </Modal>

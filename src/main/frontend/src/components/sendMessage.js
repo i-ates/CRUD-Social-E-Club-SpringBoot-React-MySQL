@@ -90,15 +90,22 @@ class SendMessage extends Component {
                             <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter title" onChange={e=> this.onchangeTitle(e)}/>
                         </InputGroup>
                     </Col>
-                    <Col style={{marginRight:370}}>
-                        <input className="form-check-input" value={true} type="radio" name="fl" id="fl1" onChange={this.onChangeRadioButton}/>
-                        <label className="form-check-label">
-                            Public
-                        </label>
-                        <input className="form-check-input" type="radio"  value={false} name="fl" id="fl1" onChange={this.onChangeRadioButton}/>
-                        <label className="form-check-label">
-                            Private
-                        </label>
+                    <Col style={{marginRight:400}}>
+                        <Row style={{width:200,margin:"auto"}}>
+                            <Col>
+                                <input className="form-check-input" value={true} type="radio" name="fl" id="fl1"
+                                       onChange={this.onChangeRadioButton}/>
+                                <label className="form-check-label">
+                                    Public
+                                </label>
+                            </Col>
+                            <Col>
+                                <input className="form-check-input" type="radio"  value={false} name="fl" id="fl1" onChange={this.onChangeRadioButton}/>
+                                <label className="form-check-label">
+                                    Private
+                                </label>
+                            </Col>
+                        </Row>
                     </Col>
                 </Row>
 

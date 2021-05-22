@@ -151,13 +151,20 @@ class ClubPage extends Component {
                 </Col>
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
-                        {this.state.showSubClubAdminBoard ? (<div style={{marginBottom:100}}>
-                            <Row style={{marginLeft:120}}>
-                                {this.state.showSubClubAdminBoard && (
-                                    <Button style={{width:200}} variant="outline-light"
-                                            onClick={() => this.showBanUSer()}>Ban User</Button>
-                                )}
-                            </Row>
+                        {this.state.showSubClubAdminBoard ? (<div style={{marginBottom:50}}>
+                            {this.state.showSubClubAdminBoard && (<div style={{marginLeft:130}}>
+                                    <Row style={{marginLeft:10,marginBottom:10}}>
+                                        <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10}} variant="outline-light">
+                                            Send Message
+                                        </Button>
+                                    </Row>
+                                    <Row>
+                                        <Button style={{width:200}} variant="outline-light"
+                                                onClick={() => this.showBanUSer()}>Ban User
+                                        </Button>
+                                    </Row>
+                            </div>
+                            )}
                         </div>):(<div>
                             {this.state.showUserButtons && (
                                 <div style={{marginLeft:50}}>

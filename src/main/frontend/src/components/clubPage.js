@@ -151,9 +151,16 @@ class ClubPage extends Component {
                 </Col>
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
-                        <Row>
+                        {this.state.showSubClubAdminBoard ? (<div style={{marginBottom:100}}>
+                            <Row style={{marginLeft:120}}>
+                                {this.state.showSubClubAdminBoard && (
+                                    <Button style={{width:200}} variant="outline-light"
+                                            onClick={() => this.showBanUSer()}>Ban User</Button>
+                                )}
+                            </Row>
+                        </div>):(<div>
                             {this.state.showUserButtons && (
-                                <div style={{marginLeft:70}}>
+                                <div style={{marginLeft:50}}>
                                     <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10}} variant="outline-light">
                                         Send Message
                                     </Button>
@@ -163,13 +170,7 @@ class ClubPage extends Component {
                                     <Button style={{width:200,marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
                                 </div>
                             )}
-                        </Row>
-                        <Row style={{marginLeft:130}}>
-                            {this.state.showSubClubAdminBoard && (
-                                <Button style={{width:200}} variant="outline-light"
-                                        onClick={() => this.showBanUSer()}>Ban User</Button>
-                            )}
-                        </Row>
+                        </div>)}
                     </Row>
                     <Row style={{marginTop:50}}>
                         <h3 style={{margin:"auto"}}>Rate Of Club: {this.state.rate.toFixed(1)}

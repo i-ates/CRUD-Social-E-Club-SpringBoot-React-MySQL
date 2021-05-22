@@ -133,7 +133,7 @@ class ChangePassword extends React.Component {
                             <div className="text-danger">{this.state.errors.confirm_password}</div>
                         </div>
 
-                        <input type="submit" value="Submit" className="btn btn-success"/>
+                        <input type="submit" value="Submit" style={{width:100}}/>
                     </form>
                 </div>
             </div>

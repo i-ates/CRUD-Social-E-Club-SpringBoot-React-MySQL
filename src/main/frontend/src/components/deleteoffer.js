@@ -14,7 +14,15 @@ class Deleteoffer extends Component {
     }
     deleteOffer = () =>{
         ClubService.deleteOffer(this.props.location.state).then();
+        this.props.history.push(`/admin`);
+        this.navigate()
     }
+
+    async navigate() {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        window.location.reload();
+    }
+
     render() {
         return (
             <div className="panel-container"  style={{marginTop:80, width:600, opacity:0.9}}>

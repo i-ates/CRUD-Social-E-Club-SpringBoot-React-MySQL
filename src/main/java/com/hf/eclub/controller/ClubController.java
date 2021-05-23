@@ -26,12 +26,18 @@ public class ClubController {
         return clubRepository.findAll();
     }
 
+    @GetMapping("/getclubname/{id}")
+    public String getClubName(@PathVariable long id){
+        return clubRepository.findById(id).get(0).getClubName();
+    }
+
     @PostMapping("/createclub")
     public void createClub(@Valid @RequestBody CreateClubRequest createClubRequest){
         System.out.println(createClubRequest.getClubName());
         Club c = new Club(createClubRequest.getClubName(), createClubRequest.getParentName());
         clubRepository.save(c);
     }
+
     @DeleteMapping("/deleteclub/{id}")
     public ResponseEntity<Map<String,Boolean>> deleteClub(@PathVariable long id){
         Club club = clubRepository.findById(id).get(0);

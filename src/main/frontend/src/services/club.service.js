@@ -32,6 +32,10 @@ class ClubService{
         return axios.delete(API_URL+"deleteuserclubs"+"/"+clubId);
     }
 
+    getClubName(clubId){
+        return axios.get(API_URL+"getclubname"+"/"+clubId);
+    }
+
     createRate(userId, username, clubId, comment, rate){
         return axios.post(API_URL+"createrate",
             {userId:userId,
@@ -74,14 +78,16 @@ class ClubService{
         );
     }
 
-    createMessage(messagetitle,clubid,messagecontent,userid){
+    createMessage(messagetitle,clubid,messagecontent,userid, isprivate){
         return axios.post("http://localhost:8080/api/messages/create", {
             title:messagetitle,
             clubId:clubid,
             content:messagecontent,
             userId: userid,
+            isPrivate: isprivate
         });
     }
+
     createEvent(messagetitle,clubid,messagecontent,userid){
         return axios.post("http://localhost:8080/api/test/events/create", {
             title:messagetitle,
@@ -89,6 +95,16 @@ class ClubService{
             content:messagecontent,
             userId: userid
         });
+    }
+
+    createBannedUser(userId, userName, clubId, clubName){
+        return axios.post(API_URL+"createbanneduser", {
+            userId: userId,
+            userName: userName,
+            clubId: clubId,
+            clubName: clubName
+        });
+
     }
 
 }

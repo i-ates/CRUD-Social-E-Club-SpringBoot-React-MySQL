@@ -16,7 +16,7 @@ class SendMessage extends Component {
 
         this.state = {
             editorState: EditorState.createWithText(""),
-            isPublic: true,
+            isPublic: false,
             title:"",
             currentUser: undefined,
             clubid:this.props.match.params.clubid,
@@ -50,6 +50,7 @@ class SendMessage extends Component {
         this.setState( {
             isPublic:event.target.value
         })
+        console.log(this.state.isPublic);
     }
 
     sendMessage= (e) =>{
@@ -77,7 +78,7 @@ class SendMessage extends Component {
 
     async navigate() {
         await new Promise(resolve => setTimeout(resolve, 1000));
-        this.props.history.push(`/club-page/${this.state.clubid}`);
+        this.props.history.push("/home");
     }
 
 
@@ -95,14 +96,14 @@ class SendMessage extends Component {
                     <Col>
                         <Row style={{width:200}}>
                             <Col>
-                                <input className="form-check-input" value={true} type="radio" name="fl" id="fl1"
+                                <input className="form-check-input" value={false} type="radio" name="fl" id="fl1"
                                        onChange={this.onChangeRadioButton}/>
                                 <label className="form-check-label">
                                     Public
                                 </label>
                             </Col>
                             <Col>
-                                <input className="form-check-input" type="radio"  value={false} name="fl" id="fl1" onChange={this.onChangeRadioButton}/>
+                                <input className="form-check-input" type="radio"  value={true} name="fl" id="fl1" onChange={this.onChangeRadioButton}/>
                                 <label className="form-check-label">
                                     Private
                                 </label>

@@ -26,6 +26,8 @@ import PasswordRecovery from "./components/passwordRecovery";
 import NewPassword from "./components/newPassword";
 import BoardSubClubAdminComponent from "./components/board-subclubadmin.component";
 import Deleteoffer from "./components/deleteoffer";
+import PermanentComponent from "./components/permanent.component";
+import TemporaryComponent from "./components/temporary.component";
 
 class App extends Component {
   constructor(props) {
@@ -177,6 +179,8 @@ class App extends Component {
             <Route path="/passwordrecovery" component={PasswordRecovery}/>
             <Route path="/newpassword" component={NewPassword}/>
             <Route path="/deleteoffer" component={Deleteoffer}/>
+            <Route path="/bannedfromthispagepermanently" component={PermanentComponent}/>
+            <Route path="/bannedfromthispagetemporarily" component={TemporaryComponent}/>
           </Switch>
         </div>
       </div>

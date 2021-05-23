@@ -27,5 +27,14 @@ public class MessageRequest {
     @NotBlank
     private Boolean isPrivate;
 
+    public MessageRequest() {
+    }
 
+    public MessageRequest(@NotBlank @Size(max = 100) String title, @NotBlank Long clubId, @NotBlank @Size(max = 1000) String content, @NotBlank Long userId, @NotBlank Boolean isPrivate) {
+        this.title = title;
+        this.clubId = clubId;
+        this.content = content;
+        this.userId = userId;
+        this.isPrivate = isPrivate;
+    }
 }

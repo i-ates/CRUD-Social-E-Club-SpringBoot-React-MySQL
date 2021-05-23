@@ -9,6 +9,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { BiCalendarPlus } from "react-icons/bi";
 import {withRouter} from "react-router-dom";
+import {BsTrash} from "react-icons/bs";
+import {FaBan} from "react-icons/fa";
 
 class ClubPage extends Component {
     constructor(props) {
@@ -26,21 +28,29 @@ class ClubPage extends Component {
             username:"",
             showSubClubAdminBoard:false,
             showUserButtons: false,
+            nameOfClub:"",
+            user: AuthService.getCurrentUser()
         }
+
+        this.banUser = this.banUser.bind(this);
     }
 
     componentDidMount() {
-        const user = AuthService.getCurrentUser();
 
-        if (user && this.props.location.state) {
+
+        if (this.state.user && this.props.location.state) {
             this.setState({
-                currentUser: user,
-                username: user.username,
-                showRateBoard: user.roles.includes("ROLE_USER"),
-                showSubClubAdminBoard: user.roles.includes("ROLE_ADMIN"),
-                showUserButtons: user.roles.includes("ROLE_USER"),
+                currentUser: this.state.user,
+                username: this.state.user.username,
+                showRateBoard: this.state.user.roles.includes("ROLE_USER"),
+                showSubClubAdminBoard: this.state.user.roles.includes("ROLE_ADMIN"),
+                showUserButtons: this.state.user.roles.includes("ROLE_USER"),
             });
         }
+
+        ClubService.getClubName(this.state.clubId).then((res) =>{
+            this.setState({nameOfClub: res.data})
+        });
 
         ClubService.getRate(this.state.clubId).then((res) =>{
             this.setState({rate: res.data})});
@@ -49,8 +59,8 @@ class ClubPage extends Component {
             this.setState({comments: res.data})});
         ClubService.getEvent(this.state.clubId).then((res) =>{
             this.setState({events: res.data})});
-        if (user){
-            ClubService.getMessages(this.state.clubId,user.id).then((res) =>
+        if (this.state.user){
+            ClubService.getMessages(this.state.clubId,this.state.user.id).then((res) =>
                 this.setState({messages: res.data}));
         }else{
             ClubService.getMessages(this.state.clubId,-1).then((res) =>
@@ -64,6 +74,13 @@ class ClubPage extends Component {
     }
     showBanUSer() {
         this.props.history.push(`/subclubadmin`);
+    }
+
+    banUser = (id, name) =>{
+
+        ClubService.createBannedUser(id, name, this.state.clubId, this.state.nameOfClub).then();
+        window.location.reload();
+
     }
 
     render() {
@@ -85,6 +102,15 @@ class ClubPage extends Component {
                                             </Card.Text>
                                             <Card.Text>
                                                 Sender: {message.username}
+                                                {
+                                                    this.state.showSubClubAdminBoard &&
+                                                    <Col xs={6} md={4} >
+                                                        <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                            <FaBan onClick={() => this.banUser(message.userId, message.username)}/>
+                                                            Ban {message.username}
+                                                        </Button>
+                                                    </Col>
+                                                }
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>

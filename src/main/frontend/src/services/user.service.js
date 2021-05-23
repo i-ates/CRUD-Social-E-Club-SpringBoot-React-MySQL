@@ -54,6 +54,23 @@ class UserService {
       type:UserType
     })
   }
+
+  getBlackList(userId, clubId){
+    return axios.post(API_URL+"blacklistcontrol", {
+      userId: userId,
+      clubId: clubId
+    });
+
+  }
+
+  getBannedList(userId, clubId){
+    return axios.post(API_URL+"bannedusercontrol", {
+      userId: userId,
+      clubId: clubId
+    });
+
+  }
+
 }
 
 export default new UserService();

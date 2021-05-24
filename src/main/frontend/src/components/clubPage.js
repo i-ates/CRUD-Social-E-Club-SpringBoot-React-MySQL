@@ -104,12 +104,10 @@ class ClubPage extends Component {
                                                 Sender: {message.username}
                                                 {
                                                     this.state.showSubClubAdminBoard &&
-                                                    <Col xs={6} md={4} >
-                                                        <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                            <FaBan onClick={() => this.banUser(message.userId, message.username)}/>
-                                                            Ban {message.username}
-                                                        </Button>
-                                                    </Col>
+                                                    <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                        <FaBan onClick={() => this.banUser(message.userId, message.username)}
+                                                        style={{margin:"auto"}}/>
+                                                    </Button>
                                                 }
                                             </Card.Text>
                                         </Card.Body>
@@ -136,9 +134,6 @@ class ClubPage extends Component {
                                             <Card.Text>
                                                 {event.username}
                                             </Card.Text>
-                                        </Card.Body>
-                                        <Card.Body style={{marginBottom:-30}}>
-                                            <Button href="#" variant="outline-light" ><BiCalendarPlus/> Join Event <BiCalendarPlus/></Button>
                                         </Card.Body>
                                     </Card>
                             )
@@ -182,11 +177,6 @@ class ClubPage extends Component {
                                     <Row style={{marginLeft:10,marginBottom:10}}>
                                         <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10}} variant="outline-light">
                                             Send Message
-                                        </Button>
-                                    </Row>
-                                    <Row>
-                                        <Button style={{width:200}} variant="outline-light"
-                                                onClick={() => this.showBanUSer()}>Ban User
                                         </Button>
                                     </Row>
                             </div>

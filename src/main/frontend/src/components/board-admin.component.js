@@ -4,7 +4,6 @@ import { Tab, Tabs } from 'react-bootstrap';
 import DeleteClub from "./deleteclub.component";
 import CreateClub from "./createClub";
 import AssignAdmin from "./assignadmin.component";
-import BanUser from "./banuser.component";
 import ManageUser from "./manageuser.component";
 import ListClubWithId from "./listClubWithId";
 
@@ -50,9 +49,6 @@ export default class BoardAdmin extends Component {
             </Tab>
             <Tab eventKey={4} title="Assign Sub Club Admin">
                     <AssignAdmin />
-            </Tab>
-            <Tab eventKey={5} title="Ban User">
-                    <BanUser />
             </Tab>
             <Tab eventKey={6} title="Manage User">
                     <ManageUser />

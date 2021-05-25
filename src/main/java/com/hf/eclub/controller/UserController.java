@@ -1,6 +1,7 @@
 package com.hf.eclub.controller;
 
 import com.hf.eclub.models.User;
+import com.hf.eclub.payload.request.ChangePasswordRequest;
 import com.hf.eclub.payload.request.SetUserInfoRequest;
 import com.hf.eclub.payload.request.UserIdRequest;
 import com.hf.eclub.repository.UserRepository;
@@ -46,4 +47,6 @@ public class UserController {
         }
         userRepository.save(user);
     }
+
+
 }

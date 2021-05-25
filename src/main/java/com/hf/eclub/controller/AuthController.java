@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.hf.eclub.payload.request.ChangePasswordRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -131,5 +132,15 @@ public class AuthController {
 
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+	}
+
+	@PostMapping("/changepassword")
+	public void changePassword(@Valid @RequestBody ChangePasswordRequest changePasswordRequest){
+		User user= userRepository.findById(changePasswordRequest.getId()).get();
+
+		user.setPassword(encoder.encode(changePasswordRequest.getNewPassword()));
+
+		userRepository.save(user);
+
 	}
 }

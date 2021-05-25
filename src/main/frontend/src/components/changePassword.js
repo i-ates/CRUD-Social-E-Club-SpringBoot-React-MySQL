@@ -1,9 +1,13 @@
 import React from 'react';
+import AuthService from "../services/auth.service";
+import {withRouter} from "react-router-dom";
+
 
 class ChangePassword extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            id:undefined,
             input: {},
             errors: {}
         };
@@ -12,6 +16,16 @@ class ChangePassword extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        const user = AuthService.getCurrentUser();
+
+        this.setState({
+            id: user.id
+        })
+    }
+    timeout(delay) {
+        return new Promise( res => setTimeout(res, delay) );
+    }
     handleChange(event) {
         let input = this.state.input;
         input[event.target.name] = event.target.value;
@@ -25,16 +39,12 @@ class ChangePassword extends React.Component {
         event.preventDefault();
 
         if(this.validate()){
-            console.log(this.state);
 
-            let input = {};
-            input["name"] = "";
-            input["email"] = "";
-            input["password"] = "";
-            input["confirm_password"] = "";
-            this.setState({input:input});
+            AuthService.changePassword(this.state.id,this.state.input.password)
+            AuthService.logout()
+            this.props.history.push("/home")
+            window.location.reload()
 
-            alert('Demo Form is submited');
         }
     }
 
@@ -43,24 +53,6 @@ class ChangePassword extends React.Component {
         let errors = {};
         let isValid = true;
 
-        if (!input["name"]) {
-            isValid = false;
-            errors["name"] = "Please enter your name.";
-        }
-
-        if (!input["email"]) {
-            isValid = false;
-            errors["email"] = "Please enter your email Address.";
-        }
-
-        if (typeof input["email"] !== "undefined") {
-
-            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-            if (!pattern.test(input["email"])) {
-                isValid = false;
-                errors["email"] = "Please enter valid email address.";
-            }
-        }
 
         if (!input["password"]) {
             isValid = false;
@@ -92,19 +84,6 @@ class ChangePassword extends React.Component {
             <div className="panel-container" style={{width:500}}>
                 <div>
                     <form onSubmit={this.handleSubmit}>
-
-                        <div className="form-group">
-                            <label htmlFor="password">Old Password:</label>
-                            <input
-                                type="password"
-                                name="oldpassword"
-                                value={this.state.input.oldpassword}
-                                onChange={this.handleChange}
-                                className="form-control"
-                                placeholder="Enter old password"
-                                id="oldpassword"/>
-                        </div>
-
                         <div className="form-group">
                             <label htmlFor="password">New Password:</label>
                             <input
@@ -143,4 +122,4 @@ class ChangePassword extends React.Component {
     }
 }
 
-export default ChangePassword;
+export default withRouter(ChangePassword);

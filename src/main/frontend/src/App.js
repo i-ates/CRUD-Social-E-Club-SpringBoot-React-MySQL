@@ -139,7 +139,7 @@ class App extends Component {
             <Route path="/newpassword" component={NewPassword}/>
             <Route path="/deleteoffer" component={Deleteoffer}/>
             <Route path="/bannedfromthispagepermanently" component={PermanentComponent}/>
-            <Route path="/bannedfromthispagetemporarily" component={TemporaryComponent}/>
+            <Route path="/bannedfromthispagetemporarily/:id" component={TemporaryComponent}/>
           </Switch>
         </div>
       </div>

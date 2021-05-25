@@ -53,7 +53,7 @@ class listMyClubs extends Component{
             this.props.history.push("/bannedfromthispagepermanently");
 
         } else if (this.state.isTemporary) {
-            this.props.history.push("/bannedfromthispagetemporarily");
+            this.props.history.push(`/bannedfromthispagetemporarily/${id}`, currentUser.id);
 
         } else {
             this.props.history.push(`/club-page/${id}`, this.state.flag);

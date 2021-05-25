@@ -71,6 +71,13 @@ class UserService {
 
   }
 
+  getDate(userId, clubId){
+    return axios.post(API_URL+"getdate", {
+      userId: userId,
+      clubId: clubId
+    })
+  }
+
 }
 
 export default new UserService();

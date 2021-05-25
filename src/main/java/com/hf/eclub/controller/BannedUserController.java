@@ -83,5 +83,11 @@ public class BannedUserController {
         }
     }
 
+    @PostMapping("/getdate")
+    public String getLastUpdate(@Valid @RequestBody BannedUserRequest bannedUserRequest){
+        Date d = bannedUserRepository.findDate(bannedUserRequest.getUserId(), bannedUserRequest.getClubId());
+        return d.toString().substring(0, d.toString().length()-2);
+    }
+
 
 }

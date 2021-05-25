@@ -121,31 +121,28 @@ class ClubPage extends Component {
                                         <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
                                             <Card.Title>
                                                 {message.title}
-                                                {
-                                                    (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
-                                                    <Col xs={6} md={4} >
-                                                        <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                            <BsTrash onClick={() => this.deleteMessage(message.messageId)}/>
-                                                        </Button>
-                                                    </Col>
-                                                }
                                             </Card.Title>
                                             <Card.Text>
                                                 {message.content}
                                             </Card.Text>
                                             <Card.Text>
                                                 Sender: {message.username}
-                                                {
-                                                    (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
-                                                    <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                        <FaBan onClick={() => this.banUser(message.userId, message.username)}
-                                                        style={{margin:"auto"}}/>
-                                                    </Button>
-                                                }
                                             </Card.Text>
                                             {
+                                                (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
                                                 <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                    <GrFavorite/>
+                                                    <BsTrash onClick={() => this.deleteMessage(message.messageId)}/>
+                                                </Button>
+
+                                            }
+                                            <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                <GrFavorite/>
+                                            </Button>
+                                            {
+                                                (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
+                                                <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                    <FaBan onClick={() => this.banUser(message.userId, message.username)}
+                                                           style={{margin:"auto"}}/>
                                                 </Button>
                                             }
                                         </Card.Body>
@@ -221,17 +218,17 @@ class ClubPage extends Component {
                             )}
                         </div>):(<div>
                             {this.state.showUserButtons && (
-                                <div style={{marginLeft:50}}>
-                                    <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10}} variant="outline-light">
+                                <div>
+                                    <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10, marginLeft:50}} variant="outline-light">
                                         Send Message
                                     </Button>
                                     {
                                         (!this.state.isSubClubAdmin && !this.state.showSubClubAdminBoard) && (
                                             <div>
-                                                <h5 style={{paddingBottom:15}}>
+                                                <h5 style={{paddingBottom:15, marginLeft:50}}>
                                                     You want to be admin in this sub club?
                                                 </h5>
-                                                <Button onClick={()=> this.requestAdmin()} style={{width:200,marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
+                                                <Button onClick={()=> this.requestAdmin()} style={{width:200,marginBottom:20, marginLeft:50}} variant="outline-light" >Request to be an Admin</Button>
                                             </div>
                                         )
                                     }

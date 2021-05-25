@@ -54,6 +54,19 @@ public class MessageController {
     }
 
 
+    @PostMapping("/deleteclubmessages/{id}") // id = club id
+    public ResponseEntity<?> deleteAllMessagesOfClub(@PathVariable long id){
+        messageRepository.deleteAllMessagesByClubId(id);
+        return ResponseEntity.ok(new MessageResponse("Messages of club successfully deleted."));
+    }
+
+    @PostMapping("/deletemessage/{messageid}")
+    public ResponseEntity<?> deleteMessage(@PathVariable long messageid){
+            Message message2delete = messageRepository.findById(messageid);
+            if (message2delete != null ) {messageRepository.delete(message2delete);}
+            return ResponseEntity.ok(new MessageResponse("Message successfully deleted."));
+    }
+
     @PostMapping("/fetch/{id}/{userid}")
     public List<Map<String,Object>> getMessagesByClub(@PathVariable long id,@PathVariable long userid){
 
@@ -79,6 +92,7 @@ public class MessageController {
             tempMap.put("date", tempMessage.getDate().toString().substring(0,19));
             tempMap.put("userId", tempMessage.getUserId());
             tempMap.put("isPrivate", tempMessage.getIsPrivate());
+            tempMap.put("messageId", tempMessage.getId());
             result.add(tempMap);
         }
 

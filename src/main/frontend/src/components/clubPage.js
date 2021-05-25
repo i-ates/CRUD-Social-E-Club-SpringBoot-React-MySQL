@@ -36,7 +36,6 @@ class ClubPage extends Component {
         this.banUser = this.banUser.bind(this);
         this.deleteMessage = this.deleteMessage.bind(this);
         this.requestAdmin = this.requestAdmin.bind(this);
-        this.template = this.template.bind(this);
     }
 
     componentDidMount() {
@@ -98,9 +97,6 @@ class ClubPage extends Component {
         window.location.reload();
     }
 
-    template =(e) =>{
-        e.preventDefault();
-    }
 
     timeout(delay) {
         return new Promise( res => setTimeout(res, delay) );
@@ -145,7 +141,7 @@ class ClubPage extends Component {
                                             </Card.Text>
                                             {
                                                 <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                    <GrFavorite onClick={() => this.template()}/>
+                                                    <GrFavorite/>
                                                 </Button>
                                             }
                                         </Card.Body>

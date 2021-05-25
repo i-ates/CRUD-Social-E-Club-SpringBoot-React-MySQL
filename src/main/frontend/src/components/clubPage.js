@@ -11,6 +11,7 @@ import { BiCalendarPlus } from "react-icons/bi";
 import {withRouter} from "react-router-dom";
 import {BsTrash} from "react-icons/bs";
 import {FaBan} from "react-icons/fa";
+import {GrFavorite} from "react-icons/gr";
 
 class ClubPage extends Component {
     constructor(props) {
@@ -33,6 +34,9 @@ class ClubPage extends Component {
         }
 
         this.banUser = this.banUser.bind(this);
+        this.deleteMessage = this.deleteMessage.bind(this);
+        this.requestAdmin = this.requestAdmin.bind(this);
+        this.template = this.template.bind(this);
     }
 
     componentDidMount() {
@@ -83,6 +87,25 @@ class ClubPage extends Component {
 
     }
 
+    requestAdmin = () =>{
+        ClubService.createCandidate(this.state.user.id, this.state.clubId).then();
+        window.location.reload();
+    }
+
+    deleteMessage = async (id) => {
+        ClubService.deleteUserMessage(id).then();
+        await this.timeout(1000);
+        window.location.reload();
+    }
+
+    template =(e) =>{
+        e.preventDefault();
+    }
+
+    timeout(delay) {
+        return new Promise( res => setTimeout(res, delay) );
+    }
+
     render() {
         return (
             <div>
@@ -96,7 +119,17 @@ class ClubPage extends Component {
                                     <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                                         marginTop:-20,marginLeft:-20,marginRight:-20}}>
                                         <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
-                                            <Card.Title>{message.title}</Card.Title>
+                                            <Card.Title>
+                                                {message.title}
+                                                {
+                                                    this.state.showSubClubAdminBoard &&
+                                                    <Col xs={6} md={4} >
+                                                        <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                            <BsTrash onClick={() => this.deleteMessage(message.messageId)}/>
+                                                        </Button>
+                                                    </Col>
+                                                }
+                                            </Card.Title>
                                             <Card.Text>
                                                 {message.content}
                                             </Card.Text>
@@ -110,6 +143,11 @@ class ClubPage extends Component {
                                                     </Button>
                                                 }
                                             </Card.Text>
+                                            {
+                                                <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                    <GrFavorite onClick={() => this.template()}/>
+                                                </Button>
+                                            }
                                         </Card.Body>
                                     </Card>
                             )
@@ -190,7 +228,7 @@ class ClubPage extends Component {
                                     <h5 style={{paddingBottom:15}}>
                                         You want to be admin in this sub club?
                                     </h5>
-                                    <Button style={{width:200,marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
+                                    <Button onClick={()=> this.requestAdmin()} style={{width:200,marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
                                 </div>
                             )}
                         </div>)}

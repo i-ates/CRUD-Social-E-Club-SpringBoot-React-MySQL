@@ -60,7 +60,7 @@ public class MessageController {
         return ResponseEntity.ok(new MessageResponse("Messages of club successfully deleted."));
     }
 
-    @PostMapping("/deletemessage/{messageid}")
+    @DeleteMapping("/deletemessage/{messageid}")
     public ResponseEntity<?> deleteMessage(@PathVariable long messageid){
             Message message2delete = messageRepository.findById(messageid);
             if (message2delete != null ) {messageRepository.delete(message2delete);}

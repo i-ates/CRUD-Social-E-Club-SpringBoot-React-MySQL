@@ -4,9 +4,39 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import {FormControl} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import {FaBan} from "react-icons/fa";
+import {BsTrash} from "react-icons/bs";
+import ClubService from "../services/club.service";
 
 
 export default class AssignAdmin extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state ={
+            userId:-1,
+            clubId:-1,
+            applies:[]
+        }
+
+        this.updateAdmin = this.updateAdmin.bind(this);
+        this.changeSubClubId = this.changeSubClubId.bind(this);
+        this.changeUserId = this.changeUserId.bind(this);
+    }
+
+    changeSubClubId = (event) =>{
+        this.setState({clubId: event.target.value});
+    }
+
+    changeUserId = (event) =>{
+        this.setState({userId: event.target.value});
+    }
+
+    updateAdmin =()=>{
+        ClubService.updateSubClubAdmin(this.state.userId, this.state.clubId).then();
+        window.location.reload();
+    }
 
     render() {
 
@@ -14,19 +44,27 @@ export default class AssignAdmin extends Component {
 
             <div  className="panel-container">
                 <Row>
-                    <Col sm style={{marginTop:50}}>
-                        <p>
-                            SUB CLUB-1
-                        </p>
-                        <p>
-                            SUB CLUB-2
-                        </p>
-                        <p>
-                            SUB CLUB-3
-                        </p>
-                        <p>
-                            SUB CLUB-4
-                        </p>
+                    <Col className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
+                        height:600,opacity:0.9,marginTop:0}}>
+
+                        {
+                            this.state.applies.map(
+                                apply =>
+                                    <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
+                                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
+                                        <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
+                                            <Card.Title>{apply.clubName}</Card.Title>
+                                            <Card.Text>
+                                                Club id: {apply.clubId}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                Candidate: {apply.username}{apply.userId}
+                                            </Card.Text>
+                                        </Card.Body>
+                                    </Card>
+                            )
+                        }
+
                     </Col>
 
                     <Col sm style={{marginTop:50}}>
@@ -46,15 +84,17 @@ export default class AssignAdmin extends Component {
                     </Col>
 
                     <Col sm style={{marginTop:50}}>
-                        <FormControl type="text" placeholder="Enter a sub club name">
+                        <FormControl type="text" placeholder="Enter a sub club id"
+                                      onChange={this.changeSubClubId}>
 
                         </FormControl>
 
-                        <FormControl type="text" placeholder="Enter an username" style={{marginTop:15}}>
+                        <FormControl type="text" placeholder="Enter an user id" style={{marginTop:15}}
+                                      onChange={this.changeUserId}>
 
                         </FormControl>
 
-                        <Button variant="outline-light" type="submit" style={{marginTop:15}}>
+                        <Button onClick={() => this.updateAdmin()} variant="outline-light" type="submit" style={{marginTop:15}}>
                             Update Admin
                         </Button>
                     </Col>

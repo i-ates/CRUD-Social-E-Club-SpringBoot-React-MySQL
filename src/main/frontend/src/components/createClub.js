@@ -2,10 +2,7 @@ import React, {Component} from 'react'
 import ClubService from "../services/club.service";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import AuthService from "../services/auth.service";
 import Card from "react-bootstrap/Card";
 import { BsTrash } from "react-icons/bs";
 import {withRouter} from "react-router-dom";
@@ -139,8 +136,9 @@ class createClub extends Component {
                                                             {offer.offer}
                                                         </Col>
                                                         <Col xs={6} md={4} >
-                                                            <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                                <BsTrash onClick={() => this.deleteOffer(offer.id)}/>
+                                                            <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}
+                                                                    onClick={() => this.deleteOffer(offer.id)}>
+                                                                <BsTrash />
                                                             </Button>
                                                         </Col>
                                                     </Row>
@@ -197,16 +195,15 @@ class createClub extends Component {
                                 </Col>
                             </Row>
                             <Row style={{marginTop:20}}>
-                                    <Button style={{width:200 ,margin:"auto"}} variant="outline-light"  onClick={this.saveClub}>Add Club</Button>
+                                    <Button style={{width:200 ,margin:"auto"}} variant="outline-light"
+                                            onClick={this.saveClub}>Add Club</Button>
                             </Row>
                         </Col>
                     </Row>
                 </div>
             </div>
-
         )
     }
-
 }
 
 export default withRouter(createClub);

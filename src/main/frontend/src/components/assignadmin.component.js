@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import {FormControl} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import {FaBan} from "react-icons/fa";
 import {BsTrash} from "react-icons/bs";
 import ClubService from "../services/club.service";
 
@@ -52,14 +50,11 @@ export default class AssignAdmin extends Component {
     }
 
     render() {
-
         return (
-
             <div  className="panel-container" style={{maxHeight:500}}>
                 <Row>
                     <Col style={{overflowY: "scroll",scrollBehaviour: "smooth",
                         maxHeight:400,opacity:0.9,marginTop:0}}>
-
                         {
                             this.state.applies.map(
                                 apply =>
@@ -78,27 +73,22 @@ export default class AssignAdmin extends Component {
                                             <Card.Text>
                                                 Candidate: {apply.userName}
                                             </Card.Text>
-                                            <Button variant="outline-light" style={{margin:"auto"}}>
-                                                <BsTrash onClick={() => this.deleteCandidate(apply.userId, apply.clubId)}/>
+                                            <Button variant="outline-light" style={{margin:"auto"}}
+                                                    onClick={() => this.deleteCandidate(apply.userId, apply.clubId)}>
+                                                <BsTrash/>
                                             </Button>
                                         </Card.Body>
                                     </Card>
                             )
                         }
-
                     </Col>
-
                     <Col style={{marginTop:50, marginLeft:150, marginRight:150}}>
                         <FormControl type="text" placeholder="Enter a sub club id"
                                       onChange={this.changeSubClubId}>
-
                         </FormControl>
-
                         <FormControl type="text" placeholder="Enter an user id" style={{marginTop:15}}
                                       onChange={this.changeUserId}>
-
                         </FormControl>
-
                         <Button onClick={() => this.updateAdmin()} variant="outline-light" type="submit" style={{marginTop:15}}>
                             Update Admin
                         </Button>

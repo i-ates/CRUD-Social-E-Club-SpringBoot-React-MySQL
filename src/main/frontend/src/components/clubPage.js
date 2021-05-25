@@ -130,8 +130,9 @@ class ClubPage extends Component {
                                             </Card.Text>
                                             {
                                                 (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
-                                                <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                    <BsTrash onClick={() => this.deleteMessage(message.messageId)}/>
+                                                <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}
+                                                        onClick={() => this.deleteMessage(message.messageId)}>
+                                                    <BsTrash />
                                                 </Button>
 
                                             }
@@ -140,8 +141,9 @@ class ClubPage extends Component {
                                             </Button>
                                             {
                                                 (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
-                                                <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                    <FaBan onClick={() => this.banUser(message.userId, message.username)}
+                                                <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}
+                                                        onClick={() => this.banUser(message.userId, message.username)}>
+                                                    <FaBan
                                                            style={{margin:"auto"}}/>
                                                 </Button>
                                             }
@@ -207,28 +209,28 @@ class ClubPage extends Component {
                 </Col>
                 <Col className="panel-container" style={{height:600,opacity:0.9,marginTop:0,marginBottom:10}}>
                     <Row>
-                        {this.state.showSubClubAdminBoard ? (<div style={{marginBottom:50}}>
-                            {this.state.showSubClubAdminBoard && (<div style={{marginLeft:130}}>
-                                    <Row style={{marginLeft:10,marginBottom:10}}>
-                                        <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10}} variant="outline-light">
-                                            Send Message
-                                        </Button>
-                                    </Row>
-                            </div>
-                            )}
-                        </div>):(<div>
+                        {this.state.showSubClubAdminBoard ? (
+                            <div style={{marginBottom:50}}>
+                                <Row style={{marginLeft:140,marginBottom:10}}>
+                                    <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10}} variant="outline-light">
+                                        Send Message
+                                    </Button>
+                                </Row>
+                            </div>):(<div>
                             {this.state.showUserButtons && (
-                                <div>
-                                    <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10, marginLeft:50}} variant="outline-light">
+                                <div style={{marginLeft:50}} className="div1">
+                                    <Button onClick={()=> this.showMessage(this.state.clubId)}
+                                            style={{width:150,marginBottom:10,marginRight:50}} variant="outline-light">
                                         Send Message
                                     </Button>
                                     {
                                         (!this.state.isSubClubAdmin && !this.state.showSubClubAdminBoard) && (
-                                            <div>
-                                                <h5 style={{paddingBottom:15, marginLeft:50}}>
+                                            <div style={{marginTop:50,marginRight:50}}>
+                                                <h5 style={{paddingBottom:15}}>
                                                     You want to be admin in this sub club?
                                                 </h5>
-                                                <Button onClick={()=> this.requestAdmin()} style={{width:200,marginBottom:20, marginLeft:50}} variant="outline-light" >Request to be an Admin</Button>
+                                                <Button onClick={()=> this.requestAdmin()} style={{width:200,marginBottom:20}}
+                                                        variant="outline-light" >Request to be an Admin</Button>
                                             </div>
                                         )
                                     }

@@ -55,24 +55,19 @@ export default class AssignAdmin extends Component {
 
         return (
 
-            <div  className="panel-container">
+            <div  className="panel-container" style={{maxHeight:500}}>
                 <Row>
-                    <Col className="panel-container" style={{overflowY: "scroll",scrollBehaviour: "smooth",
-                        height:600,opacity:0.9,marginTop:0}}>
+                    <Col style={{overflowY: "scroll",scrollBehaviour: "smooth",
+                        maxHeight:400,opacity:0.9,marginTop:0}}>
 
                         {
                             this.state.applies.map(
                                 apply =>
                                     <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
-                                        marginTop:-20,marginLeft:-20,marginRight:-20}}>
+                                        margin:"auto", marginBottom:15}}>
                                         <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
                                             <Card.Title>
                                                 {apply.clubName}
-                                                <Col xs={6} md={4} >
-                                                    <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                        <BsTrash onClick={() => this.deleteCandidate(apply.userId, apply.clubId)}/>
-                                                    </Button>
-                                                </Col>
                                             </Card.Title>
                                             <Card.Text>
                                                 Club id: {apply.clubId}
@@ -83,6 +78,9 @@ export default class AssignAdmin extends Component {
                                             <Card.Text>
                                                 Candidate: {apply.userName}
                                             </Card.Text>
+                                            <Button variant="outline-light" style={{margin:"auto"}}>
+                                                <BsTrash onClick={() => this.deleteCandidate(apply.userId, apply.clubId)}/>
+                                            </Button>
                                         </Card.Body>
                                     </Card>
                             )
@@ -90,7 +88,7 @@ export default class AssignAdmin extends Component {
 
                     </Col>
 
-                    <Col sm style={{marginTop:50}}>
+                    <Col style={{marginTop:50, marginLeft:150, marginRight:150}}>
                         <FormControl type="text" placeholder="Enter a sub club id"
                                       onChange={this.changeSubClubId}>
 

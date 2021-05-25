@@ -29,6 +29,7 @@ class ClubPage extends Component {
             username:"",
             showSubClubAdminBoard:false,
             showUserButtons: false,
+            isSubClubAdmin: false,
             nameOfClub:"",
             user: AuthService.getCurrentUser()
         }
@@ -48,6 +49,9 @@ class ClubPage extends Component {
                 showRateBoard: this.state.user.roles.includes("ROLE_USER"),
                 showSubClubAdminBoard: this.state.user.roles.includes("ROLE_ADMIN"),
                 showUserButtons: this.state.user.roles.includes("ROLE_USER"),
+            });
+            ClubService.checkSubClubAdmin(this.state.user.id, this.state.clubId).then((res) =>{
+                this.setState({isSubClubAdmin: res.data})
             });
         }
 
@@ -118,7 +122,7 @@ class ClubPage extends Component {
                                             <Card.Title>
                                                 {message.title}
                                                 {
-                                                    this.state.showSubClubAdminBoard &&
+                                                    (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
                                                     <Col xs={6} md={4} >
                                                         <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
                                                             <BsTrash onClick={() => this.deleteMessage(message.messageId)}/>
@@ -132,7 +136,7 @@ class ClubPage extends Component {
                                             <Card.Text>
                                                 Sender: {message.username}
                                                 {
-                                                    this.state.showSubClubAdminBoard &&
+                                                    (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
                                                     <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
                                                         <FaBan onClick={() => this.banUser(message.userId, message.username)}
                                                         style={{margin:"auto"}}/>
@@ -221,10 +225,16 @@ class ClubPage extends Component {
                                     <Button onClick={()=> this.showMessage(this.state.clubId)} style={{width:150,marginBottom:10}} variant="outline-light">
                                         Send Message
                                     </Button>
-                                    <h5 style={{paddingBottom:15}}>
-                                        You want to be admin in this sub club?
-                                    </h5>
-                                    <Button onClick={()=> this.requestAdmin()} style={{width:200,marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
+                                    {
+                                        (!this.state.isSubClubAdmin && !this.state.showSubClubAdminBoard) && (
+                                            <div>
+                                                <h5 style={{paddingBottom:15}}>
+                                                    You want to be admin in this sub club?
+                                                </h5>
+                                                <Button onClick={()=> this.requestAdmin()} style={{width:200,marginBottom:20}} variant="outline-light" >Request to be an Admin</Button>
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             )}
                         </div>)}

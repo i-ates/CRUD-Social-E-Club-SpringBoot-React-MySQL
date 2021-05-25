@@ -50,9 +50,11 @@ class createClub extends Component {
     changeParentName = (event) =>{
         this.setState({parentName: event.target.value});
     }
+
     changeClubName = (event) =>{
         this.setState({clubName: event.target.value});
     }
+
     changeQuestion1 = (event) =>{
         this.setState({question1: event.target.value});
     }

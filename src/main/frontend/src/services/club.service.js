@@ -107,6 +107,22 @@ class ClubService{
 
     }
 
+    deleteUserMessage(messageId){
+        return axios.delete("http://localhost:8080/api/messages/deletemessage"+"/"+messageId);
+    }
+
+    createCandidate(userId, clubId){
+        return axios.post("http://localhost:8080/api/subclubadmin/addcandidate"+"/"+clubId, {
+            id: userId
+        });
+    }
+
+    updateSubClubAdmin(userId, clubId){
+        return axios.post("http://localhost:8080/api/subclubadmin/updateadmin"+"/"+clubId,{
+            id:userId
+        });
+    }
+
 }
 
 export default new ClubService();

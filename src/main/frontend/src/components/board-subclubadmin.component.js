@@ -4,26 +4,45 @@ import Col from "react-bootstrap/Col";
 import {FormControl} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import {FaBan} from "react-icons/fa";
+import {BsTrash} from "react-icons/bs";
 
 class BoardSubClubAdminComponent extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            applies:[]
+        }
+    }
     render() {
         return (
             <div  className="panel-container">
                 <Row>
-                    <Col sm style={{marginTop:50, marginLeft:50}}>
-                        <p>
-                            Banned Users
-                        </p>
-                        <p>
-                            USER-1
-                        </p>
-                        <p>
-                            USER-2
-                        </p>
-                        <p>
-                            USER-3
-                        </p>
-                    </Col>
+                    <table className="table table-striped table-bordered" style={{backgroundColor: "#05082B",opacity: 0.8}}>
+                        <thead>
+                        <tr>
+                            <th style={{color:"white",fontSize:25}}>Club Name,clubId</th>
+                            <th style={{color:"white",fontSize:25}}>Username,userId</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {
+                            this.state.applies.map(
+                                apply =>
+                                    <tr key ={apply.id}>
+                                        <td style={{color:"white",fontSize:20}}>
+                                            {apply.clubName}{apply.clubId}
+                                        </td>
+                                        <td style={{color:"white",fontSize:20}}>
+                                            {apply.username} {apply.userId}
+                                        </td>
+                                    </tr>
+                            )
+                        }
+                        </tbody>
+                    </table>
 
                     <Col sm style={{marginTop:50, marginRight:150}}>
                         <Row>

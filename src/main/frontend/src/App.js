@@ -24,7 +24,6 @@ import SubclubQuestions from "./components/subclubQuestions";
 import ProfileView from "./components/profile.view";
 import PasswordRecovery from "./components/passwordRecovery";
 import NewPassword from "./components/newPassword";
-import BoardSubClubAdminComponent from "./components/board-subclubadmin.component";
 import Deleteoffer from "./components/deleteoffer";
 import PermanentComponent from "./components/permanent.component";
 import TemporaryComponent from "./components/temporary.component";
@@ -69,43 +68,6 @@ class App extends Component {
               hiclub
           </Link>
           <div className="navbar-nav mr-auto">
-            {/*<li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
-              </Link>
-            </li>*/}
-
-            {/*{showModeratorBoard && (*/}
-            {/*  <li className="nav-item">*/}
-            {/*    <Link to={"/mod"} className="nav-link">*/}
-            {/*      Moderator Board*/}
-            {/*    </Link>*/}
-            {/*  </li>*/}
-            {/*)}*/}
-
-            {/*{showAdminBoard && (
-            {/*  <li className="nav-item">*/}
-            {/*    <Link to={"/admin"} className="nav-link">*/}
-            {/*      Admin Board*/}
-            {/*    </Link>*/}
-            {/*  </li>*/}
-            {/*)}*/}
-
-            {/*{currentUser && (*/}
-            {/*  <li className="nav-item">*/}
-            {/*    <Link to={"/user"} className="nav-link">*/}
-            {/*      User*/}
-            {/*    </Link>*/}
-            {/*  </li>*/}
-            {/*)}*/}
-            {/*currentUser && (
-                <li className="nav-item">
-                  <Link to={"/getuserclubs"} className="nav-link">
-                    MyClubs
-                  </Link>
-                </li>
-
-            )*/}
             {showAdminBoard && (<li className="nav-item">
               <Link to={"/admin"} className="nav-link" style={{color:"white"}}>
                 Admin Panel
@@ -166,10 +128,7 @@ class App extends Component {
             <Route exact path="/search" component={Searchbar} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
-            {/*<Route path="/user" component={BoardUser} />*/}
-            {/*<Route path="/mod" component={BoardModerator} />*/}
             <Route path="/admin" component={BoardAdmin} />
-            <Route path="/subclubadmin" component={BoardSubClubAdminComponent} />
             <Route path="/questions" component={listQuestion} />
             <Route path="/getuserclubs" component={listMyClubs}/>
             <Route path="/club-page/:id" component={ClubPage}/>

@@ -123,6 +123,20 @@ class ClubService{
         });
     }
 
+    checkSubClubAdmin(userId, clubId){
+        return axios.post("http://localhost:8080/api/subclubadmin/check"+"/"+clubId+"/"+userId);
+    }
+
+    getAllCandidates(){
+        return axios.get("http://localhost:8080/api/subclubadmin/fetchcandidates");
+    }
+
+    deleteCandidate(userId, clubId){
+        return axios.post("http://localhost:8080/api/subclubadmin/deletecandidate"+"/"+clubId, {
+            id: userId
+        });
+    }
+
 }
 
 export default new ClubService();

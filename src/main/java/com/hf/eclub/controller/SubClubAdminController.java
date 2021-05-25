@@ -3,14 +3,13 @@ package com.hf.eclub.controller;
 
 import com.hf.eclub.models.SubClubAdmin;
 import com.hf.eclub.models.SubClubAdminCandidate;
+import com.hf.eclub.models.User;
 import com.hf.eclub.models.UserClubs;
 import com.hf.eclub.payload.request.UserIdRequest;
+import com.hf.eclub.payload.response.CandidateResponse;
 import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.payload.response.UserBriefResponse;
-import com.hf.eclub.repository.SubClubAdminCandidateRepository;
-import com.hf.eclub.repository.SubClubAdminRepository;
-import com.hf.eclub.repository.UserClubsRepository;
-import com.hf.eclub.repository.UserRepository;
+import com.hf.eclub.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +29,9 @@ public class SubClubAdminController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ClubRepository clubRepository;
 
     @Autowired
     private UserClubsRepository ucRepository;
@@ -92,15 +94,21 @@ public class SubClubAdminController {
         return ResponseEntity.ok(new MessageResponse("Candidate deleted."));
     }
 
-    @PostMapping("/fetchcandidates/{clubid}")
-    public  List<UserBriefResponse> getCandidates(@PathVariable long clubid) {
+    @GetMapping("/fetchcandidates")
+    public  List<CandidateResponse> getCandidates() {
 
-        List<SubClubAdminCandidate> candidateIdList = scacRepository.findBySubClubId(clubid);
-        List<UserBriefResponse> result = new ArrayList<>();
+        List<SubClubAdminCandidate> candidateIdList = scacRepository.findAll();
 
+        List<CandidateResponse> result = new ArrayList<>();
+        
         for (SubClubAdminCandidate candidate : candidateIdList){
-            result.add(new UserBriefResponse(candidate.getUserId(), userRepository.findUsernameById(candidate.getUserId())));
+            String name = userRepository.findById(candidate.getUserId()).get().getUsername();
+            String clubName = clubRepository.findById(candidate.getSubClubId()).get().getClubName();
+            CandidateResponse candidateResponse = new CandidateResponse(candidate.getUserId(),name,
+                    candidate.getSubClubId(), clubName);
+            result.add(candidateResponse);
         }
+
 
         return result;
     }

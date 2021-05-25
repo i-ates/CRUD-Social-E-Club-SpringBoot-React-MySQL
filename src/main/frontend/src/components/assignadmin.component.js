@@ -23,6 +23,13 @@ export default class AssignAdmin extends Component {
         this.updateAdmin = this.updateAdmin.bind(this);
         this.changeSubClubId = this.changeSubClubId.bind(this);
         this.changeUserId = this.changeUserId.bind(this);
+        this.deleteCandidate = this.deleteCandidate.bind(this);
+    }
+
+    componentDidMount() {
+        ClubService.getAllCandidates().then((res) =>{
+            this.setState({applies: res.data})
+        });
     }
 
     changeSubClubId = (event) =>{
@@ -31,6 +38,12 @@ export default class AssignAdmin extends Component {
 
     changeUserId = (event) =>{
         this.setState({userId: event.target.value});
+    }
+
+    deleteCandidate = (userId, clubId) =>{
+        ClubService.deleteCandidate(userId, clubId).then();
+        window.location.reload();
+
     }
 
     updateAdmin =()=>{
@@ -53,34 +66,28 @@ export default class AssignAdmin extends Component {
                                     <Card style={{ width: 430, backgroundColor: "#3E1875", opacity: 0.9, borderRadius: 50,
                                         marginTop:-20,marginLeft:-20,marginRight:-20}}>
                                         <Card.Body style={{ marginTop:-30,marginLeft:-40,marginRight:-40}}>
-                                            <Card.Title>{apply.clubName}</Card.Title>
+                                            <Card.Title>
+                                                {apply.clubName}
+                                                <Col xs={6} md={4} >
+                                                    <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                        <BsTrash onClick={() => this.deleteCandidate(apply.userId, apply.clubId)}/>
+                                                    </Button>
+                                                </Col>
+                                            </Card.Title>
                                             <Card.Text>
                                                 Club id: {apply.clubId}
                                             </Card.Text>
                                             <Card.Text>
-                                                Candidate: {apply.username}{apply.userId}
+                                                Candidate id: {apply.userId}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                Candidate: {apply.userName}
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
                             )
                         }
 
-                    </Col>
-
-                    <Col sm style={{marginTop:50}}>
-                        <p>
-                            Current Sub club Admin
-                            USER-X
-                        </p>
-                        <p>
-                            USER-1
-                        </p>
-                        <p>
-                            USER-2
-                        </p>
-                        <p>
-                            USER-3
-                        </p>
                     </Col>
 
                     <Col sm style={{marginTop:50}}>

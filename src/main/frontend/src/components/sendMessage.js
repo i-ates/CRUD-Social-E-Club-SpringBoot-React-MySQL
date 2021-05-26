@@ -20,18 +20,23 @@ class SendMessage extends Component {
             title:"",
             currentUser: undefined,
             clubid:this.props.match.params.clubid,
-            showCreateEvent: false
+            showCreateEvent: false,
+            isSubClubAdmin:false
         }
     }
 
     componentDidMount() {
         const user = AuthService.getCurrentUser();
 
+
        this.setState({
            currentUser:user,
            showCreateEvent: user.roles.includes("ROLE_ADMIN")
            }
        )
+        ClubService.checkSubClubAdmin(user.id, this.state.clubid).then((res) =>{
+            this.setState({isSubClubAdmin: res.data})
+        });
 
     }
     onchangeTitle(e){
@@ -125,7 +130,7 @@ class SendMessage extends Component {
 
                 </div>
                 <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginRight:5}} onClick={this.sendMessage}>Send Message</Button>
-                {this.state.showCreateEvent &&(
+                {(this.state.showCreateEvent || this.state.isSubClubAdmin) &&(
                     <Button variant="outline-light" style={{margin:"auto", marginTop:10, marginLeft:5}} onClick={this.sendEvent}>Create Event</Button>)}
             </div>
         )

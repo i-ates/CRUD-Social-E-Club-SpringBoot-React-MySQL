@@ -22,8 +22,6 @@ import Button from "react-bootstrap/Button";
 import SendMessage from "./components/sendMessage";
 import SubclubQuestions from "./components/subclubQuestions";
 import ProfileView from "./components/profile.view";
-import PasswordRecovery from "./components/passwordRecovery";
-import NewPassword from "./components/newPassword";
 import Deleteoffer from "./components/deleteoffer";
 import PermanentComponent from "./components/permanent.component";
 import TemporaryComponent from "./components/temporary.component";
@@ -135,8 +133,6 @@ class App extends Component {
             <Route path="/sendmessage/:clubid" component={SendMessage}/>
             <Route path="/subclub-questions/:id" component={SubclubQuestions}/>
             <Route path="/user-page/:id" component={ProfileView}/>
-            <Route path="/passwordrecovery" component={PasswordRecovery}/>
-            <Route path="/newpassword" component={NewPassword}/>
             <Route path="/deleteoffer" component={Deleteoffer}/>
             <Route path="/bannedfromthispagepermanently" component={PermanentComponent}/>
             <Route path="/bannedfromthispagetemporarily/:id" component={TemporaryComponent}/>

@@ -137,6 +137,14 @@ class ClubService{
         });
     }
 
+    updateActivity(clubId){
+        return axios.post(API_URL+"updateactivity"+"/"+clubId);
+    }
+
+    getAllClubActivity(){
+        return axios.get(API_URL+"getallclubactivities");
+    }
+
 }
 
 export default new ClubService();

@@ -136,9 +136,12 @@ class ClubPage extends Component {
                                                 </Button>
 
                                             }
-                                            <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
-                                                <GrFavorite/>
-                                            </Button>
+                                            {
+                                                this.state.showRateBoard &&
+                                                <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}>
+                                                    <GrFavorite/>
+                                                </Button>
+                                            }
                                             {
                                                 (this.state.showSubClubAdminBoard || this.state.isSubClubAdmin) &&
                                                 <Button variant="outline-light" style={{marginLeft:15,marginBottom:0}}

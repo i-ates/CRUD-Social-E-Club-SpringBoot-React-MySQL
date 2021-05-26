@@ -1,7 +1,9 @@
 package com.hf.eclub.controller;
 
+import com.hf.eclub.models.Activity;
 import com.hf.eclub.models.Club;
 import com.hf.eclub.payload.request.CreateClubRequest;
+import com.hf.eclub.repository.ActivityRepository;
 import com.hf.eclub.repository.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
@@ -10,9 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -20,6 +20,9 @@ import java.util.Map;
 public class ClubController {
     @Autowired
     private ClubRepository clubRepository;
+
+    @Autowired
+    private ActivityRepository activityRepository;
 
     @GetMapping("/clubs")
     public List<Club> getAllClubs(){
@@ -48,5 +51,25 @@ public class ClubController {
 
 
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/updateactivity/{id}")
+    public ResponseEntity<?> updateActivity(@PathVariable long id){
+        Calendar currentTimeNow = Calendar.getInstance();
+        Date crDate = currentTimeNow.getTime();
+
+        if ( activityRepository.findByClubId(id) == null){
+            String cName = clubRepository.findById(id).get(0).getClubName();
+            Activity activity = new Activity(cName, id, crDate);
+            activityRepository.save(activity);
+        }else{
+            activityRepository.updateTime(id, crDate);
+        }
+        return ResponseEntity.ok("activity is updated.");
+    }
+
+    @GetMapping("/getallclubactivities")
+    public List<Activity> getAllActivity(){
+        return activityRepository.findAll();
     }
 }

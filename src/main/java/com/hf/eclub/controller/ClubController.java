@@ -4,6 +4,7 @@ import com.hf.eclub.models.Activity;
 import com.hf.eclub.models.Club;
 import com.hf.eclub.payload.request.CreateClubRequest;
 import com.hf.eclub.payload.response.ActivityResponse;
+import com.hf.eclub.payload.response.MessageResponse;
 import com.hf.eclub.repository.ActivityRepository;
 import com.hf.eclub.repository.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,5 +80,11 @@ public class ClubController {
             activities.add(new ActivityResponse(id, clubName, activity));
         }
         return activities;
+    }
+
+    @DeleteMapping("/deleteactivity/{id}")
+    public ResponseEntity<?> deleteActivity(@PathVariable long id){
+        activityRepository.delete(activityRepository.findByClubId(id));
+        return ResponseEntity.ok(new MessageResponse("activity is deleted"));
     }
 }

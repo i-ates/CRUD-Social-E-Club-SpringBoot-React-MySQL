@@ -37,6 +37,7 @@ export default class DeleteClub extends Component {
         ClubService.deleteClub(id).then();
         ClubService.deleteQuestion(id).then();
         ClubService.deleteUserClubs(id).then();
+        ClubService.deleteActivity(id).then();
         this.navigate();
     }
     async navigate() {

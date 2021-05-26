@@ -132,9 +132,6 @@ export default class Login extends Component {
                 )}
                 <span>Login</span>
               </button>
-              <Link to={"/passwordrecovery"} className="nav-link" style={{color:"white", fontSize:16}}>
-                Forgot Password?
-              </Link>
               <Link to={"/register"} className="nav-link" style={{color:"white", fontSize:16}}>
                 Don't have an account?
               </Link>

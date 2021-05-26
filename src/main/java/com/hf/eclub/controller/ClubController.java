@@ -3,6 +3,7 @@ package com.hf.eclub.controller;
 import com.hf.eclub.models.Activity;
 import com.hf.eclub.models.Club;
 import com.hf.eclub.payload.request.CreateClubRequest;
+import com.hf.eclub.payload.response.ActivityResponse;
 import com.hf.eclub.repository.ActivityRepository;
 import com.hf.eclub.repository.ClubRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,14 @@ public class ClubController {
     }
 
     @GetMapping("/getallclubactivities")
-    public List<Activity> getAllActivity(){
-        return activityRepository.findAll();
+    public List<ActivityResponse> getAllActivity(){
+        List<ActivityResponse> activities = new ArrayList<>();
+        for(Activity a: activityRepository.findAll()){
+            long id = a.getId();
+            String clubName = a.getClubName();
+            String activity = a.getLastActivity().toString().substring(0, a.getLastActivity().toString().length()-2);
+            activities.add(new ActivityResponse(id, clubName, activity));
+        }
+        return activities;
     }
 }

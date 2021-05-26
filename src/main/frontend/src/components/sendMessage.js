@@ -61,7 +61,7 @@ class SendMessage extends Component {
             this.state.editorState.getCurrentContent().getPlainText(),currentUser.id,
             this.state.isPublic
             )
-
+        ClubService.updateActivity(this.state.clubid).then();
         this.navigate();
     }
 
@@ -72,6 +72,7 @@ class SendMessage extends Component {
         ClubService.createEvent(this.state.title, this.state.clubid,
             this.state.editorState.getCurrentContent().getPlainText(),currentUser.id
         )
+        ClubService.updateActivity(this.state.clubid).then();
 
         this.navigate();
     }

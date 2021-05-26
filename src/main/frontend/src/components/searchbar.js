@@ -86,7 +86,7 @@ class SearchBar extends Component{
     render() {
         const {currentUser, showModeratorBoard, showAdminBoard} = this.state;
         return (
-            <div>
+            <div className="panel-container" style={{maxHeight:600}}>
                 {
                     currentUser ? (
                     <div>
@@ -96,7 +96,7 @@ class SearchBar extends Component{
                         <div>
                             <Row>
 
-                                <Col>
+                                <Col style={{overflowY: "scroll",scrollBehaviour: "smooth", marginRight:50, maxHeight:400}}>
                                     <h2>Members of the same sub-clubs</h2>
                                     {
                                         this.state.users.filter((user) => {
@@ -110,7 +110,7 @@ class SearchBar extends Component{
                                             user =>
                                                 <Card style={{
                                                     width: 300, display: "inline-block", marginRight: 10, borderRadius: 25,
-                                                    marginTop: 20, marginBottom: 0
+                                                    marginTop: 20, marginBottom: 0, opacity:1
                                                 }}>
                                                     <Button variant="None" style={{color: "white", fontSize: 20}}
                                                             onClick={() => this.showUser(user.userId)}>
@@ -122,7 +122,7 @@ class SearchBar extends Component{
                                     }
                                 </Col>
 
-                                <Col>
+                                <Col style={{overflowY: "scroll",scrollBehaviour: "smooth", marginRight:50, maxHeight:400}}>
                                     <h2>Sub-clubs</h2>
                                     {
                                         this.state.clubs.filter((club) => {
@@ -140,7 +140,8 @@ class SearchBar extends Component{
                                                     marginRight: 10,
                                                     borderRadius: 25,
                                                     marginTop: 20,
-                                                    marginBottom: 0
+                                                    marginBottom: 0,
+                                                    opacity:1
                                                 }}>
                                                     <Button variant="None" style={{color: "white", fontSize: 20}}
                                                             onClick={() => this.showPage(club2.id)}>

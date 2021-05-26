@@ -145,6 +145,10 @@ class ClubService{
         return axios.get(API_URL+"getallclubactivities");
     }
 
+    deleteActivity(clubId){
+        return axios.delete(API_URL+"deleteactivity"+"/"+clubId);
+    }
+
 }
 
 export default new ClubService();
